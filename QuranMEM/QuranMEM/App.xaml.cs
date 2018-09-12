@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuranMEM.Model;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,11 +8,21 @@ namespace QuranMEM
 {
     public partial class App : Application
     {
+
+        public static User user = new User();
+
+
         public App()
         {
+      
+
+            //Initialize Live Reload
+#if DEBUG
+            LiveReload.Init();
+#endif
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

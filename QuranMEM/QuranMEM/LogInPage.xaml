@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuranMEM.LogInPage">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Entry 
+                Placeholder="Email address"
+                Keyboard="Email"
+                TextColor="Aqua"/>
+            <Entry 
+                Placeholder="Password"
+                Text="Aqua"
+                IsPassword="True"/>
+            <Button x:Name="LogInButton"
+                    Margin="0,50, 0,0"
+                    Text="Login"
+                    BackgroundColor="Aqua"
+                    TextColor="White"
+                    Clicked="LogInButton_Clicked"      />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

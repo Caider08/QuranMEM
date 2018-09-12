@@ -13,5 +13,19 @@ namespace QuranMEM
         {
             InitializeComponent();
         }
+
+        private void Start_Clicked(object sender, EventArgs e)
+        {
+
+            //if(user != null)
+           // {
+                 Navigation.PushAsync(new NavigationPage(new LogInPage()));
+           // }
+            //else
+            //{
+
+           // }
+
+        }
     }
 }

@@ -4,11 +4,44 @@
              xmlns:local="clr-namespace:QuranMEM"
              x:Class="QuranMEM.MainPage">
 
-    <StackLayout>
+    <Grid RowSpacing="0" ColumnSpacing="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+        <Label Text="Quran Memorization Game" 
+                Grid.ColumnSpan="2"
+               Grid.Row="0"
+               HorizontalOptions="Center"
+               TextColor="Aqua"
+              FontSize="Large"
+               FontAttributes="Bold"/>
+        <Label Text="By: Ali Mohamed"
+               Grid.ColumnSpan="2"
+               Grid.Row="1"
+               HorizontalOptions="Center"
+               FontSize="Small"
+               />
+        <Image Source="" Aspect="AspectFill" x:Name="AppLogo"
+               Grid.ColumnSpan="2"
+               Grid.Row="2"/>
+        
+        <Button x:Name="Start"
+                Clicked="Start_Clicked" 
+                Text="Begin"
+                Grid.Row="3"
+                Grid.Column="0"/>
+        <Button x:Name="Exit" 
+                Text="Exit"
+                Grid.Row="3"
+                Grid.Column="1"/>
+    </Grid>
 
 </ContentPage>

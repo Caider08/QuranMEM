@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuranMEM.LoginPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center"
+            Margin="20">
+            <Entry x:Name="emailEntry"
+                   Placeholder="Email Address"
+                   TextColor="Aqua"
+                   Keyboard="Email"/>
+            <Entry x:Name="passwordEntry"
+                   TextColor="Aqua"
+                   Placeholder="Password"
+                   IsPassword="True"/>
+            <Entry x:Name="confirmPasswordEntry"
+                   Placeholder="Confirm Password"
+                   TextColor="Aqua"
+                   IsPassword="True"/>
+
+            <Button x:Name="registerButton"
+                    Margin="0,50,0,0"
+                    Text="Register"
+                    Clicked="registerButton_Clicked"
+                    BackgroundColor="Aqua"
+                    BorderColor="Aqua"
+                    TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
