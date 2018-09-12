@@ -17,9 +17,9 @@ namespace QuranMEM
       
 
             //Initialize Live Reload
-#if DEBUG
-            LiveReload.Init();
-#endif
+//#if DEBUG
+        //    LiveReload.Init();
+//#endif
             InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage());

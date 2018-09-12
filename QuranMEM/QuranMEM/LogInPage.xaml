@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout Margin="20">
             <Entry 
-                Placeholder="Email address"
+                Placeholder="Email addressTEST"
                 Keyboard="Email"
                 TextColor="Aqua"/>
             <Entry 
