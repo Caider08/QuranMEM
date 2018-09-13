@@ -11,6 +11,9 @@ namespace QuranMEM
 
         public static User user = new User();
 
+        public static string DatabaseLocation = string.Empty;
+
+
 
         public App()
         {
@@ -24,6 +27,18 @@ namespace QuranMEM
 
             MainPage = new NavigationPage(new MainPage());
         }
+
+        public App(string databaseLocation)
+        {
+            InitializeComponent();
+
+            MainPage = new NavigationPage(new MainPage());
+
+            DatabaseLocation = databaseLocation;
+
+        }
+
+
 
         protected override void OnStart()
         {
