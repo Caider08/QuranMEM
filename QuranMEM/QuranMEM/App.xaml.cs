@@ -1,4 +1,5 @@
-﻿using QuranMEM.Model;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using QuranMEM.Model;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,6 +14,10 @@ namespace QuranMEM
 
         public static string DatabaseLocation = string.Empty;
 
+        public static MobileServiceClient MobileService =
+    new MobileServiceClient(
+    "http://memorizethequran.azurewebsites.net"
+);
 
 
         public App()

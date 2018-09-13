@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QuranMEM.LoginPage">
+             x:Class="QuranMEM.RegisterPage">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center"
             Margin="20">
@@ -19,7 +19,7 @@
                    IsPassword="True"/>
 
             <Button x:Name="registerButton"
-                    Margin="0,50,0,0"
+                    Margin="0,15,0,0"
                     Text="Register"
                     Clicked="registerButton_Clicked"
                     BackgroundColor="Aqua"

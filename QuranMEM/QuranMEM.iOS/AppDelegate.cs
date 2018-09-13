@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 
 using Foundation;
+using Microsoft.WindowsAzure.MobileServices;
 using UIKit;
 
 namespace QuranMEM.iOS
@@ -24,6 +25,8 @@ namespace QuranMEM.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            CurrentPlatform.Init();
 
             string dbName = "QuranMEM_db.sqlite";
 

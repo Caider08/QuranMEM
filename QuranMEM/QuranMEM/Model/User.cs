@@ -7,7 +7,7 @@ namespace QuranMEM.Model
 {
     public class User
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public string id { get; set; }
 
         public string Email { get; set; }
@@ -23,8 +23,8 @@ namespace QuranMEM.Model
         public User()
         {
 
-            IncorrectCards = new List<int>();
-            SelectedCards = new List<int>();
+            List<int> IncorrectCards = new List<int>();
+            List<int> SelectedCards = new List<int>();
 
         }
 

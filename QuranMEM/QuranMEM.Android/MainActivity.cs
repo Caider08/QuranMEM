@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using System.IO;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace QuranMEM.Droid
 {
@@ -20,6 +21,8 @@ namespace QuranMEM.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            CurrentPlatform.Init();
 
             string dbName = "QuranMEM_db.sqlite";
 

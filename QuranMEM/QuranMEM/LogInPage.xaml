@@ -18,6 +18,12 @@
                     BackgroundColor="Aqua"
                     TextColor="White"
                     Clicked="LogInButton_Clicked"      />
+            <Button x:Name="RegisterButton"
+                    Text="Register"
+                    BackgroundColor="Aqua"
+                    TextColor="White"
+                    Clicked="RegisterButton_Clicked"    
+                    HorizontalOptions="End"/>
 
         </StackLayout>
     </ContentPage.Content>
