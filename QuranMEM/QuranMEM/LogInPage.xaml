@@ -5,10 +5,12 @@
     <ContentPage.Content>
         <StackLayout Margin="20">
             <Entry 
+                x:Name="emailEntryLogIn"
                 Placeholder="Email addressTEST"
                 Keyboard="Email"
                 TextColor="Aqua"/>
             <Entry 
+                x:Name="passwordEntryLogIn"
                 Placeholder="Password"
                 Text="Aqua"
                 IsPassword="True"/>
