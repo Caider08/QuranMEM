@@ -13,9 +13,14 @@ namespace QuranMEM
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RegisterPage : ContentPage
 	{
+        User user;
+
 		public RegisterPage ()
 		{
 			InitializeComponent ();
+
+            user = new User();
+            containerStackLayout.BindingContext = user;
 		}
 
         private async void registerButton_Clicked(object sender, EventArgs e)
@@ -23,20 +28,18 @@ namespace QuranMEM
             if(passwordEntry.Text == confirmPasswordEntry.Text)
             {
                 //We can register the user
-                User user = new User()
-                {
-                    Email = emailEntry.Text,
-                    Password = passwordEntry.Text,
-                };
-                try
-                {
+               
 
+                bool registerSucess = await User.RegisterUser(user);
 
-                    await App.MobileService.GetTable<User>().InsertAsync(user);
+                if (registerSucess)
+                {
+                    await Navigation.PushAsync(new HomePage());
+
                 }
-                catch (Exception ez)
+                else
                 {
-                    Console.WriteLine(ez);
+                    await DisplayAlert("Registration Error", "Registration Failed...Please Try Again", "OK");
                 }
 
             }

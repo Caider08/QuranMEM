@@ -18,51 +18,28 @@ namespace QuranMEM
 			InitializeComponent ();
 		}
 
-        private  async void LogInButton_Clicked(object sender, EventArgs e)
+        private async void LogInButton_Clicked(object sender, EventArgs e)
         {
-           
-
-            bool isEmailEntry = string.IsNullOrEmpty(emailEntryLogIn.Text);
-            bool isPasswordEntry = string.IsNullOrEmpty(passwordEntryLogIn.Text);
-
-            if (isEmailEntry || isPasswordEntry)
+            if (string.IsNullOrEmpty(emailEntryLogIn.Text))
             {
-                if (isEmailEntry)
-                {
-                    await DisplayAlert("Blank Email", "Please enter a Valid Email", "Ok");
-                }
-                else
-                {
-                    await DisplayAlert("Blank Password", "Please enter a Valid Password", "Ok");
-                }
+                await DisplayAlert("Email Error", "Please Enter a Valid Email", "OK");
+
+            }
+            if (string.IsNullOrEmpty(passwordEntryLogIn.Text))
+            {
+                await DisplayAlert("Password Error", "Please Enter a Password", "OK");
+            }
+
+            bool canLogIn = await User.Login(emailEntryLogIn.Text, passwordEntryLogIn.Text);
+
+            if(canLogIn)
+            {
+                await Navigation.PushAsync(new HomePage());
 
             }
             else
             {
-                var user = (await App.MobileService.GetTable<User>().Where(u => u.Email == emailEntryLogIn.Text).ToListAsync()).FirstOrDefault();
-
-                if (user != null)
-                {
-                    if (user.Password == passwordEntryLogIn.Text)
-                    {
-
-
-                        await Navigation.PushAsync(new NavigationPage(new HomePage()));
-                    }
-                    else
-                    {
-                        await DisplayAlert("Incorrect Password", "Incorrect Password for this Email", "OK");
-                    }
-
-                    
-                }
-                else
-                {
-                    await DisplayAlert("No User Exists with that Email", "No User Exists with that Email", "OK");
-                   // await Navigation.PushAsync(new NavigationPage(new RegisterPage()));
-                }
-
-                
+                await DisplayAlert("Error", "Please Try Logging In again", "OK");
             }
 
 
