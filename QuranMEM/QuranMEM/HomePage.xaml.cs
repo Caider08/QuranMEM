@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuranMEM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,23 @@ using Xamarin.Forms.Xaml;
 namespace QuranMEM
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class HomePage : ContentPage
+	public partial class HomePage : TabbedPage
 	{
+        private HomeViewModel homePageVM;
+
 		public HomePage ()
 		{
 			InitializeComponent ();
+
+            homePageVM = new HomeViewModel();
+
+            BindingContext = homePageVM;
+
 		}
-	}
+
+        private void AccountButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

@@ -6,29 +6,23 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace QuranMEM.Model
 {
     public class User : INotifyPropertyChanged
     {
 
-        private string id;
+
 
         [PrimaryKey]
-        public string Id
-        {
-            get { return id; }
+        [Newtonsoft.Json.JsonProperty("id")]
+        public string id { get; set; }
 
-            set
-            {
-                id = value;
-                OnPropertyChanged("Id");
-            }
-        }
-
+        //[Newtonsoft.Json.JsonIgnore]
         private string email;
 
-
+        [Newtonsoft.Json.JsonProperty("Email")]
         public string Email
         {
             get { return email; }
@@ -40,8 +34,11 @@ namespace QuranMEM.Model
             }
         }
 
+
+
         private string password;
 
+        [Newtonsoft.Json.JsonProperty("Password")]
         public string Password
         {
             get { return password; }
@@ -51,12 +48,12 @@ namespace QuranMEM.Model
                 password = value;
                 OnPropertyChanged("Password");
             }
-
         }
+
 
         private int currentCard;
 
-
+        [Newtonsoft.Json.JsonProperty("CurrentCard")]
         public int CurrentCard
         {
             get { return currentCard; }
@@ -69,7 +66,14 @@ namespace QuranMEM.Model
             }
         }
 
-        private ObservableCollection<int> _incorrectCards;
+
+
+
+        //public IList<int> IncorrectCards { get; set; }
+
+        //public IList<int> SelectedCards { get; set; }
+
+         private ObservableCollection<int> _incorrectCards;
 
         public ObservableCollection<int> IncorrectCards
         {
@@ -97,20 +101,29 @@ namespace QuranMEM.Model
         }
 
 
-
+        [field: NonSerializedAttribute()]
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string property)
         {
-            PropertyChanged(this, new PropertyChangedEventArgs(property));
+            if(PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
+           
         }
+
+
 
 
         public User()
         {
 
             ObservableCollection<int> IncorrectCards = new ObservableCollection<int>();
-            ObservableCollection<int> SelectedCards = new ObservableCollection<int>();
+            ObservableCollection<int>SelectedCards = new ObservableCollection<int>();
+
+            // IList<int> IncorrectCards = new List<int>();
+            //IList<int> SelectedCards = new List<int>();
 
         }
 
@@ -136,32 +149,45 @@ namespace QuranMEM.Model
             }
             else
             {
-                var user = (await App.MobileService.GetTable<User>().Where(u => u.Email == email).ToListAsync()).FirstOrDefault();
-
-                if (user != null)
+                try
                 {
-                    App.user = user;
 
-                    if (user.Password == pw)
+                    //User user = new User();
+
+                    var user = (await App.MobileService.GetTable<User>().Where(u => u.Email == email).ToListAsync()).FirstOrDefault();
+
+                    if (user != null)
                     {
+                        App.user = user;
 
-                        return true;
-                        //await Navigation.PushAsync(new NavigationPage(new HomePage()));
+                        if (user.Password == pw)
+                        {
+
+                            return true;
+                            //await Navigation.PushAsync(new NavigationPage(new HomePage()));
+                        }
+                        else
+                        {
+                            return false;
+                            //await DisplayAlert("Incorrect Password", "Incorrect Password for this Email", "OK");
+                        }
+
+
                     }
                     else
                     {
+                        //await DisplayAlert("No User Exists with that Email", "No User Exists with that Email", "OK");
+                        // await Navigation.PushAsync(new NavigationPage(new RegisterPage()));
                         return false;
-                        //await DisplayAlert("Incorrect Password", "Incorrect Password for this Email", "OK");
                     }
-
-
                 }
-                else
+                catch (Exception eze)
                 {
-                    //await DisplayAlert("No User Exists with that Email", "No User Exists with that Email", "OK");
-                    // await Navigation.PushAsync(new NavigationPage(new RegisterPage()));
+                    Console.WriteLine(eze);
                     return false;
                 }
+
+
 
 
             }
@@ -191,7 +217,7 @@ namespace QuranMEM.Model
         }
 
 
-    }
-}
 
-  
+    }
+
+}
