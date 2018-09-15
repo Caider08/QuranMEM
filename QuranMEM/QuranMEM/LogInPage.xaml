@@ -6,17 +6,18 @@
         <StackLayout Margin="20">
             <Entry 
                 x:Name="emailEntryLogIn"
-                Placeholder="Email addressTEST"
+                Placeholder="Email address"
                 Keyboard="Email"
                 TextColor="Aqua"/>
             <Entry 
                 x:Name="passwordEntryLogIn"
                 Placeholder="Password"
-                Text="Aqua"
+             
+                TextColor="Aqua"
                 IsPassword="True"/>
             <Button x:Name="LogInButton"
                     Margin="0,50, 0,0"
-                    Text="Login"
+                    Text="Log In"
                     BackgroundColor="Aqua"
                     TextColor="White"
                     Clicked="LogInButton_Clicked"      />

@@ -49,7 +49,7 @@ namespace QuranMEM
 
         private void RegisterButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NavigationPage(new RegisterPage()));
+            Navigation.PushAsync(new RegisterPage());
         }
     }
 }

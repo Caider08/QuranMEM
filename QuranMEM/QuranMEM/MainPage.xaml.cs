@@ -19,7 +19,7 @@ namespace QuranMEM
 
             //if(user != null)
            // {
-                 Navigation.PushAsync(new NavigationPage(new LogInPage()));
+                 Navigation.PushAsync(new LogInPage());
            // }
             //else
             //{

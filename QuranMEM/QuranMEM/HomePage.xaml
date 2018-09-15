@@ -5,7 +5,8 @@
             x:Class="QuranMEM.HomePage">
 
     <local:AccountPage Title="Account"
-                       Icon="user.png"/>
+                       Icon="user.png"
+                       />
 
 
 
