@@ -26,6 +26,8 @@ namespace QuranMEM.ViewModel
 
         public LogInCommand LogInCommand { get; set; }
 
+        public RegisterCommand RegisterCommand { get; set; }
+
         private string email;
 
         public string Email
@@ -85,6 +87,8 @@ namespace QuranMEM.ViewModel
             User = new User();
 
             LogInCommand = new LogInCommand(this);
+
+            RegisterCommand = new RegisterCommand(this);
         }
 
         public  async void LogIn()
@@ -110,6 +114,11 @@ namespace QuranMEM.ViewModel
             {
                 await App.Current.MainPage.DisplayAlert("Error", "Please Try Logging In again", "OK");
             }
+        }
+
+        public async void Register()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
 
     }

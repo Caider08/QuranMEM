@@ -28,7 +28,8 @@
                     BackgroundColor="Aqua"
                     TextColor="White"
                     Clicked="RegisterButton_Clicked"    
-                    HorizontalOptions="End"/>
+                    HorizontalOptions="End"
+                    Command="{Binding RegisterCommand}"/>
 
         </StackLayout>
     </ContentPage.Content>

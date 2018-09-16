@@ -46,7 +46,9 @@ namespace QuranMEM.ViewModel.Commands
 
         public void Execute(object parameter)
         {
+
             LoginViewModel.LogIn();
+
         }
 
     }
