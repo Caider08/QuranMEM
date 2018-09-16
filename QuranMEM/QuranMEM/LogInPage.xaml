@@ -8,11 +8,12 @@
                 x:Name="emailEntryLogIn"
                 Placeholder="Email address"
                 Keyboard="Email"
-                TextColor="Aqua"/>
+                TextColor="Aqua"
+                Text="{Binding Email, Mode=TwoWay}"/>
             <Entry 
                 x:Name="passwordEntryLogIn"
                 Placeholder="Password"
-             
+                Text="{Binding Password, Mode=TwoWay}"
                 TextColor="Aqua"
                 IsPassword="True"/>
             <Button x:Name="LogInButton"
@@ -20,7 +21,8 @@
                     Text="Log In"
                     BackgroundColor="Aqua"
                     TextColor="White"
-                    Clicked="LogInButton_Clicked"      />
+                    Command="{Binding LogInCommand}"  
+                    CommandParameter="{Binding User}"/>
             <Button x:Name="RegisterButton"
                     Text="Register"
                     BackgroundColor="Aqua"

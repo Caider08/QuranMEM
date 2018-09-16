@@ -1,4 +1,5 @@
 ﻿using QuranMEM.Model;
+using QuranMEM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,39 +14,21 @@ namespace QuranMEM
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LogInPage : ContentPage
 	{
+        LogInViewModel LogInVM;
+
 		public LogInPage ()
 		{
-			InitializeComponent ();
-		}
 
-        private async void LogInButton_Clicked(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(emailEntryLogIn.Text))
-            {
-                await DisplayAlert("Email Error", "Please Enter a Valid Email", "OK");
+            InitializeComponent();
 
-            }
-            if (string.IsNullOrEmpty(passwordEntryLogIn.Text))
-            {
-                await DisplayAlert("Password Error", "Please Enter a Password", "OK");
-            }
+            LogInVM = new LogInViewModel();
+            BindingContext = LogInVM;
 
-            bool canLogIn = await User.Login(emailEntryLogIn.Text, passwordEntryLogIn.Text);
-
-            if(canLogIn)
-            {
-                await Navigation.PushAsync(new HomePage());
-
-            }
-            else
-            {
-                await DisplayAlert("Error", "Please Try Logging In again", "OK");
-            }
-
-
-
+            
 
         }
+
+       
 
         private void RegisterButton_Clicked(object sender, EventArgs e)
         {
