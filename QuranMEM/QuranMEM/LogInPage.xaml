@@ -27,7 +27,7 @@
                     Text="Register"
                     BackgroundColor="Aqua"
                     TextColor="White"
-                    Clicked="RegisterButton_Clicked"    
+                    
                     HorizontalOptions="End"
                     Command="{Binding RegisterCommand}"/>
 

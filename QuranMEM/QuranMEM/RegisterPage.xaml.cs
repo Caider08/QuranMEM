@@ -1,4 +1,5 @@
 ﻿using QuranMEM.Model;
+using QuranMEM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +14,21 @@ namespace QuranMEM
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RegisterPage : ContentPage
 	{
-        User user;
+        RegisterViewModel RegisterViewModel;
+
 
 		public RegisterPage ()
 		{
 			InitializeComponent ();
 
-            user = new User();
-            containerStackLayout.BindingContext = user;
+            RegisterViewModel = new RegisterViewModel();
+
+            BindingContext = RegisterViewModel;
 		}
 
-        private async void registerButton_Clicked(object sender, EventArgs e)
-        {
-            if(passwordEntry.Text == confirmPasswordEntry.Text)
+       // private async void registerButton_Clicked(object sender, EventArgs e)
+        //{
+            /*if(passwordEntry.Text == confirmPasswordEntry.Text)
             {
                 //We can register the user
                
@@ -47,6 +50,7 @@ namespace QuranMEM
             {
                await DisplayAlert("Registration Error", "Passwords Don't Match!", "OK");
             }
-        }
+            */
+        //}
     }
 }

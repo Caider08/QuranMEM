@@ -16,14 +16,17 @@
                    Placeholder="Password"
                    IsPassword="True"/>
             <Entry x:Name="confirmPasswordEntry"
+                   Text="{Binding ConfirmPassword, Mode=TwoWay}"
                    Placeholder="Confirm Password"
                    TextColor="Aqua"
-                   IsPassword="True"/>
+                   IsPassword="True"
+                   />
 
             <Button x:Name="registerButton"
                     Margin="0,15,0,0"
                     Text="Register"
-                    Clicked="registerButton_Clicked"
+                    Command="{Binding RegisterUserCommand}"
+                    CommandParameter="{Binding User}"
                     BackgroundColor="Aqua"
                     BorderColor="Aqua"
                     TextColor="White" />

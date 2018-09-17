@@ -50,6 +50,20 @@ namespace QuranMEM.Model
             }
         }
 
+        private string confirmPassword;
+
+        [Newtonsoft.Json.JsonProperty("ConfirmPassword")]
+        public string ConfirmPassword
+        {
+            get { return confirmPassword; }
+
+            set
+            {
+                confirmPassword = value;
+                OnPropertyChanged("ConfirmPassword");
+            }
+        }
+
 
         private int currentCard;
 
@@ -197,12 +211,14 @@ namespace QuranMEM.Model
 
         }
 
-        public async static Task<bool> RegisterUser(User usa)
+        public async static Task<bool> RegisterUserU(User usa)
         {
             try
             {
 
                 await App.MobileService.GetTable<User>().InsertAsync(usa);
+
+                App.user = usa;
 
                 return true;
 
