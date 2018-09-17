@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuranMEM.Model;
+using QuranMEM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,20 @@ namespace QuranMEM
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AccountPage : ContentPage
 	{
+        //User User;
+        AccountViewModel AccountVM;
+
 		public AccountPage ()
 		{
 			InitializeComponent ();
+
+            // User = App.user;
+            //UserDisplayStackLayout.BindingContext = User;
+
+            AccountVM = new AccountViewModel();
+
+            BindingContext = AccountVM;
+
 		}
 	}
 }

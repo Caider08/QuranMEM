@@ -3,10 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QuranMEM.AccountPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout x:Name="UserDisplayStackLayout" Margin="0,20,0,0">
+            <Label Text="{Binding Email, Mode=TwoWay}"
+               />
+
+            <Label Text="{Binding CurrentCard, Mode=TwoWay}"
+                   />
+
+            <Button Text="Sign Out"
+                    Command="{Binding SignOutCommand}"
+                    CommandParameter="{Binding User}"
+                    BackgroundColor="Aqua"
+                    TextColor="White"
+                    />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

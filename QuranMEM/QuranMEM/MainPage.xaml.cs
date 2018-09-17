@@ -16,15 +16,18 @@ namespace QuranMEM
 
         private void Start_Clicked(object sender, EventArgs e)
         {
+            var user = App.user;
 
-            //if(user != null)
-           // {
-                 Navigation.PushAsync(new LogInPage());
-           // }
-            //else
-            //{
+            if(string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
+            {
+                Navigation.PushAsync(new LogInPage());
+            }
+            else
+            {
+                
 
-           // }
+                Navigation.PushAsync(new HomePage());
+            }
 
         }
     }
