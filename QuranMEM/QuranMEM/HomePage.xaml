@@ -2,11 +2,19 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:QuranMEM"
-            x:Class="QuranMEM.HomePage">
-
-    <local:AccountPage Title="Account"
+            x:Class="QuranMEM.HomePage"
+            
+            >
+  
+    <local:AccountPage 
                        Icon="user.png"
+                       
                        />
+
+    <local:VerseSelectionPage 
+                              Icon="bulletList.png"
+       
+                              />
 
 
 
