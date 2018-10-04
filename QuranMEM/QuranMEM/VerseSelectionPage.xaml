@@ -7,6 +7,18 @@
             <Label Text="Pick Your Verses to Study!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            
+           
+                    
+                    <Button x:Name="QuranCloudTest"
+                            Clicked="QuranCloudTest_Clicked"    
+                    Margin="0,15,0,0"
+                    Text="Get Allah"
+                    BackgroundColor="Aqua"
+                    BorderColor="Aqua"
+                    TextColor="White" />
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
