@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Net;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using QuranMEM.Model;
 
 namespace QuranMEM
 {
@@ -22,15 +25,23 @@ namespace QuranMEM
 
             
 
-       string url = "http://api.alquran.cloud/ayah/262/en.asad";
+            string url = "http://api.alquran.cloud/ayah/262/en.asad";
+
+            string verse = "";
 
             using (var wb = new WebClient())
             {
                 var response = wb.DownloadString(url);
 
+                var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                verse += quranObject.data.text;
+
+                System.Threading.Thread.Sleep(150);
+
                
 
-                response.ToString();
+                
             }
 
 
