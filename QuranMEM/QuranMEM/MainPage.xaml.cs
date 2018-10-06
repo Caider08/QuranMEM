@@ -30,5 +30,16 @@ namespace QuranMEM
             }
 
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (!String.IsNullOrEmpty(App.user.Email))
+            {
+                Navigation.PushAsync(new HomePage());
+            }
+
+        }
     }
 }

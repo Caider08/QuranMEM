@@ -87,8 +87,9 @@ namespace QuranMEM.Model
 
         //public IList<int> SelectedCards { get; set; }
 
-         private ObservableCollection<int> _incorrectCards;
+        private ObservableCollection<int> _incorrectCards;
 
+        [Ignore]
         public ObservableCollection<int> IncorrectCards
         {
             get { return _incorrectCards; }
@@ -103,6 +104,7 @@ namespace QuranMEM.Model
 
         private ObservableCollection<int> _selectedCards;
 
+        [Ignore]
         public ObservableCollection<int> SelectedCards
         {
             get { return _selectedCards; }
@@ -167,32 +169,59 @@ namespace QuranMEM.Model
                 {
 
                     //User user = new User();
-
-                    var user = (await App.MobileService.GetTable<User>().Where(u => u.Email == email).ToListAsync()).FirstOrDefault();
-
-                    if (user != null)
+                    //see if User Exists on LocalDb
+                    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
                     {
-                        App.user = user;
 
-                        if (user.Password == pw)
+                        conn.CreateTable<User>();
+                        var user = conn.Table<User>().Where(u => u.Email == email).ToList<User>().FirstOrDefault();
+
+                        if (user != null)
                         {
+                            App.user = user;
 
-                            return true;
-                            //await Navigation.PushAsync(new NavigationPage(new HomePage()));
+                            if (user.Password == pw)
+                            {
+
+                                return true;
+                                //await Navigation.PushAsync(new NavigationPage(new HomePage()));
+                            }
+                            else
+                            {
+                                return false;
+                                //await DisplayAlert("Incorrect Password", "Incorrect Password for this Email", "OK");
+                            }
+
+
                         }
                         else
                         {
-                            return false;
-                            //await DisplayAlert("Incorrect Password", "Incorrect Password for this Email", "OK");
+                            //await DisplayAlert("No User Exists with that Email", "No User Exists with that Email", "OK");
+                            // await Navigation.PushAsync(new NavigationPage(new RegisterPage()));
+
+                            //See if user exists on Cloud Database
+                            var user2 = (await App.MobileService.GetTable<User>().Where(u => u.Email == email).ToListAsync()).FirstOrDefault();
+
+                            if (user2 != null)
+                            {
+                                App.user = user2;
+
+                                if (user2.Password == pw)
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    return false;
+                                }
+                            }
+                            else
+                            {
+                                return false;
+                            }
+
+
                         }
-
-
-                    }
-                    else
-                    {
-                        //await DisplayAlert("No User Exists with that Email", "No User Exists with that Email", "OK");
-                        // await Navigation.PushAsync(new NavigationPage(new RegisterPage()));
-                        return false;
                     }
                 }
                 catch (Exception eze)
@@ -202,11 +231,7 @@ namespace QuranMEM.Model
                 }
 
 
-
-
             }
-
-
 
 
         }
@@ -215,10 +240,18 @@ namespace QuranMEM.Model
         {
             try
             {
-
+                //Insert into Cloud Database
                 await App.MobileService.GetTable<User>().InsertAsync(usa);
 
-                App.user = usa;
+                //Insert into Localdb
+                using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                {
+                    conn.CreateTable<User>();
+                    conn.Insert(usa);
+                    conn.Close();
+
+                    App.user = usa;
+                }
 
                 return true;
 
