@@ -5,16 +5,23 @@
             x:Class="QuranMEM.HomePage"
             
             >
-  
-    <local:AccountPage 
-                       Icon="user.png"
-                       
-                       />
 
     <local:VerseSelectionPage 
                               Icon="bulletList.png"
        
                               />
+
+    <local:VerseSearchPage
+                              Icon="bulletList.png"
+       
+                              />
+
+    <local:AccountPage 
+                       Icon="user.png"
+                       
+                       />
+
+   
 
 
 
