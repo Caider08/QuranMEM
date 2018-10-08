@@ -51,5 +51,18 @@ namespace QuranMEM
             }*/
             
         }
+
+        private void BackFlashCard_Clicked(object sender, EventArgs e)
+        {
+
+            Navigation.PushAsync(new BackCardPage());
+
+        }
+
+        private void AccountScreen_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AccountPage());
+
+        }
     }
 }

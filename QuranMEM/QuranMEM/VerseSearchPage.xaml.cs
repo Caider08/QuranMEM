@@ -25,7 +25,7 @@ namespace QuranMEM
 
             var verseNumba = int.Parse(CloudSearchVerse.Text.ToString().Trim());
 
-            App.user.CurrentCard = verseNumba;
+            App.user.CurrentCard += verseNumba;
 
             Navigation.PushAsync(new FrontCardPage());
 

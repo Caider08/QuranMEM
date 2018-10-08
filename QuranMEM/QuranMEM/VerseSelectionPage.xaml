@@ -3,22 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QuranMEM.VerseSelectionPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Pick Your Verses to Study!"
+        
+      
+
+        <ListView x:Name="verseListView">
+            <ListView.Header>
+                <Label Text="Pick Your Chapters to Study"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            
-           
-                    
-                    <Button x:Name="QuranCloudTest"
+            </ListView.Header>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TableSection>
+                        <TextCell Text="{Binding ChapterName}"
+                                  Detail="{Binding ChapterNumber}"
+                                  />
+                    </TableSection>
+                </DataTemplate>
+                
+                
+            </ListView.ItemTemplate>
+
+            <ListView.Footer>
+                <Button x:Name="QuranCloudTest"
                             Clicked="QuranCloudTest_Clicked"    
                     Margin="0,15,0,0"
                     Text="Get Allah"
                     BackgroundColor="Aqua"
                     BorderColor="Aqua"
                     TextColor="White" />
-            
-            
-        </StackLayout>
+            </ListView.Footer>
+          
+        </ListView>
+                             
     </ContentPage.Content>
 </ContentPage>

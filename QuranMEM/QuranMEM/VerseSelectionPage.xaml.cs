@@ -49,5 +49,28 @@ namespace QuranMEM
 
 
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var chapters = new List<QuranSurah>();
+
+            var url = "http://api.alquran.cloud/surah/114/en.sahih";
+
+            string chapterName = "";
+
+            using (var wb = new WebClient())
+            {
+                var response = wb.DownloadString(url);
+
+                var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                chapterName += quranObject.data.surah.englishNameTranslation;
+
+                System.Threading.Thread.Sleep(150);
+
+            }
+        }
     }
 }

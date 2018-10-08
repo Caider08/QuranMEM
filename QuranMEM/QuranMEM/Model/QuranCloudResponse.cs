@@ -72,4 +72,21 @@ public class QuranRootObject
     public Data data { get; set; }
 }
 
+    public class SurahDatum
+    {
+        public int number { get; set; }
+        public string name { get; set; }
+        public string englishName { get; set; }
+        public string englishNameTranslation { get; set; }
+        public int numberOfAyahs { get; set; }
+        public string revelationType { get; set; }
+    }
+
+    public class SurahRootObject
+    {
+        public int code { get; set; }
+        public string status { get; set; }
+        public List<SurahDatum> data { get; set; }
+    }
+
 }
