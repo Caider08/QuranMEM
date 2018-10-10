@@ -12,13 +12,14 @@
             <Label Text="{Binding VerseNumba}"
                    />
 
-            <Label Text="{Binding CurrentCard, Mode=TwoWay}"
-                   />
-
             <Label Text="{Binding EnglishTranslation}"
                    HorizontalOptions="FillAndExpand"
                 />
 
+            <Label Text="{Binding NextArabicVerse}"
+                HorizontalOptions="FillAndExpand"
+                   />
+            
             <Button 
                     x:Name="NextFlashCard"
                     Text="Next Ayah"

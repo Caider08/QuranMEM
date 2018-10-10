@@ -33,6 +33,25 @@ namespace QuranMEM
             }
 		}
 
+        public BackCardPage(FlashCardViewModel FCvm)
+        {
+            
+            try
+            {
+                InitializeComponent();
+
+                fcVM = FCvm;
+
+                BindingContext = fcVM;
+            }
+            catch (Exception loadBackCardE2)
+            {
+                //Do Something
+                System.Threading.Thread.Sleep(150);
+            }
+
+        }
+
         private async void NextFlashCard_Clicked(object sender, EventArgs e)
         {
             try

@@ -32,131 +32,272 @@ namespace QuranMEM.ViewModel
 
         }
 
+        private string arabicVerse;
+
         public string ArabicVerse
         {
             get
-            {                              
-
-                string urlArabic = "http://api.alquran.cloud/ayah/" + user.CurrentCard;
-
-                string verse = "";
-
-                using (var wb = new WebClient())
+            {
+                try
                 {
-                    var response = wb.DownloadString(urlArabic);
+                    string currentCardString = user.CurrentCard.ToString();
 
-                    var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+                    string urlArabic = "http://api.alquran.cloud/ayah/" + currentCardString;
 
-                    verse += quranObject.data.text;
+                    using (var wb = new WebClient())
+                    {
+                        var response = wb.DownloadString(urlArabic);
 
-                    System.Threading.Thread.Sleep(150);
+                        System.Threading.Thread.Sleep(150);
 
+                        if(string.IsNullOrEmpty(response))
+                        {
+                            response = wb.DownloadString(urlArabic);
 
+                            System.Threading.Thread.Sleep(150);
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                        arabicVerse += quranObject.data.text;
+
+                    }
+
+                    return arabicVerse;
                 }
-
-                return verse;
+                catch(Exception arabicVerseE)
+                {
+                    //Do Something
+                    System.Threading.Thread.Sleep(150);
+                    return arabicVerse;
+                }
             }
         }
+
+        private string nextArabicVerse;
+
+        public string NextArabicVerse
+        {
+            get
+            {
+                try
+                {
+                    var nextVerse = (user.CurrentCard += 1);
+
+                    string nextVerseString = nextVerse.ToString();
+
+                    string urlArabic = "http://api.alquran.cloud/ayah/" + nextVerseString;
+
+                    using (var wb = new WebClient())
+                    {
+                        var response = wb.DownloadString(urlArabic);
+
+                        System.Threading.Thread.Sleep(150);
+
+                        if(string.IsNullOrEmpty(response))
+                        {
+                            //Try again
+                            response = wb.DownloadString(urlArabic);
+
+                            System.Threading.Thread.Sleep(150);
+
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                        nextArabicVerse += quranObject.data.text;
+
+                    }
+
+                    return nextArabicVerse;
+                }
+                catch (Exception nextArabicVerseE)
+                {
+                    //Do Something
+                    System.Threading.Thread.Sleep(150);
+                    return nextArabicVerse;
+                }
+            }
+        }
+
+        private string englishTranslation;
 
         public string EnglishTranslation
         {
             get
-            {             
-
-                string urlArabic = "http://api.alquran.cloud/ayah/" + user.CurrentCard + "/en.sahih";
-
-                string verse = "";
-
-                using (var wb = new WebClient())
+            {
+                try
                 {
-                    var response = wb.DownloadString(urlArabic);
+                    string currentCard = user.CurrentCard.ToString();
 
-                    var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
 
-                    verse += quranObject.data.text;
+                    string urlArabic = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
 
-                    System.Threading.Thread.Sleep(150);
 
+                    using (var wb = new WebClient())
+                    {
+                        var response = wb.DownloadString(urlArabic);
+
+                        System.Threading.Thread.Sleep(150);
+
+                        if (string.IsNullOrEmpty(response))
+                        {
+                            //Try again
+                            response = wb.DownloadString(urlArabic);
+                            System.Threading.Thread.Sleep(150);
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                        englishTranslation += quranObject.data.text;
+                     
+                    }
+
+                    return englishTranslation;
 
                 }
-
-                return verse;
+                catch(Exception englishTranslationE)
+                {
+                    //Do Something
+                    System.Threading.Thread.Sleep(150);
+                    return englishTranslation;
+                }
             }
         }
+
+        private string chapterName;
 
         public string ChapterName
         {
             get
             {
-                             
-                string url = "http://api.alquran.cloud/ayah/" + user.CurrentCard + "/en.sahih";
-
-                string chapterName = "";
-
-                using (var wb = new WebClient())
+                try
                 {
-                    var response = wb.DownloadString(url);
+                    string currentCard = user.CurrentCard.ToString();
 
-                    var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
-
-                    chapterName += quranObject.data.surah.englishNameTranslation;
-
-                    System.Threading.Thread.Sleep(150);
+                    string url = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
 
 
+                    using (var wb = new WebClient())
+                    {
+                        var response = wb.DownloadString(url);
+
+                        System.Threading.Thread.Sleep(150);
+
+                        if (string.IsNullOrEmpty(response))
+                        {
+                            //Try Again
+                            response = wb.DownloadString(url);
+
+                            System.Threading.Thread.Sleep(150);
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                        chapterName += quranObject.data.surah.englishNameTranslation;
+
+                    }
+
+                    return chapterName;
                 }
-
-                return chapterName;
+                catch(Exception chapterNameE)
+                {
+                    //Do Something
+                    System.Threading.Thread.Sleep(150);
+                    return chapterName;
+                }
             }
         }
+
+        private int chapterNumba;
 
         public int ChapterNumba
         {
             get
             {
-                string url = "http://api.alquran.cloud/ayah/" + user.CurrentCard + "/en.sahih";
-
-                int chapterNumba;
-
-                using (var wb = new WebClient())
+                try
                 {
-                    var response = wb.DownloadString(url);
+                    string currentCard = user.CurrentCard.ToString();
 
-                    var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+                    string url = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
 
-                    chapterNumba = quranObject.data.surah.number;
+                    using (var wb = new WebClient())
+                    {
+                        var response = wb.DownloadString(url);
 
-                    System.Threading.Thread.Sleep(150);
+                        System.Threading.Thread.Sleep(150);
 
+                        if(string.IsNullOrEmpty(response))
+                        {
+                            //Try again
+                            response = wb.DownloadString(url);
+
+                            System.Threading.Thread.Sleep(150);
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                        chapterNumba = quranObject.data.surah.number;
+
+
+                    }
+
+                    return chapterNumba;
                 }
-
-                return chapterNumba;
+                catch (Exception chapterNumbaE)
+                {
+                    //Do Something
+                    System.Threading.Thread.Sleep(150);
+                    return chapterNumba;
+                }                           
+              
             }
         }
+
+        private int verseNumba;
 
         public int VerseNumba
         {
             get
             {
-
-                string url = "http://api.alquran.cloud/ayah/" + user.CurrentCard + "/en.sahih";
-
-                int verseNumba;
-
-                using (var wb = new WebClient())
+                try
                 {
-                    var response = wb.DownloadString(url);
+                    string currentCard = user.CurrentCard.ToString();
 
-                    var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
 
-                    verseNumba = quranObject.data.number;
+                    string url = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
 
+
+                    using (var wb = new WebClient())
+                    {
+                        var response = wb.DownloadString(url);
+
+                        System.Threading.Thread.Sleep(150);
+
+                        if(string.IsNullOrEmpty(response))
+                        {
+                            response = wb.DownloadString(url);
+
+                            System.Threading.Thread.Sleep(150);
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                        verseNumba = quranObject.data.number;
+
+                        System.Threading.Thread.Sleep(150);
+
+                    }
+
+                    return verseNumba;
+                }
+                catch(Exception verseNumbaE)
+                {
+                    //Do Something
                     System.Threading.Thread.Sleep(150);
-
-
+                    return verseNumba;
                 }
 
-                return verseNumba;
             }
         }
 

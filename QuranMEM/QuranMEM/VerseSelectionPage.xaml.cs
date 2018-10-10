@@ -42,7 +42,6 @@ namespace QuranMEM
                 System.Threading.Thread.Sleep(150);
 
                
-
                 
             }
 
@@ -71,6 +70,16 @@ namespace QuranMEM
                 using (var wb = new WebClient())
                 {
                     var response = wb.DownloadString(surahURL);
+
+                    System.Threading.Thread.Sleep(150);
+
+                    if(string.IsNullOrEmpty(response))
+                    {
+                        //try the call again
+                        response = wb.DownloadString(surahURL);
+
+                        System.Threading.Thread.Sleep(150);
+                    }
 
                     var quranObject = JToken.Parse(response).ToObject<SurahRootObject>();
 
@@ -116,6 +125,16 @@ namespace QuranMEM
                 using (var wb = new WebClient())
                 {
                     var response = wb.DownloadString(url);
+
+                    System.Threading.Thread.Sleep(150);
+
+                    if (string.IsNullOrEmpty(response))
+                    {
+                        //Try it again
+                        response = wb.DownloadString(url);
+
+                        System.Threading.Thread.Sleep(150);
+                    }
 
                     var quranObject = JToken.Parse(response).ToObject<RootObject>();
 

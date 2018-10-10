@@ -57,7 +57,7 @@ namespace QuranMEM
 
             try
             {
-                Navigation.PushAsync(new BackCardPage());
+                Navigation.PushAsync(new BackCardPage(fcVM));
             }
             catch(Exception englishTranslationE)
             {
