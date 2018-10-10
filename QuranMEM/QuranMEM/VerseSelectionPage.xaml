@@ -6,7 +6,9 @@
         
       
 
-        <ListView x:Name="verseListView">
+        <ListView x:Name="verseListView"
+                  IsPullToRefreshEnabled="True"
+                  ItemSelected="verseListView_ItemSelected">
             <ListView.Header>
                 <Label Text="Pick Your Chapters to Study"
                 VerticalOptions="CenterAndExpand" 
@@ -15,11 +17,22 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TableSection>
-                        <TextCell Text="{Binding ChapterName}"
-                                  Detail="{Binding ChapterNumber}"
-                                  />
-                    </TableSection>
+                    <ViewCell>
+
+                        <StackLayout BackgroundColor="#eee"
+                        Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding number}"
+                                TextColor="#f35e20" />
+                                <Label Text="{Binding englishNameTranslation}"
+                               
+                                TextColor="#503026" />
+                            </StackLayout>
+                        </StackLayout>
+
+                    </ViewCell>
+                    
+                                      
                 </DataTemplate>
                 
                 

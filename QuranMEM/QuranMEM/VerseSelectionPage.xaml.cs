@@ -50,27 +50,104 @@ namespace QuranMEM
 
         }
 
+       
+
         protected override void OnAppearing()
         {
+       
+        
             base.OnAppearing();
 
-            var chapters = new List<QuranSurah>();
+            var chapters = new List<SurahDatum>();
 
-            var url = "http://api.alquran.cloud/surah/114/en.sahih";
+            string surahURL = "http://api.alquran.cloud/surah";
 
-            string chapterName = "";
 
-            using (var wb = new WebClient())
+
+            //string chapterName = "";
+            try
             {
-                var response = wb.DownloadString(url);
 
-                var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+                using (var wb = new WebClient())
+                {
+                    var response = wb.DownloadString(surahURL);
 
-                chapterName += quranObject.data.surah.englishNameTranslation;
+                    var quranObject = JToken.Parse(response).ToObject<SurahRootObject>();
 
+                    chapters = quranObject.data;
+
+                }
+
+                verseListView.ItemsSource = chapters;
+            }
+            catch(Exception onAppearingE)
+            {
+                //Do something
                 System.Threading.Thread.Sleep(150);
+                Navigation.PushAsync(new VerseSearchPage());
+            }
+        }
+
+        private void verseListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            SurahDatum easy = (SurahDatum)e.SelectedItem;        
+          
+            var numberAyahs = easy.numberOfAyahs;
+
+            var chapterNumba = easy.number.ToString();
+
+            var chapterName = easy.englishNameTranslation;
+
+            var url = "http://api.alquran.cloud/surah/" + chapterNumba + "/en.sahih";
+
+            var ayahs = new List<Ayah>();
+
+            if(App.user.SelectedCards == null)
+            {
+                App.user.SelectedCards = new List<int>();
+
+                App.user.IncorrectCards = new List<int>();
+            }
+
+            //string chapterName = "";
+            try
+            {
+
+                using (var wb = new WebClient())
+                {
+                    var response = wb.DownloadString(url);
+
+                    var quranObject = JToken.Parse(response).ToObject<RootObject>();
+
+                    ayahs = quranObject.data.ayahs;
+
+                }
+       
+
+                foreach (Ayah aya in ayahs)
+                {
+                    App.user.SelectedCards.Add(aya.number);
+                }
+
+                var preSelection = App.user.SelectedCards;
+
+                App.user.CurrentCard = App.user.SelectedCards.FirstOrDefault();
+
+                App.user.SelectedCards.Remove(App.user.CurrentCard);
+
+                var afterSelection = App.user.SelectedCards;
+
+                Navigation.PushAsync(new FrontCardPage());
+
 
             }
+            catch(Exception verseSelectionE)
+            {
+                //Do Something
+                //System.Threading.Thread.Sleep(250);
+                App.user.SelectedCards = new List<int>();
+            }
+
         }
     }
 }

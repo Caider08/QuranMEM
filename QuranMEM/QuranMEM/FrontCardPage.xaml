@@ -15,7 +15,7 @@
                 />
             <Button 
                     x:Name="AccountScreen"
-                    Text="English Translation"
+                    Text="Surah Selection"
                     Clicked="AccountScreen_Clicked" 
                     BackgroundColor="Aqua"
                     TextColor="White"

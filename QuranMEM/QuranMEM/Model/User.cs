@@ -87,10 +87,10 @@ namespace QuranMEM.Model
 
         //public IList<int> SelectedCards { get; set; }
 
-        private ObservableCollection<int> _incorrectCards;
+        private List<int> _incorrectCards;
 
         [Ignore]
-        public ObservableCollection<int> IncorrectCards
+        public List<int> IncorrectCards
         {
             get { return _incorrectCards; }
 
@@ -102,10 +102,10 @@ namespace QuranMEM.Model
         }
 
 
-        private ObservableCollection<int> _selectedCards;
+        private List<int> _selectedCards;
 
         [Ignore]
-        public ObservableCollection<int> SelectedCards
+        public List<int> SelectedCards
         {
             get { return _selectedCards; }
 
@@ -135,12 +135,11 @@ namespace QuranMEM.Model
         public User()
         {
 
-            ObservableCollection<int> IncorrectCards = new ObservableCollection<int>();
-            ObservableCollection<int>SelectedCards = new ObservableCollection<int>();
+            List<int> IncorrectCards = new List<int>();
+            List<int>SelectedCards = new List<int>();
 
             // IList<int> IncorrectCards = new List<int>();
             //IList<int> SelectedCards = new List<int>();
-
         }
 
         public async static Task<bool> Login(string email, string pw)

@@ -55,13 +55,31 @@ namespace QuranMEM
         private void BackFlashCard_Clicked(object sender, EventArgs e)
         {
 
-            Navigation.PushAsync(new BackCardPage());
+            try
+            {
+                Navigation.PushAsync(new BackCardPage());
+            }
+            catch(Exception englishTranslationE)
+            {
+                //Do Something
+                System.Threading.Thread.Sleep(150);
+            }
 
         }
 
         private void AccountScreen_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AccountPage());
+            try
+            {
+
+                Navigation.PushAsync(new HomePage());
+            }
+            catch(Exception verseSelectionNavigation)
+            {
+                //Do Something
+                System.Threading.Thread.Sleep(150);
+            }
+
 
         }
     }

@@ -86,7 +86,12 @@ namespace QuranMEM.ViewModel
         {
             RegisterUserCommand = new RegisterUserCommand(this);
 
-            User = new User();
+            User = new User()
+            {
+                IncorrectCards = new List<int>(),
+                SelectedCards = new List<int>(),
+                
+            };
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
