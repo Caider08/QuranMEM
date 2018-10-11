@@ -4,7 +4,9 @@
              x:Class="QuranMEM.VerseSelectionPage">
 
     <ContentPage.Content>
-        
+        <StackLayout BackgroundColor="LightBlue" Padding="20" Margin="10">
+            
+       
         <ListView x:Name="verseListView"                 
                   ItemSelected="verseListView_ItemSelected">
             <ListView.Header>
@@ -47,6 +49,7 @@
             </ListView.Footer>
           
         </ListView>
-                             
+        </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

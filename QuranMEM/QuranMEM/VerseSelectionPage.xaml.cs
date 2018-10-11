@@ -73,16 +73,17 @@ namespace QuranMEM
                 using (var wb = new WebClient())
                 {
                     
-                    var response = wb.DownloadString(surahURL);
+                    var response = await wb.DownloadStringTaskAsync(surahURL);
 
-                    System.Threading.Thread.Sleep(150);
+                 
 
                     if(string.IsNullOrEmpty(response))
                     {
                         //try the call again
-                        response = wb.DownloadString(surahURL);
+                        System.Threading.Thread.Sleep(1500);
 
-                        System.Threading.Thread.Sleep(150);
+                        response = await wb.DownloadStringTaskAsync(surahURL);
+                     
                     }
 
                     var quranObject = JToken.Parse(response).ToObject<SurahRootObject>();
@@ -101,7 +102,7 @@ namespace QuranMEM
             }
         }
 
-        private void verseListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void verseListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             SurahDatum easy = (SurahDatum)e.SelectedItem;        
           
@@ -121,6 +122,13 @@ namespace QuranMEM
 
                 App.user.IncorrectCards = new List<int>();
             }
+            if(App.user.SelectedCards.Count() > 0)
+            {
+                //Have to add CurrentCard back to Selected Cards
+
+                App.user.SelectedCards.Add(App.user.CurrentCard);
+              
+            }
 
             //string chapterName = "";
             try
@@ -128,16 +136,14 @@ namespace QuranMEM
 
                 using (var wb = new WebClient())
                 {
-                    var response = wb.DownloadString(url);
-
-                    System.Threading.Thread.Sleep(150);
+                    var response = await wb.DownloadStringTaskAsync(url);
 
                     if (string.IsNullOrEmpty(response))
                     {
                         //Try it again
-                        response = wb.DownloadString(url);
-
-                        System.Threading.Thread.Sleep(150);
+                        System.Threading.Thread.Sleep(1000);
+                        response = await wb.DownloadStringTaskAsync(url);
+                       
                     }
 
                     var quranObject = JToken.Parse(response).ToObject<RootObject>();
@@ -152,15 +158,23 @@ namespace QuranMEM
                     App.user.SelectedCards.Add(aya.number);
                 }
 
-                var preSelection = App.user.SelectedCards;
-
                 App.user.CurrentCard = App.user.SelectedCards.FirstOrDefault();
 
                 App.user.SelectedCards.Remove(App.user.CurrentCard);
 
                 var afterSelection = App.user.SelectedCards;
 
-                Navigation.PushAsync(new FrontCardPage());
+                var answer = await DisplayAlert("Surah Added", "Would you like to Add another Surah to your Study Session?", "Yes", "Start Studying");
+
+                if (answer == true)
+                {
+                    //Stay on Surah Selection
+                    System.Threading.Thread.Sleep(150);
+                }
+                else
+                {
+                    await Navigation.PushAsync(new FrontCardPage());
+                }
 
 
             }
@@ -168,7 +182,10 @@ namespace QuranMEM
             {
                 //Do Something
                 //System.Threading.Thread.Sleep(250);
+                await DisplayAlert("Verse Error", "Problems adding Selected Surahs...please Re-Start the process", "Try Again");
                 App.user.SelectedCards = new List<int>();
+                await Navigation.PushAsync(new HomePage());
+                
             }
 
         }

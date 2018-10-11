@@ -43,6 +43,7 @@
                 Clicked="ArabicVerse_Clicked" 
                 BackgroundColor="Aqua"
                 TextColor="White"
+                        HorizontalOptions="StartAndExpand"
                 />
                 </StackLayout>
                 <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
@@ -52,6 +53,7 @@
                     Clicked="NextFlashCard_Clicked" 
                     BackgroundColor="Aqua"
                     TextColor="White"
+                        HorizontalOptions="StartAndExpand"
                     />
                 </StackLayout>
             </StackLayout>
