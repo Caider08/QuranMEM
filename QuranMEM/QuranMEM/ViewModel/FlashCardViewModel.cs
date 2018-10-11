@@ -27,7 +27,7 @@ namespace QuranMEM.ViewModel
 
         public FlashCardViewModel()
         {
-          
+
             user = App.user;
 
         }
@@ -50,7 +50,7 @@ namespace QuranMEM.ViewModel
 
                         System.Threading.Thread.Sleep(150);
 
-                        if(string.IsNullOrEmpty(response))
+                        if (string.IsNullOrEmpty(response))
                         {
                             response = wb.DownloadString(urlArabic);
 
@@ -65,7 +65,7 @@ namespace QuranMEM.ViewModel
 
                     return arabicVerse;
                 }
-                catch(Exception arabicVerseE)
+                catch (Exception arabicVerseE)
                 {
                     //Do Something
                     System.Threading.Thread.Sleep(150);
@@ -82,7 +82,7 @@ namespace QuranMEM.ViewModel
             {
                 try
                 {
-                    var nextVerse = (user.CurrentCard += 1);
+                    var nextVerse = (user.CurrentCard + 1);
 
                     string nextVerseString = nextVerse.ToString();
 
@@ -94,7 +94,7 @@ namespace QuranMEM.ViewModel
 
                         System.Threading.Thread.Sleep(150);
 
-                        if(string.IsNullOrEmpty(response))
+                        if (string.IsNullOrEmpty(response))
                         {
                             //Try again
                             response = wb.DownloadString(urlArabic);
@@ -150,13 +150,13 @@ namespace QuranMEM.ViewModel
                         var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
 
                         englishTranslation += quranObject.data.text;
-                     
+
                     }
 
                     return englishTranslation;
 
                 }
-                catch(Exception englishTranslationE)
+                catch (Exception englishTranslationE)
                 {
                     //Do Something
                     System.Threading.Thread.Sleep(150);
@@ -196,11 +196,13 @@ namespace QuranMEM.ViewModel
 
                         chapterName += quranObject.data.surah.englishNameTranslation;
 
+                        chapterName += ": ";
+
                     }
 
                     return chapterName;
                 }
-                catch(Exception chapterNameE)
+                catch (Exception chapterNameE)
                 {
                     //Do Something
                     System.Threading.Thread.Sleep(150);
@@ -227,7 +229,7 @@ namespace QuranMEM.ViewModel
 
                         System.Threading.Thread.Sleep(150);
 
-                        if(string.IsNullOrEmpty(response))
+                        if (string.IsNullOrEmpty(response))
                         {
                             //Try again
                             response = wb.DownloadString(url);
@@ -249,8 +251,8 @@ namespace QuranMEM.ViewModel
                     //Do Something
                     System.Threading.Thread.Sleep(150);
                     return chapterNumba;
-                }                           
-              
+                }
+
             }
         }
 
@@ -274,7 +276,7 @@ namespace QuranMEM.ViewModel
 
                         System.Threading.Thread.Sleep(150);
 
-                        if(string.IsNullOrEmpty(response))
+                        if (string.IsNullOrEmpty(response))
                         {
                             response = wb.DownloadString(url);
 
@@ -291,7 +293,7 @@ namespace QuranMEM.ViewModel
 
                     return verseNumba;
                 }
-                catch(Exception verseNumbaE)
+                catch (Exception verseNumbaE)
                 {
                     //Do Something
                     System.Threading.Thread.Sleep(150);
@@ -300,6 +302,53 @@ namespace QuranMEM.ViewModel
 
             }
         }
+
+        private string verseName;
+
+        public string VerseName
+        {
+            get
+            {
+                try
+                {
+                    string currentCard = user.CurrentCard.ToString();
+
+                    string url = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
+
+                    using (var wb = new WebClient())
+                    {
+                        var response = wb.DownloadString(url);
+
+                        System.Threading.Thread.Sleep(150);
+
+                        if (string.IsNullOrEmpty(response))
+                        {
+                            response = wb.DownloadString(url);
+
+                            System.Threading.Thread.Sleep(150);
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                        verseName = quranObject.data.text;
+
+                        System.Threading.Thread.Sleep(150);
+
+                    }
+
+                    return verseName;
+                }
+                catch (Exception verseNumbaE)
+                {
+                    //Do Something
+                    System.Threading.Thread.Sleep(150);
+                    return verseName;
+                }
+            }
+        }
+    
+
+
 
 
 

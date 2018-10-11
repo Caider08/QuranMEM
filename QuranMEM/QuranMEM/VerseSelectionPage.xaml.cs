@@ -24,7 +24,6 @@ namespace QuranMEM
         {
 
 
-
             //string url = "http://api.alquran.cloud/ayah/262/en.asad";
 
             string url2 = "http://api.alquran.cloud/ayah/262";
@@ -45,13 +44,18 @@ namespace QuranMEM
                 
             }
 
-
-
         }
 
-       
+        /*  using (var client = new HttpClient())
+    using (var request = new HttpRequestMessage(HttpMethod.Get, Url))
+    using (var response = await client.SendAsync(request, cancellationToken))
+    {
+        response.EnsureSuccessStatusCode();
+        var content = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<List<Model>>(content);
+    }*/
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
        
         
@@ -61,14 +65,14 @@ namespace QuranMEM
 
             string surahURL = "http://api.alquran.cloud/surah";
 
-
-
+           
             //string chapterName = "";
             try
             {
 
                 using (var wb = new WebClient())
                 {
+                    
                     var response = wb.DownloadString(surahURL);
 
                     System.Threading.Thread.Sleep(150);

@@ -4,7 +4,32 @@
              xmlns:local="clr-namespace:QuranMEM"
              x:Class="QuranMEM.MainPage">
 
-    <Grid RowSpacing="0" ColumnSpacing="0">
+    <StackLayout Orientation="Vertical" Margin="20,20,20,20">
+
+        <Label Text="Quran Memorization Game"
+               HorizontalOptions="CenterAndExpand"
+               TextColor="Aqua"
+               FontSize="Large"
+               FontAttributes="Bold"
+               />
+        <Label Text="By: Ali Mohamed"
+               HorizontalOptions="Center"
+               FontSize="Small"
+               />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End">
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                <Button x:Name="Start"
+                Clicked="Start_Clicked" 
+                Text="Begin"
+                         BackgroundColor="Aqua"
+                    TextColor="White"
+               />
+            </StackLayout>
+        </StackLayout>
+
+    </StackLayout>
+
+    <!--<Grid RowSpacing="0" ColumnSpacing="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -15,7 +40,7 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!-- Place new controls here -->
+        --><!-- Place new controls here --><!--
         <Label Text="Quran Memorization Game" 
                 Grid.ColumnSpan="2"
                Grid.Row="0"
@@ -42,6 +67,6 @@
                 Text="Exit"
                 Grid.Row="3"
                 Grid.Column="1"/>
-    </Grid>
+    </Grid>-->
 
 </ContentPage>

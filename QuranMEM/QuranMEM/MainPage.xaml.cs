@@ -41,5 +41,10 @@ namespace QuranMEM
             }
 
         }
+
+        private void Exit_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
