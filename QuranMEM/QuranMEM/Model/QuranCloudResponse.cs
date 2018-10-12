@@ -27,7 +27,7 @@ namespace QuranMEM.Model
 
     }*/
 
-public class Edition
+    public class Edition
 {
     public string identifier { get; set; }
     public string language { get; set; }
@@ -47,7 +47,8 @@ public class Surah
     public string revelationType { get; set; }
 }
 
-public class Data
+
+    public class Data
 {
     public int number { get; set; }
     public string text { get; set; }
@@ -84,9 +85,7 @@ public class QuranRootObject
         public int code { get; set; }
         public string status { get; set; }
         public List<SurahDatum> data { get; set; }
-    }
-
-    
+    }   
 
 public class Ayah
 {
@@ -101,8 +100,22 @@ public class Ayah
     public bool sajda { get; set; }
 }
 
+    public class JuzAyah
+    {
+        public int number { get; set; }
+        public string text { get; set; }
+        public Surah surah { get; set; }
+        public int numberInSurah { get; set; }
+        public int juz { get; set; }
+        public int manzil { get; set; }
+        public int page { get; set; }
+        public int ruku { get; set; }
+        public int hizbQuarter { get; set; }
+        public object sajda { get; set; }
+    }
 
-public class SurahData
+
+    public class SurahData
 {
     public int number { get; set; }
     public string name { get; set; }
@@ -120,6 +133,21 @@ public class RootObject
     public string status { get; set; }
     public SurahData data { get; set; }
 }
+
+    public class JuzData
+    {
+        public int number { get; set; }
+        public List<JuzAyah> ayahs { get; set; }
+        public Surah surahs { get; set; }
+        public Edition edition { get; set; }
+    }
+
+    public class JuzRootObject
+    {
+        public int code { get; set; }
+        public string status { get; set; }
+        public JuzData data { get; set; }
+    }
 
 
 }

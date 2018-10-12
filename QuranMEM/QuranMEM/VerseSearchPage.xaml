@@ -3,27 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QuranMEM.VerseSearchPage">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-        
+        <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="0,20,0,0">
 
-            <Entry 
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                <Entry 
                 x:Name="CloudSearchVerse"
                 HorizontalOptions="Center"
                 Placeholder="Enter Verse Number"
                 Keyboard="Numeric"
                 TextColor="Aqua"
                 />
-            
-            <Button 
+
+                <Button 
                 HorizontalOptions="Center"
                     x:Name="QuranCloudSearch"
                     Clicked="QuranCloudSearch_Clicked"    
-                    Margin="0,15,0,0"
                     Text="Get Allah"
                     BackgroundColor="Aqua"
                     BorderColor="Aqua"
                     TextColor="White" />
+            </StackLayout>
 
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Entry 
+                x:Name="CloudSearchJuz"
+                HorizontalOptions="Start"
+                Placeholder="Enter a Juz(1-30)"
+                Keyboard="Numeric"
+                TextColor="Aqua"
+                />
+
+                <Button 
+                HorizontalOptions="Center"
+                    x:Name="QuranCloudSearchJuz"
+                    Clicked="QuranCloudSearchJuz_Clicked"       
+                    Text="Study Juz"
+                    BackgroundColor="Aqua"
+                    BorderColor="Aqua"
+                    TextColor="White" />
+            </StackLayout>
+           
+
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

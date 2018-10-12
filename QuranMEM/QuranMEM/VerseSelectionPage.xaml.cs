@@ -65,6 +65,7 @@ namespace QuranMEM
 
             string surahURL = "http://api.alquran.cloud/surah";
 
+            string response = "";
            
             //string chapterName = "";
             try
@@ -73,7 +74,7 @@ namespace QuranMEM
                 using (var wb = new WebClient())
                 {
                     
-                    var response = await wb.DownloadStringTaskAsync(surahURL);
+                    response = await wb.DownloadStringTaskAsync(surahURL);
 
                  
 
@@ -116,6 +117,8 @@ namespace QuranMEM
 
             var ayahs = new List<Ayah>();
 
+            string response = "";
+
             if(App.user.SelectedCards == null)
             {
                 App.user.SelectedCards = new List<int>();
@@ -136,7 +139,7 @@ namespace QuranMEM
 
                 using (var wb = new WebClient())
                 {
-                    var response = await wb.DownloadStringTaskAsync(url);
+                    response = await wb.DownloadStringTaskAsync(url);
 
                     if (string.IsNullOrEmpty(response))
                     {

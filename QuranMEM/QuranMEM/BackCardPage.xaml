@@ -19,21 +19,17 @@
                 
             </StackLayout>
 
-            <StackLayout Orientation="Vertical">
+            
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
                     <Label Text="{Binding EnglishTranslation}"
-                           FontSize="Medium"
+                           FontSize="Small"
+                           HorizontalOptions="Fill"
+                           HorizontalTextAlignment="Start"
+                           
                 
                 />
                 </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label Text="{Binding NextArabicVerse}"
-                           FontSize="Medium"                       
-                   />
-                </StackLayout>
-            
-            </StackLayout>
-            
+                                             
             <StackLayout Orientation="Horizontal"  HorizontalOptions="Center"
                          VerticalOptions="End">
                 <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
@@ -43,7 +39,8 @@
                 Clicked="ArabicVerse_Clicked" 
                 BackgroundColor="Aqua"
                 TextColor="White"
-                        HorizontalOptions="StartAndExpand"
+                        HorizontalOptions="Fill"
+                        FontSize="Small"
                 />
                 </StackLayout>
                 <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
@@ -53,13 +50,22 @@
                     Clicked="NextFlashCard_Clicked" 
                     BackgroundColor="Aqua"
                     TextColor="White"
-                        HorizontalOptions="StartAndExpand"
+                        HorizontalOptions="Fill"
+                        FontSize="Small"
                     />
                 </StackLayout>
             </StackLayout>
-          
 
-           
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="{Binding NextArabicVerse}"
+                           FontSize="Medium"   
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Fill"
+                   />
+            </StackLayout>
+
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
