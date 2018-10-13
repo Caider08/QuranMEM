@@ -4,11 +4,12 @@
              xmlns:local="clr-namespace:QuranMEM"
              x:Class="QuranMEM.MainPage">
 
-    <StackLayout Orientation="Vertical" Margin="20,20,20,20">
+    <StackLayout Orientation="Vertical" Margin="0,20,0,20" HorizontalOptions="Center">
 
         <Label Text="Quran Memorization Game"
-               HorizontalOptions="CenterAndExpand"
-               TextColor="Aqua"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               TextColor="#22a5ad"
                FontSize="Large"
                FontAttributes="Bold"
                />
@@ -16,13 +17,17 @@
                HorizontalOptions="Center"
                FontSize="Small"
                />
+        <Image x:Name="quranIconImage"
+               Margin="0,5,0,5"
+               Aspect="AspectFill"
+               HorizontalOptions="FillAndExpand"
+               />
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End">
             <StackLayout Orientation="Vertical" HorizontalOptions="Center">
                 <Button x:Name="Start"
                 Clicked="Start_Clicked" 
                 Text="Begin"
-                         BackgroundColor="Aqua"
-                    TextColor="White"
+               
                />
             </StackLayout>
         </StackLayout>

@@ -4,10 +4,12 @@
              x:Class="QuranMEM.BackCardPage"
            >
     <ContentPage.Content>
-        <StackLayout x:Name="BackCardStackLayout" Margin="0,20,0,0">
+        <ScrollView>
+         
+        <StackLayout x:Name="BackCardStackLayout" >
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="0,20,0,0">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Start" >
 
                     <Label Text="{Binding ChapterName}"
                />
@@ -22,11 +24,11 @@
             
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
                     <Label Text="{Binding EnglishTranslation}"
-                           FontSize="Small"
+                           FontSize="Default"
                            HorizontalOptions="Fill"
                            HorizontalTextAlignment="Start"
-                           
-                
+                           VerticalTextAlignment="Start"
+                           VerticalOptions="Start"                                     
                 />
                 </StackLayout>
                                              
@@ -37,10 +39,10 @@
                 x:Name="ArabicVerse"
                 Text="Arabic Ayah"
                 Clicked="ArabicVerse_Clicked" 
-                BackgroundColor="Aqua"
-                TextColor="White"
+              
                         HorizontalOptions="Fill"
                         FontSize="Small"
+                        
                 />
                 </StackLayout>
                 <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
@@ -48,8 +50,7 @@
                     x:Name="NextFlashCard"
                     Text="Next Ayah"
                     Clicked="NextFlashCard_Clicked" 
-                    BackgroundColor="Aqua"
-                    TextColor="White"
+               
                         HorizontalOptions="Fill"
                         FontSize="Small"
                     />
@@ -58,7 +59,7 @@
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="{Binding NextArabicVerse}"
-                           FontSize="Medium"   
+                           FontSize="Default"   
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="Fill"
                    />
@@ -67,5 +68,6 @@
 
 
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

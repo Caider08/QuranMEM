@@ -12,6 +12,11 @@ namespace QuranMEM
         public MainPage()
         {
             InitializeComponent();
+
+            var assembly = typeof(MainPage);
+
+            quranIconImage.Source = ImageSource.FromResource("QuranMEM.Assets.Images.QuranLogo.PNG", assembly);
+
         }
 
         private void Start_Clicked(object sender, EventArgs e)
@@ -24,9 +29,15 @@ namespace QuranMEM
             }
             else
             {
-                
+                if (App.user.SelectedCards.Count() > 0)
+                {
+                    Navigation.PushAsync(new FrontCardPage());
+                }
+                else
+                {
+                    Navigation.PushAsync(new HomePage());
+                }
 
-                Navigation.PushAsync(new HomePage());
             }
 
         }
@@ -37,7 +48,16 @@ namespace QuranMEM
 
             if (!String.IsNullOrEmpty(App.user.Email))
             {
-                Navigation.PushAsync(new HomePage());
+
+                if (App.user.SelectedCards.Count() > 0)
+                {
+                    Navigation.PushAsync(new FrontCardPage());
+                }
+                else
+                {
+                    Navigation.PushAsync(new HomePage());
+                }
+                
             }
 
         }

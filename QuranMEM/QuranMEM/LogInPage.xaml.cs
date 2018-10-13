@@ -34,7 +34,15 @@ namespace QuranMEM
 
             if (!String.IsNullOrEmpty(App.user.Email))
             {
-                Navigation.PushAsync(new HomePage());
+                if(App.user.SelectedCards.Count() > 0)
+                {
+
+                    Navigation.PushAsync(new FrontCardPage());
+                }
+                else
+                {
+                    Navigation.PushAsync(new HomePage());
+                }             
             }
 
         }

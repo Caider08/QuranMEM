@@ -13,8 +13,7 @@
             <Button Text="Sign Out"
                     Command="{Binding SignOutCommand}"
                     CommandParameter="{Binding User}"
-                    BackgroundColor="Aqua"
-                    TextColor="White"
+                 
                     />
         </StackLayout>
     </ContentPage.Content>

@@ -4,13 +4,13 @@
              x:Class="QuranMEM.VerseSelectionPage">
 
     <ContentPage.Content>
-        <StackLayout BackgroundColor="LightBlue" Padding="20" Margin="10">
+        <StackLayout Margin="10">
             
        
         <ListView x:Name="verseListView"                 
                   ItemSelected="verseListView_ItemSelected">
             <ListView.Header>
-                <Label Text="Pick Your Chapters to Study"
+                <Label Text="Pick Your Surahs to Study"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             </ListView.Header>
@@ -19,14 +19,14 @@
                 <DataTemplate>
                     <ViewCell>
 
-                        <StackLayout BackgroundColor="#eee"
+                        <StackLayout
                         Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding number}"
-                                TextColor="#f35e20" />
+                                TextColor="#219da5" />
                                 <Label Text="{Binding englishNameTranslation}"
                                
-                                TextColor="#503026" />
+                                TextColor="#219da5" />
                             </StackLayout>
                         </StackLayout>
 
@@ -39,13 +39,13 @@
             </ListView.ItemTemplate>
 
             <ListView.Footer>
-                <Button x:Name="QuranCloudTest"
+              <!--  <Button x:Name="QuranCloudTest"
                             Clicked="QuranCloudTest_Clicked"    
                     Margin="0,15,0,0"
                     Text="Get Allah"
                     BackgroundColor="Aqua"
                     BorderColor="Aqua"
-                    TextColor="White" />
+                    TextColor="White" />-->
             </ListView.Footer>
           
         </ListView>

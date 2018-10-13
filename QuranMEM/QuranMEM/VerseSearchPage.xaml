@@ -11,7 +11,7 @@
                 HorizontalOptions="Center"
                 Placeholder="Enter Verse Number"
                 Keyboard="Numeric"
-                TextColor="Aqua"
+         
                 />
 
                 <Button 
@@ -19,18 +19,16 @@
                     x:Name="QuranCloudSearch"
                     Clicked="QuranCloudSearch_Clicked"    
                     Text="Get Allah"
-                    BackgroundColor="Aqua"
-                    BorderColor="Aqua"
-                    TextColor="White" />
+                  />
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center">
                 <Entry 
                 x:Name="CloudSearchJuz"
-                HorizontalOptions="Start"
+                HorizontalOptions="Center"
                 Placeholder="Enter a Juz(1-30)"
                 Keyboard="Numeric"
-                TextColor="Aqua"
+           
                 />
 
                 <Button 
@@ -38,9 +36,8 @@
                     x:Name="QuranCloudSearchJuz"
                     Clicked="QuranCloudSearchJuz_Clicked"       
                     Text="Study Juz"
-                    BackgroundColor="Aqua"
-                    BorderColor="Aqua"
-                    TextColor="White" />
+                
+                  />
             </StackLayout>
            
 

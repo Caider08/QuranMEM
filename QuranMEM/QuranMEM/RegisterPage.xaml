@@ -8,17 +8,17 @@
             <Entry x:Name="emailEntry"
                    Text="{Binding Email, Mode=TwoWay}"
                    Placeholder="Email Address"
-                   TextColor="Aqua"
+                   
                    Keyboard="Email"/>
             <Entry x:Name="passwordEntry"
                    Text="{Binding Password, Mode=TwoWay}"
-                   TextColor="Aqua"
+                 
                    Placeholder="Password"
                    IsPassword="True"/>
             <Entry x:Name="confirmPasswordEntry"
                    Text="{Binding ConfirmPassword, Mode=TwoWay}"
                    Placeholder="Confirm Password"
-                   TextColor="Aqua"
+               
                    IsPassword="True"
                    />
 
@@ -27,9 +27,9 @@
                     Text="Register"
                     Command="{Binding RegisterUserCommand}"
                     CommandParameter="{Binding User}"
-                    BackgroundColor="Aqua"
-                    BorderColor="Aqua"
-                    TextColor="White" />
+                    
+                  
+                  />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

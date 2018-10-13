@@ -7,7 +7,6 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -35,7 +34,7 @@ namespace QuranMEM
 
                     App.user.CurrentCard += verseNumba;
 
-                    Navigation.PushAsync(new FrontCardPage());
+                    await Navigation.PushAsync(new FrontCardPage());
 
                     /*string url = "http://api.alquran.cloud/ayah/" + verseNumba + "/en.asad";
 

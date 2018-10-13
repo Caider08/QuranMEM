@@ -5,37 +5,35 @@
            >
     <ContentPage.Content>
         <StackLayout x:Name="FrontCardStackLayout" Margin="0,20,0,0"
-                   BackgroundColor="LightBlue"
+              
                      >
 
             <StackLayout Orientation="Vertical" HorizontalOptions="Center">
                 <Label Text="{Binding ArabicVerse}"
-                   HorizontalOptions="Center"
-                   BackgroundColor="Red"
+                   HorizontalOptions="Center"             
+                   FontSize="Default"
                 />
             </StackLayout>
            
-            <StackLayout Orientation="Horizontal"  HorizontalOptions="Start" BackgroundColor="LightGreen">
-                <StackLayout Orientation="Vertical"  HorizontalOptions="Center" BackgroundColor="Purple">
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="Start" >
+                <StackLayout Orientation="Vertical"  HorizontalOptions="Center" >
                     <Button 
                     x:Name="AccountScreen"
                     Text="Select Surahs"
                     FontSize="Small"
                     Clicked="AccountScreen_Clicked" 
-                    BackgroundColor="Aqua"
-                    TextColor="White"
+               
                         HorizontalOptions="StartAndExpand"
                     />
                 </StackLayout>
-                <StackLayout Orientation="Vertical"  HorizontalOptions="Center" BackgroundColor="LightGray">
+                <StackLayout Orientation="Vertical"  HorizontalOptions="Center" >
                     <Button 
                     x:Name="BackFlashCard"
                     Text="English Ayah"
                     FontSize="Small"
                     Clicked="BackFlashCard_Clicked" 
-                    BackgroundColor="Aqua"
-                    TextColor="White"
-                        HorizontalOptions="StartAndExpand"
+                
+                    HorizontalOptions="StartAndExpand"
                     />
                 </StackLayout>
             </StackLayout>

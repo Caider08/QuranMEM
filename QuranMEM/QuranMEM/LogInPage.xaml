@@ -8,26 +8,31 @@
                 x:Name="emailEntryLogIn"
                 Placeholder="Email address"
                 Keyboard="Email"
-                TextColor="Aqua"
+              
                 Text="{Binding Email, Mode=TwoWay}"/>
             <Entry 
                 x:Name="passwordEntryLogIn"
                 Placeholder="Password"
                 Text="{Binding Password, Mode=TwoWay}"
-                TextColor="Aqua"
+                
                 IsPassword="True"/>
+            
+            <Label Text="(Forgot PW? Just register a new free-account)"
+                   HorizontalTextAlignment="End"
+                   FontSize="Micro"
+                   />
+
+
             <Button x:Name="LogInButton"
-                    Margin="0,50, 0,0"
+                    Margin="0,20,0,0"
                     Text="Log In"
-                    BackgroundColor="Aqua"
+                    Command="{Binding LogInCommand}"
+                    CommandParameter="{Binding User}"
                     TextColor="White"
-                    Command="{Binding LogInCommand}"  
-                    CommandParameter="{Binding User}"/>
+                    />
             <Button x:Name="RegisterButton"
                     Text="Register"
-                    BackgroundColor="Aqua"
-                    TextColor="White"
-                    
+                               
                     HorizontalOptions="End"
                     Command="{Binding RegisterCommand}"/>
 

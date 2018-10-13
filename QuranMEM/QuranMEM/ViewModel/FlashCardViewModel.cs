@@ -44,9 +44,11 @@ namespace QuranMEM.ViewModel
 
                     string urlArabic = "http://api.alquran.cloud/ayah/" + currentCardString;
 
+                    string response = "";
+
                     using (var wb = new WebClient())
                     {
-                        var response = wb.DownloadString(urlArabic);
+                        response = wb.DownloadString(urlArabic);
 
                         System.Threading.Thread.Sleep(150);
 
@@ -68,7 +70,7 @@ namespace QuranMEM.ViewModel
                 catch (Exception arabicVerseE)
                 {
                     //Do Something
-                    System.Threading.Thread.Sleep(150);
+                    arabicVerse += "Error getting Arabic Ayah";
                     return arabicVerse;
                 }
             }
@@ -88,9 +90,11 @@ namespace QuranMEM.ViewModel
 
                     string urlArabic = "http://api.alquran.cloud/ayah/" + nextVerseString;
 
+                    string response = "";
+
                     using (var wb = new WebClient())
                     {
-                        var response = wb.DownloadString(urlArabic);
+                        response = wb.DownloadString(urlArabic);
 
                         System.Threading.Thread.Sleep(150);
 
@@ -114,7 +118,7 @@ namespace QuranMEM.ViewModel
                 catch (Exception nextArabicVerseE)
                 {
                     //Do Something
-                    System.Threading.Thread.Sleep(150);
+                    nextArabicVerse += "Error Getting next Arabic Ayah";
                     return nextArabicVerse;
                 }
             }
@@ -133,10 +137,11 @@ namespace QuranMEM.ViewModel
 
                     string urlArabic = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
 
+                    string response = "";
 
                     using (var wb = new WebClient())
                     {
-                        var response = wb.DownloadString(urlArabic);
+                        response = wb.DownloadString(urlArabic);
 
                         System.Threading.Thread.Sleep(150);
 
@@ -159,7 +164,7 @@ namespace QuranMEM.ViewModel
                 catch (Exception englishTranslationE)
                 {
                     //Do Something
-                    System.Threading.Thread.Sleep(150);
+                    englishTranslation += "Error getting the english translation for selected Ayah";
                     return englishTranslation;
                 }
             }
@@ -177,10 +182,11 @@ namespace QuranMEM.ViewModel
 
                     string url = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
 
+                    string response = "";
 
                     using (var wb = new WebClient())
                     {
-                        var response = wb.DownloadString(url);
+                        response = wb.DownloadString(url);
 
                         System.Threading.Thread.Sleep(150);
 
@@ -205,7 +211,7 @@ namespace QuranMEM.ViewModel
                 catch (Exception chapterNameE)
                 {
                     //Do Something
-                    System.Threading.Thread.Sleep(150);
+                    chapterName += "Error getting Surah Name";
                     return chapterName;
                 }
             }
@@ -223,9 +229,11 @@ namespace QuranMEM.ViewModel
 
                     string url = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
 
+                    string response = "";
+
                     using (var wb = new WebClient())
                     {
-                        var response = wb.DownloadString(url);
+                        response = wb.DownloadString(url);
 
                         System.Threading.Thread.Sleep(150);
 
@@ -249,7 +257,7 @@ namespace QuranMEM.ViewModel
                 catch (Exception chapterNumbaE)
                 {
                     //Do Something
-                    System.Threading.Thread.Sleep(150);
+                    
                     return chapterNumba;
                 }
 
@@ -269,10 +277,11 @@ namespace QuranMEM.ViewModel
 
                     string url = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
 
+                    string response = "";
 
                     using (var wb = new WebClient())
                     {
-                        var response = wb.DownloadString(url);
+                        response = wb.DownloadString(url);
 
                         System.Threading.Thread.Sleep(150);
 
@@ -296,7 +305,7 @@ namespace QuranMEM.ViewModel
                 catch (Exception verseNumbaE)
                 {
                     //Do Something
-                    System.Threading.Thread.Sleep(150);
+                  
                     return verseNumba;
                 }
 
@@ -315,9 +324,11 @@ namespace QuranMEM.ViewModel
 
                     string url = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
 
+                    string response = "";
+
                     using (var wb = new WebClient())
                     {
-                        var response = wb.DownloadString(url);
+                        response = wb.DownloadString(url);
 
                         System.Threading.Thread.Sleep(150);
 
@@ -341,17 +352,11 @@ namespace QuranMEM.ViewModel
                 catch (Exception verseNumbaE)
                 {
                     //Do Something
-                    System.Threading.Thread.Sleep(150);
+                    verseName += "Error getting Ayah Name";
                     return verseName;
                 }
             }
         }
-    
-
-
-
-
-
-
+   
     }
 }

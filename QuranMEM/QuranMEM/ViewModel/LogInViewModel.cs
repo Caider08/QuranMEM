@@ -3,6 +3,7 @@ using QuranMEM.ViewModel.Commands;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace QuranMEM.ViewModel
@@ -22,7 +23,6 @@ namespace QuranMEM.ViewModel
             }
         
         }
-
 
         public LogInCommand LogInCommand { get; set; }
 
@@ -107,8 +107,23 @@ namespace QuranMEM.ViewModel
 
             if (canLogIn)
             {
-                await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                if (App.user.SelectedCards != null)
+                {
 
+
+                    if (App.user.SelectedCards.Count() > 0)
+                    {
+                        await App.Current.MainPage.Navigation.PushAsync(new FrontCardPage());
+                    }
+                    else
+                    {
+                        await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                    }
+                }
+                else
+                {
+                    await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                }
             }
             else
             {

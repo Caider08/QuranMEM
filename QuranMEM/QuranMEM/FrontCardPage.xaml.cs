@@ -31,6 +31,13 @@ namespace QuranMEM
         {
             base.OnAppearing();
 
+            if(App.user.CurrentCard < 1 || App.user.CurrentCard > 6236)
+            {
+
+                Navigation.PushAsync(new HomePage());
+
+            }
+
            /* var verseNumba = App.user.CurrentCard;
 
             string urlArabic = "http://api.alquran.cloud/ayah/" + App.user.CurrentCard;
@@ -46,7 +53,6 @@ namespace QuranMEM
                 verse += quranObject.data.text;
 
                 System.Threading.Thread.Sleep(150);
-
 
             }*/
             
