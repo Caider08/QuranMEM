@@ -17,9 +17,7 @@ namespace QuranMEM.ViewModel.Commands
 
         }
 
-
         public event EventHandler CanExecuteChanged;
-
 
         public bool CanExecute(object parameter)
         {

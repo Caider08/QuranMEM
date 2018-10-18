@@ -17,6 +17,17 @@ namespace QuranMEM
 
             quranIconImage.Source = ImageSource.FromResource("QuranMEM.Assets.Images.QuranLogo.PNG", assembly);
 
+            var backgroundImage = ImageSource.FromResource("QuranMEM.Assets.Images.APPFRONT.JPG", assembly);
+
+            // BackgroundImage = ImageSource.FromResource("QuranMEM.Assets.Images.APPFRONT.JPG", assembly).ToString();
+
+            // this.BackgroundImage = "QuranMEM.Assets.Images.APPFRONT.JPG";
+
+            this.BackgroundImage = backgroundImage.ToString();
+
+
+            //appFrontImage.Source = ImageSource.FromResource("QuranMEM.Assets.Images.QuranLogo.PNG", assembly);
+
         }
 
         private void Start_Clicked(object sender, EventArgs e)

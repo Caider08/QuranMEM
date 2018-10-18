@@ -10,6 +10,11 @@
                    Placeholder="Email Address"
                    
                    Keyboard="Email"/>
+            <Entry x:Name="userNameEntry"
+                   Text="{Binding UserName, Mode=TwoWay}"
+                   Placeholder="UserName(only used for Leaderboard stats)"
+                   />
+            
             <Entry x:Name="passwordEntry"
                    Text="{Binding Password, Mode=TwoWay}"
                  

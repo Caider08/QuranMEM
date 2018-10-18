@@ -1,5 +1,6 @@
 ﻿using QuranMEM.Model;
 using QuranMEM.ViewModel;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,27 @@ namespace QuranMEM
 
                     App.user.SelectedCards.Remove(App.user.CurrentCard);
 
+                    //Update Card Tally
+                    App.user.VersesStudied++;
+                    //Update Database
+                    try
+                    {
+                        using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                        {
+
+                            conn.CreateTable<User>();
+                            var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+                            localUser.VersesStudied++;
+                            conn.Update(localUser);
+
+                        }
+                    }
+                    catch(Exception incrementDatabaseE)
+                    {
+                        await Navigation.PushAsync(new FrontCardPage());
+                    }
+
+              
                     await Navigation.PushAsync(new FrontCardPage());
                 }
                 else
@@ -105,6 +127,32 @@ namespace QuranMEM
             catch(Exception backToFrontCardE)
             {
                 System.Threading.Thread.Sleep(150);
+            }
+        }
+
+        private async void AddFocusList_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                App.user.IncorrectCards.Add(App.user.CurrentCard);
+
+
+                using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                {
+
+                    conn.CreateTable<User>();
+                    var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+                    localUser.WrongAnswer++;
+                    conn.Update(localUser);
+
+                }
+
+                await DisplayAlert("Verse Added", "Verse added to your Focus Study List", "OK");
+
+            }
+            catch (Exception focusListE)
+            {
+                //Do something
             }
         }
     }

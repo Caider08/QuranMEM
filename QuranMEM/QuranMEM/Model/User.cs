@@ -13,8 +13,6 @@ namespace QuranMEM.Model
     public class User : INotifyPropertyChanged
     {
 
-
-
         [PrimaryKey]
         [Newtonsoft.Json.JsonProperty("id")]
         public string id { get; set; }
@@ -34,6 +32,19 @@ namespace QuranMEM.Model
             }
         }
 
+        private string userName;
+
+        [Newtonsoft.Json.JsonProperty("UserName")]
+        public string UserName
+        {
+            get { return userName; }
+
+            set
+            {
+                userName = value;
+                OnPropertyChanged("UserName");
+            }
+        }
 
 
         private string password;
@@ -64,7 +75,6 @@ namespace QuranMEM.Model
             }
         }
 
-
         private int currentCard;
 
         [Newtonsoft.Json.JsonProperty("CurrentCard")]
@@ -80,7 +90,20 @@ namespace QuranMEM.Model
             }
         }
 
+        private int versesStudied;
 
+        [Newtonsoft.Json.JsonProperty("CurrentCard")]
+        public int VersesStudied
+        {
+            get { return versesStudied; }
+
+            set
+            {
+                versesStudied = value;
+                OnPropertyChanged("VersesStudied");
+
+            }
+        }
 
 
         //public IList<int> IncorrectCards { get; set; }
@@ -98,6 +121,20 @@ namespace QuranMEM.Model
             {
                 _incorrectCards = value;
                 OnPropertyChanged("IncorrectCards");
+            }
+        }
+
+        private int wrongAnswer;
+
+        [Newtonsoft.Json.JsonProperty("WrongAnswer")]
+        public int WrongAnswer
+        {
+            get { return wrongAnswer; }
+
+            set
+            {
+                wrongAnswer = value;
+                OnPropertyChanged("WrongAnswer");
             }
         }
 
@@ -128,9 +165,6 @@ namespace QuranMEM.Model
             }
            
         }
-
-
-
 
         public User()
         {
@@ -175,7 +209,7 @@ namespace QuranMEM.Model
                         conn.CreateTable<User>();
                         var user = conn.Table<User>().Where(u => u.Email == email).ToList<User>().FirstOrDefault();
 
-                        if (user != null)
+                        if (user != null && !String.IsNullOrEmpty(user.Email))
                         {
                             App.user = user;
 
@@ -191,36 +225,40 @@ namespace QuranMEM.Model
                                 //await DisplayAlert("Incorrect Password", "Incorrect Password for this Email", "OK");
                             }
 
-
                         }
                         else
                         {
-                            //await DisplayAlert("No User Exists with that Email", "No User Exists with that Email", "OK");
-                            // await Navigation.PushAsync(new NavigationPage(new RegisterPage()));
-
-                            //See if user exists on Cloud Database
-                            var user2 = (await App.MobileService.GetTable<User>().Where(u => u.Email == email).ToListAsync()).FirstOrDefault();
-
-                            if (user2 != null)
-                            {
-                                App.user = user2;
-
-                                if (user2.Password == pw)
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    return false;
-                                }
-                            }
-                            else
-                            {
-                                return false;
-                            }
-
-
+                            return false;
                         }
+                        //else
+                        //{
+                        //    //await DisplayAlert("No User Exists with that Email", "No User Exists with that Email", "OK");
+                        //    // await Navigation.PushAsync(new NavigationPage(new RegisterPage()));
+
+                        //    //See if user exists on Cloud Database
+                        //    var user2 = (await App.MobileService.GetTable<User>().Where(u => u.Email == email).ToListAsync()).FirstOrDefault();
+
+                        //    if (user2 != null)
+                        //    {
+                        //        App.user = user2;
+
+                        //        if (user2.Password == pw)
+                        //        {
+                        //            return true;
+                        //        }
+                        //        else
+                        //        {
+                        //            return false;
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        return false;
+                        //    }
+
+                        //}
+
+                  
                     }
                 }
                 catch (Exception eze)
@@ -229,9 +267,47 @@ namespace QuranMEM.Model
                     return false;
                 }
 
-
             }
 
+
+        }
+
+        public async static Task<bool> ChangePassword(string newPW, User usa)       
+        {
+            try
+            {
+                //Change LocalDB
+                using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                {
+                    conn.CreateTable<User>();
+                    var localUser = conn.Table<User>().Where(u => u.Email == usa.email).ToList<User>().FirstOrDefault();
+                    localUser.Password = newPW;
+                    localUser.ConfirmPassword = newPW;
+                    conn.Update(localUser);
+
+                }
+
+
+                //Change Cloud Database
+                //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == usa.Email).ToListAsync()).FirstOrDefault();
+
+                //cloudUser.Password = newPW;
+
+                //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
+
+                //System.Threading.Thread.Sleep(1000);
+
+                      
+                return true;
+
+            }
+            catch (Exception ez)
+            {
+                //Console.WriteLine(ez);
+                //Maybe store this in the cloud Database?
+
+                return false;
+            }
 
         }
 
@@ -240,7 +316,7 @@ namespace QuranMEM.Model
             try
             {
                 //Insert into Cloud Database
-                await App.MobileService.GetTable<User>().InsertAsync(usa);
+                //await App.MobileService.GetTable<User>().InsertAsync(usa);
 
                 //Insert into Localdb
                 using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))

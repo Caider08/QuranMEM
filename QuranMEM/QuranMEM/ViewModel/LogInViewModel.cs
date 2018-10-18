@@ -41,14 +41,33 @@ namespace QuranMEM.ViewModel
                 {
                     Email = this.Email,
                     Password = this.Password,
+                   
                 };
                 OnPropertyChanged("Email");
             }
         }
 
-        private string password;
+        /*private string userName;
 
-       
+        public string UserName
+        {
+            get { return userName; }
+
+            set
+            {
+                userName = value;
+                User = new User()
+                {
+                    UserName = this.UserName,
+                    Email = this.Email,
+                    Password = this.Password
+
+                };
+                OnPropertyChanged("UserName");
+            }
+        }*/
+
+        private string password;
 
         public string Password
         {
@@ -56,16 +75,13 @@ namespace QuranMEM.ViewModel
 
             set
             {
-
                 password = value;
 
                 User = new User()
                 {
-                    Email = this.Email,
+                    Email = this.Email,                  
                     Password = this.Password,
                 };
-
-
 
                 OnPropertyChanged("Password");
             }
@@ -103,13 +119,12 @@ namespace QuranMEM.ViewModel
                 await App.Current.MainPage.DisplayAlert("Password Error", "Please Enter a Password", "OK");
             }*/
 
-            bool canLogIn = await User.Login(User.Email, User.Password);
+            bool canLogIn = await User.Login(User.Email,  User.Password);
 
             if (canLogIn)
             {
                 if (App.user.SelectedCards != null)
                 {
-
 
                     if (App.user.SelectedCards.Count() > 0)
                     {
@@ -122,7 +137,14 @@ namespace QuranMEM.ViewModel
                 }
                 else
                 {
-                    await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                    try
+                    {
+                        await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                    }
+                    catch(Exception whatE)
+                    {
+                        System.Threading.Thread.Sleep(150);
+                    }
                 }
             }
             else

@@ -10,11 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\APPFRONT.JPG" />
     <None Remove="Assets\Images\QuranLogo.PNG" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Assets\Images\QuranLogo.PNG" />
+    <EmbeddedResource Include="Assets\Images\APPFRONT.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\QuranLogo.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

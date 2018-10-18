@@ -45,7 +45,17 @@
                         
                 />
                 </StackLayout>
-                <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
+                        <Button 
+                    x:Name="AddFocusList"
+                    Text="Add Verse to FocusList"
+                    Clicked="AddFocusList_Clicked"   
+               
+                        HorizontalOptions="Fill"
+                        FontSize="Micro"
+                    />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
                     <Button 
                     x:Name="NextFlashCard"
                     Text="Next Ayah"

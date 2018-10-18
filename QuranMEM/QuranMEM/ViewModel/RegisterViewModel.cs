@@ -31,13 +31,38 @@ namespace QuranMEM.ViewModel
             set { email = value;
                  User = new User()
                 {
+                    id = Guid.NewGuid().ToString(),
                     Email = this.Email,
+                    UserName = this.UserName,
                     Password = this.Password,
                     ConfirmPassword = this.ConfirmPassword,
 
                 };
 
                 OnPropertyChanged("Email");
+            }
+        }
+
+        private string userName;
+
+        public string UserName
+        {
+            get { return userName; }
+
+            set
+            {
+                userName = value;
+                User = new User()
+                {
+                    id = Guid.NewGuid().ToString(),
+                    Email = this.Email,
+                    UserName = this.UserName,
+                    Password = this.Password,
+                    ConfirmPassword = this.ConfirmPassword,
+
+                };
+
+                OnPropertyChanged("UserName");
             }
         }
 
@@ -52,7 +77,9 @@ namespace QuranMEM.ViewModel
                 password = value;
                 User = new User()
                 {
+                    id = Guid.NewGuid().ToString(),
                     Email = this.Email,
+                    UserName = this.UserName,
                     Password = this.Password,
                     ConfirmPassword = this.ConfirmPassword,
 
@@ -72,7 +99,9 @@ namespace QuranMEM.ViewModel
                 confirmPassword = value;
                 User = new User()
                 {
+                    id = Guid.NewGuid().ToString(),
                     Email = this.Email,
+                    UserName = this.UserName,
                     Password = this.Password,
                     ConfirmPassword = this.ConfirmPassword,
                 };

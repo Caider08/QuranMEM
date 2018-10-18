@@ -77,7 +77,6 @@ namespace QuranMEM
                     response = await wb.DownloadStringTaskAsync(surahURL);
 
                  
-
                     if(string.IsNullOrEmpty(response))
                     {
                         //try the call again
