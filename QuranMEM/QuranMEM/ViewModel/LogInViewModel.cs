@@ -28,6 +28,8 @@ namespace QuranMEM.ViewModel
 
         public RegisterCommand RegisterCommand { get; set; }
 
+        public ForgotPWCommand ForgotPWCommand { get; set; }
+
         private string email;
 
         public string Email
@@ -105,6 +107,8 @@ namespace QuranMEM.ViewModel
             LogInCommand = new LogInCommand(this);
 
             RegisterCommand = new RegisterCommand(this);
+
+            ForgotPWCommand = new ForgotPWCommand(this);
         }
 
         public  async void LogIn()
@@ -156,6 +160,11 @@ namespace QuranMEM.ViewModel
         public async void Register()
         {
             await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+        }
+
+        public async void ForgotPW()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new ForgotPWPage());
         }
 
     }

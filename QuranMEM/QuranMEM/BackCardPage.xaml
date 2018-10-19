@@ -33,41 +33,41 @@
                 </StackLayout>
                                              
             <StackLayout Orientation="Horizontal"  HorizontalOptions="Center"
-                         VerticalOptions="End">
+                         VerticalOptions="Start">
                 <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
                     <Button 
                 x:Name="ArabicVerse"
-                Text="Arabic Ayah"
+                Text="Front"
                 Clicked="ArabicVerse_Clicked" 
               
-                        HorizontalOptions="Fill"
-                        FontSize="Small"
-                        
+                        HorizontalOptions="Start"
+                        FontSize="Default"                     
                 />
                 </StackLayout>
-                    <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
-                        <Button 
-                    x:Name="AddFocusList"
-                    Text="Add Verse to FocusList"
-                    Clicked="AddFocusList_Clicked"   
-               
-                        HorizontalOptions="Fill"
-                        FontSize="Micro"
-                    />
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
+                   
+                    <StackLayout Orientation="Vertical"  HorizontalOptions="Center" Margin="6,0,0,0" >
                     <Button 
                     x:Name="NextFlashCard"
                     Text="Next Ayah"
                     Clicked="NextFlashCard_Clicked" 
                
-                        HorizontalOptions="Fill"
-                        FontSize="Small"
+                        HorizontalOptions="Start"
+                        FontSize="Default"
                     />
                 </StackLayout>
             </StackLayout>
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="Start" Margin="0,6,0,0">
+                    <Button 
+                    x:Name="AddFocusList"
+                    Text="Add Ayah to Your FocusList"
+                    Clicked="AddFocusList_Clicked"   
+               
+                        HorizontalOptions="Center"
+                        FontSize="Default"
+                    />
+                </StackLayout>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="{Binding NextArabicVerse}"
                            FontSize="Default"   
                        HorizontalTextAlignment="Center"

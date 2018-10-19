@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuranMEM.ForgotPWPage">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HorizontalOptions="Center" Margin="0,10,0,0">
+                <Label Text="Enter an email to reset Password"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center" 
+                HorizontalTextAlignment="Center"
+                   FontSize="Medium"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="20">
+                
+                <Entry x:Name="emailPWEntry"
+                       Placeholder="Enter registered Email"
+                       FontSize="Medium"
+                       Keyboard="Email"
+                       Text="{Binding PWEmail, Mode=TwoWay}"/>
+                
+
+                <Button x:Name="resetPWButton"
+                 
+                    Text="Reset Password"
+                    Command="{Binding ChangeUserPWCommand}"
+                    CommandParameter="{Binding Source={x:Reference emailPWEntry}, Path=Text}"             
+                    />
+                
+                <Button x:Name="backLogInButton"
+                    Text="LogInScreen"                              
+                    HorizontalOptions="End"
+                    Command="{Binding BackToLogInCommand}"/>
+
+
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

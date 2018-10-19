@@ -16,7 +16,8 @@ namespace QuranMEM
 
         public static MobileServiceClient MobileService =
     new MobileServiceClient(
-    "http://memorizethequran.azurewebsites.net"
+    
+    "https://memorizethequran.azurewebsites.net"
 );
 
 

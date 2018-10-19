@@ -53,6 +53,17 @@ namespace QuranMEM
 
         }
 
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if(App.user.IncorrectCards == null)
+            {
+                App.user.IncorrectCards = new List<int>();
+            }
+
+        }
+
         private async void NextFlashCard_Clicked(object sender, EventArgs e)
         {
             try
@@ -87,6 +98,16 @@ namespace QuranMEM
                             conn.Update(localUser);
 
                         }
+
+                        System.Threading.Thread.Sleep(250);
+
+                        //Change Cloud Database
+                        //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
+
+                        //cloudUser.VersesStudied++;
+
+                        //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
+
                     }
                     catch(Exception incrementDatabaseE)
                     {
@@ -153,6 +174,7 @@ namespace QuranMEM
             catch (Exception focusListE)
             {
                 //Do something
+                System.Threading.Thread.Sleep(250);
             }
         }
     }

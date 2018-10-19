@@ -31,7 +31,7 @@ namespace QuranMEM.ViewModel
             set { email = value;
                  User = new User()
                 {
-                    id = Guid.NewGuid().ToString(),
+                    //id = Guid.NewGuid().ToString(),
                     Email = this.Email,
                     UserName = this.UserName,
                     Password = this.Password,
@@ -54,7 +54,7 @@ namespace QuranMEM.ViewModel
                 userName = value;
                 User = new User()
                 {
-                    id = Guid.NewGuid().ToString(),
+                    //id = Guid.NewGuid().ToString(),
                     Email = this.Email,
                     UserName = this.UserName,
                     Password = this.Password,
@@ -77,7 +77,7 @@ namespace QuranMEM.ViewModel
                 password = value;
                 User = new User()
                 {
-                    id = Guid.NewGuid().ToString(),
+                    //id = Guid.NewGuid().ToString(),
                     Email = this.Email,
                     UserName = this.UserName,
                     Password = this.Password,
@@ -99,7 +99,7 @@ namespace QuranMEM.ViewModel
                 confirmPassword = value;
                 User = new User()
                 {
-                    id = Guid.NewGuid().ToString(),
+                    //id = Guid.NewGuid().ToString(),
                     Email = this.Email,
                     UserName = this.UserName,
                     Password = this.Password,
@@ -140,7 +140,14 @@ namespace QuranMEM.ViewModel
 
                 if (registerSucess)
                 {
-                    await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                    try
+                    {
+                        await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                    }
+                    catch(Exception successRegistrationE)
+                    {
+                    System.Threading.Thread.Sleep(250);
+                    }
 
                 }
                 else

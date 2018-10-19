@@ -14,6 +14,15 @@ namespace QuranMEM.ViewModel
 
         private User user;
 
+        public AccountViewModel()
+        {
+            SignOutCommand = new SignOutCommand(this);
+
+            ChangePasswordCommand = new ChangePasswordCommand(this);
+
+            user = App.user;
+
+        }
 
         public string Email
         {
@@ -42,9 +51,18 @@ namespace QuranMEM.ViewModel
         {
             get
             {
-                var sRate = (user.WrongAnswer / VersesStudied).ToString();
-                sRate += "%";
-                return sRate;
+                string sRate = "";
+                if(user.WrongAnswer == 0 || user.VersesStudied == 0)
+                {
+                    return sRate += "0%";
+                }
+                else
+                {
+                    sRate = (user.WrongAnswer / VersesStudied).ToString();
+                    sRate += "%";
+                    return sRate;
+                }
+               
             }
         }
 
@@ -52,15 +70,7 @@ namespace QuranMEM.ViewModel
 
         public string ChangeConfirmPassword { get; set; }
 
-        public AccountViewModel()
-        {
-            SignOutCommand = new SignOutCommand(this);
-
-            ChangePasswordCommand = new ChangePasswordCommand(this);
-
-            user = App.user;
-
-        }
+ 
 
         public async void SignOut(User usa)
         {

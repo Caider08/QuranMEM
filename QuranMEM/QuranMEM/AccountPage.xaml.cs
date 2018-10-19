@@ -29,5 +29,28 @@ namespace QuranMEM
             BindingContext = AccountVM;
 
 		}
-	}
+
+        protected override async void OnAppearing()
+        {
+
+            base.OnAppearing();
+
+            try
+            {
+                //Change Cloud Database
+                var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
+
+                cloudUser.id = cloudUser.id;
+                cloudUser.VersesStudied++;
+
+                await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
+            }
+            catch(Exception cloudUpdateE)
+            {
+                //Change Cloud Database
+                System.Threading.Thread.Sleep(250);
+            }
+
+        }
+    }
 }

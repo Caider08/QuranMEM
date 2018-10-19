@@ -17,10 +17,10 @@
                 
                 IsPassword="True"/>
             
-            <Label Text="(Forgot PW? Just register a new free-account)"
+          <!-- <Label Text="(Forgot PW? Just register a new free-account)"
                    HorizontalTextAlignment="End"
                    FontSize="Micro"
-                   />
+                   />-->
 
 
             <Button x:Name="LogInButton"
@@ -30,6 +30,12 @@
                     CommandParameter="{Binding User}"
                     TextColor="White"
                     />
+
+            <Button x:Name="ForgotPwButton"
+                    Text="Forgot PW?"
+                    HorizontalOptions="End"
+                    Command="{Binding ForgotPWCommand}"/>
+            
             <Button x:Name="RegisterButton"
                     Text="Register"
                                
