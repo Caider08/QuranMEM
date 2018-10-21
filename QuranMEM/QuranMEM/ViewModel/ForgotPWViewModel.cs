@@ -80,6 +80,8 @@ namespace QuranMEM.ViewModel
                             }
 
                             await App.Current.MainPage.DisplayAlert("New PW = QuranTest", "Be sure to visit your Account page and change PW from 'QuranTest' to your desired PW", "OK");
+
+                            await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
                         }
                         else
                         {

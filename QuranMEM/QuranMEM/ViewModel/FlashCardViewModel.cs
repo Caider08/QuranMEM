@@ -217,9 +217,9 @@ namespace QuranMEM.ViewModel
             }
         }
 
-        private int chapterNumba;
+        private string chapterNumba;
 
-        public int ChapterNumba
+        public string ChapterNumba
         {
             get
             {
@@ -247,7 +247,9 @@ namespace QuranMEM.ViewModel
 
                         var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
 
-                        chapterNumba = quranObject.data.surah.number;
+                        chapterNumba = quranObject.data.surah.number.ToString();
+
+                        chapterNumba += ": ";
 
 
                     }
@@ -341,7 +343,7 @@ namespace QuranMEM.ViewModel
 
                         var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
 
-                        verseName = quranObject.data.text;
+                        verseName = quranObject.data.text;                      
 
                         System.Threading.Thread.Sleep(150);
 
@@ -357,6 +359,52 @@ namespace QuranMEM.ViewModel
                 }
             }
         }
-   
+
+        private int verseSurahNumba;
+
+        public int VerseSurahNumba
+        {
+            get
+            {
+                try
+                {
+                    string currentCard = user.CurrentCard.ToString();
+
+                    string url = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
+
+                    string response = "";
+
+                    using (var wb = new WebClient())
+                    {
+                        response = wb.DownloadString(url);
+
+                        System.Threading.Thread.Sleep(150);
+
+                        if (string.IsNullOrEmpty(response))
+                        {
+                            response = wb.DownloadString(url);
+
+                            System.Threading.Thread.Sleep(150);
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                        verseSurahNumba = quranObject.data.numberInSurah;
+
+                        System.Threading.Thread.Sleep(150);
+
+                    }
+
+                    return verseSurahNumba;
+                }
+                catch (Exception verseSurahNumbaE)
+                {
+                    //Do Something
+                    verseName += "Error getting Ayah Name";
+                    return verseSurahNumba;
+                }
+            }
+        }
+
     }
 }

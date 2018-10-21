@@ -1,8 +1,10 @@
 ﻿using QuranMEM.Model;
 using QuranMEM.ViewModel.Commands;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace QuranMEM.ViewModel
 {
@@ -12,15 +14,41 @@ namespace QuranMEM.ViewModel
 
         public ChangePasswordCommand ChangePasswordCommand { get; set; }
 
-        private User user;
+        public FocusListCommand FocusListCommand { get; set; }
 
+        public ResetLISTSCommand ResetLISTSCommand { get; set; }
+
+        public ResetSTATSCommand ResetSTATSCommand { get; set; }
+
+        private User user;
+      
         public AccountViewModel()
         {
             SignOutCommand = new SignOutCommand(this);
 
             ChangePasswordCommand = new ChangePasswordCommand(this);
 
-            user = App.user;
+            FocusListCommand = new FocusListCommand(this);
+
+            ResetLISTSCommand = new ResetLISTSCommand(this);
+
+            ResetSTATSCommand = new ResetSTATSCommand(this);
+
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                try
+                {
+                    conn.CreateTable<User>();
+                    var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+
+                    user = localUser;
+                }
+                catch(Exception localUserE)
+                {
+                    user = App.user;
+                }
+                             
+            }
 
         }
 
@@ -37,6 +65,32 @@ namespace QuranMEM.ViewModel
 
         }
 
+        public int WrongAnswer
+        {
+            get
+            {
+                try
+                {
+
+                    //using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                    //{
+
+                    //    conn.CreateTable<User>();
+                    //    var localUser = conn.Table<User>().Where(u => u.Email == user.Email).ToList<User>().FirstOrDefault();
+
+                    //    return localUser.WrongAnswer;
+
+                    //}
+
+                    return user.WrongAnswer;
+                }
+                catch (Exception getWrongAnswerE)
+                {
+                    return 0;
+                }
+            }
+        }
+
         public string UserName
         {
             get { return user.UserName; }
@@ -44,23 +98,56 @@ namespace QuranMEM.ViewModel
 
         public int VersesStudied
         {
-            get { return user.VersesStudied; }
+            get
+            {
+                try
+                {
+
+                    //using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                    //{
+
+                    //    conn.CreateTable<User>();
+                    //    var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+
+                    //    return localUser.VersesStudied;
+
+                    //}
+
+                    return user.VersesStudied;
+                }
+                catch (Exception getVersesStudiedE)
+                {
+                    return 0;
+                }
+            }
         }
 
         public string VerseSuccessRate
         {
             get
             {
-                string sRate = "";
-                if(user.WrongAnswer == 0 || user.VersesStudied == 0)
+                try
                 {
-                    return sRate += "0%";
+                    string sRate = "";
+                    decimal wrongAnswer = (decimal)WrongAnswer;
+                    decimal versesStudied = (decimal)VersesStudied;
+                    if (WrongAnswer == 0 || VersesStudied == 0)
+                    {
+                        return sRate += "100%";
+                    }
+
+                    else
+                    {
+                        //sRateD = (WrongAnswer / VersesStudied) * 100;
+                        //sRate = Math.Round(sRateD, 2).ToString();
+                        sRate = Math.Round(((wrongAnswer/versesStudied) * 100), 2).ToString();
+                        sRate += "%";
+                        return sRate;
+                    }
                 }
-                else
+                catch(Exception VSE)
                 {
-                    sRate = (user.WrongAnswer / VersesStudied).ToString();
-                    sRate += "%";
-                    return sRate;
+                    return "100%";
                 }
                
             }
@@ -70,6 +157,84 @@ namespace QuranMEM.ViewModel
 
         public string ChangeConfirmPassword { get; set; }
 
+        public async void ResetSTATS()
+        {
+            try
+            {
+                var answer = await App.Current.MainPage.DisplayAlert("Reset Stats?", "Are you sure you'd like to reset your Stats(this will not reset your Verses Studied)", "Yes", "No");
+
+                if(answer)
+                {
+                    App.user.WrongAnswer = 0;
+
+                    //Update Local Database             
+                    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                    {
+                        conn.CreateTable<User>();
+                        var localUser = conn.Table<User>().Where(u => u.Email == user.Email).ToList<User>().FirstOrDefault();
+                        localUser.WrongAnswer = 0;
+                        conn.Update(localUser);
+
+                    }
+
+                    await App.Current.MainPage.DisplayAlert("Stats Reset", "Stats reset successfully", "OK");
+
+                    await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+                }
+                    
+            }
+            catch(Exception resetE)
+            {
+                await App.Current.MainPage.DisplayAlert("Stat Error", "Error Resetting your STATS...try again soon", "OK");
+            }
+        }
+
+        public async void ResetLists()
+        {
+            try
+            {
+                var answer = await App.Current.MainPage.DisplayAlert("Reset Lists?", "Are you sure you'd like to empty your SelectedCards and FocusList?", "Yes", "No");
+
+                if (answer)
+                {
+                    App.user.SelectedCards = new List<int>();
+                    App.user.IncorrectCards = new List<int>();
+
+                    await App.Current.MainPage.DisplayAlert("Lists Reset", "Lists reset successfully", "OK");
+
+                    await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+                }
+
+            }
+            catch (Exception resetE)
+            {
+                await App.Current.MainPage.DisplayAlert("List Error", "Error Resetting your LISTS...try again soon", "OK");
+            }
+        }
+
+        public async void FocusList()
+        {
+            try
+            {
+                if (App.user.IncorrectCards == null || App.user.IncorrectCards.Count() < 1)
+                {
+                    await App.Current.MainPage.DisplayAlert("Empty Focus List", "You have 0 Ayahs in your Focus List", "Ok");
+                }
+                else
+                {
+                    App.user.CurrentCard = App.user.IncorrectCards.Take(1).FirstOrDefault();
+
+                    await App.Current.MainPage.Navigation.PushAsync(new FocusListFrontCardPage());
+
+                }
+            }
+            catch(Exception focusListE)
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+            }
+           
+
+        }
  
 
         public async void SignOut(User usa)

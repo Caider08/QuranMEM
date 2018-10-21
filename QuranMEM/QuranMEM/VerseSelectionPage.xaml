@@ -23,11 +23,14 @@
                         Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding number}"
-                                TextColor="#219da5" />
-                                <Label Text="{Binding englishNameTranslation}"
+                                TextColor="#423682" />
+                                <Label Text="{Binding name}"
                                
-                                TextColor="#219da5" />
-                            </StackLayout>
+                                TextColor="#423682" />
+                                <Label Text="{Binding englishName}"
+                               
+                                TextColor="#423682" />
+                                </StackLayout>
                         </StackLayout>
 
                     </ViewCell>

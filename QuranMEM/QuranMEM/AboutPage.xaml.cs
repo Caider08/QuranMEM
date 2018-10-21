@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuranMEM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,24 @@ namespace QuranMEM
 		{
 			InitializeComponent ();
 		}
-	}
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            try
+            {
+                //var leaders = new List<User>();
+                //Change Cloud Database
+                var leaders = (await App.MobileService.GetTable<User>().ToListAsync()).OrderByDescending(u => u.VersesStudied).Take(10);
+
+                leadersListView.ItemsSource = leaders;
+
+            }
+            catch(Exception verseLeadersE)
+            {
+                var leaders = new List<User>();
+                leadersListView.ItemsSource = leaders;
+            }
+        }
+    }
 }

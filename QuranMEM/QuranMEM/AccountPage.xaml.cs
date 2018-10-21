@@ -1,5 +1,6 @@
 ﻿using QuranMEM.Model;
 using QuranMEM.ViewModel;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,21 +36,32 @@ namespace QuranMEM
 
             base.OnAppearing();
 
-            try
-            {
-                //Change Cloud Database
-                var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
+            //try
+            //{
+            //    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            //    {
 
-                cloudUser.id = cloudUser.id;
-                cloudUser.VersesStudied++;
+            //        conn.CreateTable<User>();
+            //        var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
 
-                await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
-            }
-            catch(Exception cloudUpdateE)
-            {
-                //Change Cloud Database
-                System.Threading.Thread.Sleep(250);
-            }
+            //        //Change Cloud Database
+            //        var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
+
+            //        cloudUser.id = cloudUser.id;
+            //        cloudUser.VersesStudied = localUser.VersesStudied;
+
+            //        await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
+
+            //        System.Threading.Thread.Sleep(150);
+
+            //    }
+               
+            //}
+            //catch(Exception cloudUpdateE)
+            //{
+            //    //Change Cloud Database
+            //    System.Threading.Thread.Sleep(250);
+            //}
 
         }
     }

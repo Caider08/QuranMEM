@@ -13,73 +13,82 @@ using Xamarin.Forms.Xaml;
 namespace QuranMEM
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class BackCardPage : ContentPage
+	public partial class FocusListBackCardPage : ContentPage
 	{
-        FlashCardViewModel fcVM;
+        FlashCardViewModel FlashCardViewModel;
 
-		public BackCardPage ()
+		public FocusListBackCardPage ()
 		{
-            try
-            {
-                InitializeComponent();
+			InitializeComponent ();
 
-                fcVM = new FlashCardViewModel();
+            FlashCardViewModel = new FlashCardViewModel();
 
-                BindingContext = fcVM;
-            }
-            catch(Exception loadBackCardE)
-            {
-                //Do Something
-                System.Threading.Thread.Sleep(150);
-            }
+            BindingContext = FlashCardViewModel;
 		}
 
-        public BackCardPage(FlashCardViewModel FCvm)
+        public FocusListBackCardPage(FlashCardViewModel fcvm)
         {
-            
             try
             {
                 InitializeComponent();
 
-                fcVM = FCvm;
+                FlashCardViewModel = fcvm;
 
-                BindingContext = fcVM;
+                BindingContext = FlashCardViewModel;
             }
             catch (Exception loadBackCardE2)
             {
                 //Do Something
                 System.Threading.Thread.Sleep(150);
             }
-
+            
         }
 
         protected override async void OnAppearing()
         {
-            base.OnAppearing();  
+            base.OnAppearing();
+
+            if (App.user.CurrentCard < 1 || App.user.CurrentCard > 6236)
+            {
+
+                await Navigation.PushAsync(new HomePage());
+
+            }
 
         }
 
-        private async void NextFlashCard_Clicked(object sender, EventArgs e)
+        private async void FrontCard_Clicked(object sender, EventArgs e)
         {
             try
             {
-                if (App.user.SelectedCards == null || App.user.SelectedCards.Count() < 1)
+                await Navigation.PushAsync(new FocusListFrontCardPage());
+            }
+            catch (Exception backToFrontCardE)
+            {
+                System.Threading.Thread.Sleep(150);
+            }
+        }
+
+        private async void NextFlashCardFocus_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (App.user.IncorrectCards == null || App.user.IncorrectCards.Count() < 1)
                 {
                     //Out of Cards
-                    var answer = await DisplayAlert("Out of Ayahs", "You have finished the selected Ayahs", "Ayah Selection?", "Stay here");
+                    var answer = await DisplayAlert("Out of Ayahs", "You have finished going through your Focus List", "Ayah Selection", "Stay here");
 
                     if (answer == true)
                     {
                         try
                         {
-                          
                             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
                             {
 
                                 conn.CreateTable<User>();
                                 var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
 
-                                //Change Cloud Database
+                                //Change Cloud Database since User has completed their FocusList
                                 var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
 
                                 cloudUser.id = cloudUser.id;
@@ -90,7 +99,7 @@ namespace QuranMEM
                                 System.Threading.Thread.Sleep(150);
 
                             }
-                          
+
                         }
                         catch (Exception cloudUpdateE)
                         {
@@ -100,17 +109,19 @@ namespace QuranMEM
                         await Navigation.PushAsync(new HomePage());
                     }
                 }
-                else if (App.user.SelectedCards.Count() == 1)
+                else if (App.user.IncorrectCards.Count() == 1)
                 {
-                    App.user.CurrentCard = App.user.SelectedCards.FirstOrDefault();
-
-                    App.user.SelectedCards.Remove(App.user.CurrentCard);
-
-                    //Update Card Tally
-                    App.user.VersesStudied++;
-                    //Update Database
                     try
-                    {
+                    { 
+                    
+                        App.user.CurrentCard = App.user.IncorrectCards.FirstOrDefault();
+
+                        App.user.IncorrectCards.Remove(App.user.CurrentCard);
+
+                        //Update Card Tally
+                        App.user.VersesStudied++;
+                        //Update Database
+                                   
                         using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
                         {
 
@@ -120,49 +131,7 @@ namespace QuranMEM
                             conn.Update(localUser);
 
                         }
-
-                        System.Threading.Thread.Sleep(250);
-
-                        //Change Cloud Database
-                        //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
-
-                        //cloudUser.VersesStudied++;
-
-                        //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
-
-                    }
-                    catch(Exception incrementDatabaseE)
-                    {
-                        await Navigation.PushAsync(new FrontCardPage());
-                    }
-
-              
-                    await Navigation.PushAsync(new FrontCardPage());
-                }
-                else
-                {
-                    Random rand = new Random();
-
-                    App.user.SelectedCards.Remove(App.user.CurrentCard);
-
-                    App.user.CurrentCard = App.user.SelectedCards.Skip(rand.Next(App.user.SelectedCards.Count())).FirstOrDefault();
-
-                    //Update Card Tally
-                    App.user.VersesStudied++;
-                    //Update Database
-                    try
-                    {
-                        using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-                        {
-
-                            conn.CreateTable<User>();
-                            var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
-                            localUser.VersesStudied++;
-                            conn.Update(localUser);
-
-                        }
-
-                        System.Threading.Thread.Sleep(250);
+                 
 
                         //Change Cloud Database
                         //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
@@ -174,15 +143,51 @@ namespace QuranMEM
                     }
                     catch (Exception incrementDatabaseE)
                     {
-                        await Navigation.PushAsync(new FrontCardPage());
+                        await Navigation.PushAsync(new FocusListFrontCardPage());
                     }
 
+                    await Navigation.PushAsync(new FocusListFrontCardPage());
+                }
+                else
+                {
+                    Random rand = new Random();
 
-                    await Navigation.PushAsync(new FrontCardPage());
+                    App.user.IncorrectCards.Remove(App.user.CurrentCard);
+
+                    App.user.CurrentCard = App.user.IncorrectCards.Skip(rand.Next(App.user.IncorrectCards.Count())).FirstOrDefault();
+
+                    //Update Card Tally
+                    App.user.VersesStudied++;
+                    //Update Database
+                    try
+                    {
+                        using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                        {
+                            conn.CreateTable<User>();
+                            var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+                            localUser.VersesStudied++;
+                            conn.Update(localUser);
+
+                        }
+                     
+                        //Change Cloud Database
+                        //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
+
+                        //cloudUser.VersesStudied++;
+
+                        //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
+
+                    }
+                    catch (Exception incrementDatabaseE)
+                    {
+                        await Navigation.PushAsync(new FocusListFrontCardPage());
+                    }
+
+                    await Navigation.PushAsync(new FocusListFrontCardPage());
 
                 }
             }
-            catch(Exception nextAyahE)
+            catch (Exception nextAyahE)
             {
                 //Do something
                 System.Threading.Thread.Sleep(150);
@@ -190,20 +195,7 @@ namespace QuranMEM
 
         }
 
-        private void ArabicVerse_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-
-                Navigation.PushAsync(new FrontCardPage());
-            }
-            catch(Exception backToFrontCardE)
-            {
-                System.Threading.Thread.Sleep(150);
-            }
-        }
-
-        private async void AddFocusList_Clicked(object sender, EventArgs e)
+        private async void KeepFocusList_Clicked(object sender, EventArgs e)
         {
             try
             {
@@ -229,7 +221,7 @@ namespace QuranMEM
 
                     }
 
-                    await DisplayAlert("Verse Added", "Verse added to your Focus Study List", "OK");
+                    await DisplayAlert("Verse Added", "Ayah added again to your Focus Study List", "OK");
 
                 }
             }
@@ -238,7 +230,9 @@ namespace QuranMEM
                 //Do something
                 System.Threading.Thread.Sleep(250);
             }
-        
+
         }
+
     }
+    
 }

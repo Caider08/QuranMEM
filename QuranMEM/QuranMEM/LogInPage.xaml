@@ -22,13 +22,12 @@
                    FontSize="Micro"
                    />-->
 
-
             <Button x:Name="LogInButton"
                     Margin="0,20,0,0"
                     Text="Log In"
                     Command="{Binding LogInCommand}"
                     CommandParameter="{Binding User}"
-                    TextColor="White"
+                    TextColor="#423682"
                     />
 
             <Button x:Name="ForgotPwButton"

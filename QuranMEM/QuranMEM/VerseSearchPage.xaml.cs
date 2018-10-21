@@ -95,7 +95,6 @@ namespace QuranMEM
                     {
                         App.user.SelectedCards = new List<int>();
 
-                        App.user.IncorrectCards = new List<int>();
                     }
                     if (App.user.SelectedCards.Count() > 0)
                     {
@@ -162,6 +161,51 @@ namespace QuranMEM
 
             }
 
+        }
+
+        private async void EntireQuran_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Random rand = new Random();
+
+                if (App.user.SelectedCards == null)
+                {
+                    App.user.SelectedCards = new List<int>();
+                }
+                else
+                {
+                    for (int i = 1; i < 6327; i++)
+                    {
+                        App.user.SelectedCards.Add(i);
+                    }
+
+                    System.Threading.Thread.Sleep(150);
+
+                    
+                    App.user.CurrentCard = App.user.SelectedCards.Skip(rand.Next(App.user.SelectedCards.Count())).FirstOrDefault();
+
+                    App.user.SelectedCards.Remove(App.user.CurrentCard);
+
+                    await App.Current.MainPage.Navigation.PushAsync(new FrontCardPage());
+                }
+            }
+            catch(Exception entireQuranE)
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new VerseSearchPage());
+            }
+        }
+
+        private async void SurahSelection_Clicked(object sender, EventArgs e)
+        {
+            try
+            { 
+                await Navigation.PushAsync(new VerseSelectionPage());
+            }
+            catch(Exception verseSelectE)
+            {
+                await DisplayAlert("Surahs Error", "Error loading Surahs...try again shortly", "OK");
+            }
         }
     }
 }

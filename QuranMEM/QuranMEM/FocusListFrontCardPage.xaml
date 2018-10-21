@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QuranMEM.FrontCardPage"
-           >
+             x:Class="QuranMEM.FocusListFrontCardPage">
     <ContentPage.Content>
+
         <StackLayout x:Name="FrontCardStackLayout" Margin="0,20,0,0"
               
                      >
@@ -14,25 +14,24 @@
                    FontSize="Default"
                 />
             </StackLayout>
-           
+
             <StackLayout Orientation="Horizontal"  HorizontalOptions="Start" Margin="8,20,8,0">
                 <StackLayout Orientation="Vertical"  HorizontalOptions="Center" >
                     <Button 
                     x:Name="AccountScreen"
-                    Text="Select Surahs"
+                    Text="Account Screen"
                     FontSize="Small"
-                    Clicked="AccountScreen_Clicked" 
+                    Clicked="AccountScreen_Clicked"  
                
                         HorizontalOptions="StartAndExpand"
                     />
                 </StackLayout>
                 <StackLayout Orientation="Vertical"  HorizontalOptions="Center" >
                     <Button 
-                    x:Name="BackFlashCard"
+                    x:Name="FocusListBackFlashCard"
                     Text="Flip Card"
                     FontSize="Small"
-                    Clicked="BackFlashCard_Clicked" 
-                
+                    Clicked="FocusListBackFlashCard_Clicked"                   
                     HorizontalOptions="StartAndExpand"
                     />
                 </StackLayout>
@@ -41,4 +40,6 @@
 
         </StackLayout>
     </ContentPage.Content>
+
+
 </ContentPage>

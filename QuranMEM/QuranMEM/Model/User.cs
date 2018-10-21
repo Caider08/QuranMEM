@@ -321,7 +321,7 @@ namespace QuranMEM.Model
                 //See if User already exists
                 var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == usa.Email).ToListAsync()).FirstOrDefault();
 
-                if (string.IsNullOrEmpty(cloudUser.Email))
+                if (cloudUser == null || string.IsNullOrEmpty(cloudUser.Email))
                 {
 
                     //Insert into Cloud Database

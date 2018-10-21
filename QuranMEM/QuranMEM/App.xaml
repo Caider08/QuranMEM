@@ -4,22 +4,22 @@
              x:Class="QuranMEM.App">
     <Application.Resources>
         <Style TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#22a5ad" />
-            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="BackgroundColor" Value="#FFE699" />
+            <Setter Property="TextColor" Value="#423682"/>
         </Style>
 
         <Style TargetType="Entry">
-            <Setter Property="TextColor" Value="#219da5"/>
+            <Setter Property="TextColor" Value="#423682"/>
         </Style>
 
         <Style TargetType="NavigationPage">
-            <Setter Property="BarBackgroundColor" Value="#22a5ad" />
-            <Setter Property="BarTextColor" Value="White"/>
+            <Setter Property="BarBackgroundColor" Value="#FFE699" />
+            <Setter Property="BarTextColor" Value="#423682"/>
         </Style>
 
         <Style TargetType="TabbedPage">
-            <Setter Property="BarBackgroundColor" Value="#22a5ad" />
-            <Setter Property="BackgroundColor" Value="#22a5ad"/>
+            <Setter Property="BarBackgroundColor" Value="#FFE699" />
+            <Setter Property="BackgroundColor" Value="#FFE699"/>
         </Style>
 
     </Application.Resources>

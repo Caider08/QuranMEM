@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <None Remove="Assets\Images\APPFRONT.JPG" />
+    <None Remove="Assets\Images\quranapp1.JPG" />
+    <None Remove="Assets\Images\quranapp2.jpg" />
     <None Remove="Assets\Images\QuranLogo.PNG" />
   </ItemGroup>
 
@@ -18,6 +20,8 @@
     <EmbeddedResource Include="Assets\Images\APPFRONT.JPG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\quranapp1.JPG" />
+    <EmbeddedResource Include="Assets\Images\quranapp2.jpg" />
     <EmbeddedResource Include="Assets\Images\QuranLogo.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -47,6 +51,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="BackCardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FocusListBackCardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FocusListFrontCardPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ForgotPWPage.xaml">

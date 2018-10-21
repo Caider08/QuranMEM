@@ -3,21 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:QuranMEM"
             x:Class="QuranMEM.HomePage"
-            BarBackgroundColor="#22a5ad"
+            BarBackgroundColor="#FFE699"
             >
 
-    <local:VerseSelectionPage 
-                              Icon="bulletList.png"
-       
-                              />
-
     <local:VerseSearchPage
-                              Icon="search.png"
+                              Icon="purple_search.png"
        
                               />
+    
+    <local:VerseSelectionPage 
+                              Icon="purple_list.png"
+       
+                              />
+   
 
     <local:AccountPage 
-                       Icon="user.png"
+                       Icon="purple_account.png"
                        
                        />
 

@@ -8,76 +8,78 @@
          
         <StackLayout x:Name="BackCardStackLayout" >
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="0,20,0,0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="8,20,0,0">
                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" >
 
                     <Label Text="{Binding ChapterName}"
-               />
+                             />
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="Start">
 
-                    <Label Text="{Binding VerseNumba}"/>
+                    <Label Text="{Binding ChapterNumba}"/>
                 </StackLayout>
-                
+
+                <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+
+                     <Label Text="{Binding VerseSurahNumba}"/>
+                </StackLayout>
+
             </StackLayout>
 
-            
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="8,0,8,0">
+                    <Label Text="{Binding NextArabicVerse}"
+                           FontSize="Default"   
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Fill"
+                                />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="Center"
+                         VerticalOptions="Start" Margin="0,10,0,0">
+                    <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
+                        <Button 
+                        x:Name="ArabicVerse"
+                        Text="Front"
+                        Clicked="ArabicVerse_Clicked" 
+                        HorizontalOptions="StartAndExpand"
+                        FontSize="Small"                     
+                                        />
+                    </StackLayout>
+                   
+                    <StackLayout Orientation="Vertical"  HorizontalOptions="Center" Margin="6,0,0,0" >
+                        <Button 
+                        x:Name="NextFlashCard"
+                        Text="Next Ayah"
+                        Clicked="NextFlashCard_Clicked" 
+               
+                        HorizontalOptions="StartAndExpand"
+                        FontSize="Small"
+                            />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="Start" Margin="0,6,0,0">
+                    <Button 
+                    x:Name="AddFocusList"
+                    Text="Save Ayah For Study"
+                    Clicked="AddFocusList_Clicked"   
+               
+                        HorizontalOptions="Center"
+                        FontSize="Small"
+                    />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="8,10,8,0">
                     <Label Text="{Binding EnglishTranslation}"
                            FontSize="Default"
                            HorizontalOptions="Fill"
                            HorizontalTextAlignment="Start"
                            VerticalTextAlignment="Start"
                            VerticalOptions="Start"                                     
-                />
+                                                />
+
                 </StackLayout>
-                                             
-            <StackLayout Orientation="Horizontal"  HorizontalOptions="Center"
-                         VerticalOptions="Start">
-                <StackLayout Orientation="Vertical"  HorizontalOptions="Center">
-                    <Button 
-                x:Name="ArabicVerse"
-                Text="Front"
-                Clicked="ArabicVerse_Clicked" 
-              
-                        HorizontalOptions="Start"
-                        FontSize="Default"                     
-                />
-                </StackLayout>
-                   
-                    <StackLayout Orientation="Vertical"  HorizontalOptions="Center" Margin="6,0,0,0" >
-                    <Button 
-                    x:Name="NextFlashCard"
-                    Text="Next Ayah"
-                    Clicked="NextFlashCard_Clicked" 
-               
-                        HorizontalOptions="Start"
-                        FontSize="Default"
-                    />
-                </StackLayout>
+
             </StackLayout>
-                <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="Start" Margin="0,6,0,0">
-                    <Button 
-                    x:Name="AddFocusList"
-                    Text="Add Ayah to Your FocusList"
-                    Clicked="AddFocusList_Clicked"   
-               
-                        HorizontalOptions="Center"
-                        FontSize="Default"
-                    />
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Label Text="{Binding NextArabicVerse}"
-                           FontSize="Default"   
-                       HorizontalTextAlignment="Center"
-                       HorizontalOptions="Fill"
-                   />
-            </StackLayout>
-
-
-
-        </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
