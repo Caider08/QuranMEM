@@ -240,5 +240,42 @@ namespace QuranMEM
             }
         
         }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                if (App.user.IncorrectCards == null)
+                {
+                    App.user.IncorrectCards = new List<int>();
+                }
+                else
+                {
+
+                    App.user.IncorrectCards.Add(App.user.CurrentCard);
+
+                    App.user.WrongAnswer++;
+
+
+                    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                    {
+
+                        conn.CreateTable<User>();
+                        var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+                        localUser.WrongAnswer++;
+                        conn.Update(localUser);
+
+                    }
+
+                    await DisplayAlert("Verse Added", "Verse added to your Focus Study List", "OK");
+
+                }
+            }
+            catch (Exception focusListE)
+            {
+                //Do something
+                System.Threading.Thread.Sleep(250);
+            }
+        }
     }
 }

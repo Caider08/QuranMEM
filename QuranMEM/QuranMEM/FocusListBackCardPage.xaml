@@ -6,8 +6,15 @@
         <StackLayout>
             <ScrollView>
                 <StackLayout x:Name="BackCardStackLayout" >
+                    <StackLayout HorizontalOptions="Center" Margin="0,10,0,0">
+                    <Label Text="Focus List Study"
+                                   FontSize="Medium"
+                                   HorizontalTextAlignment="Center"
+                                   />
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="8,20,0,0">
+                    </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="8,10,0,0">
+                        
                         <StackLayout Orientation="Vertical" HorizontalOptions="Start" >
 
                             <Label Text="{Binding ChapterName}"
@@ -57,14 +64,21 @@
                         </StackLayout>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="Start" Margin="0,6,0,0">
-                        <Button 
+                        <Image Source="purple_star.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                        Tapped="TapGestureRecognizer_Tapped"    />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                       <!-- <Button 
                     x:Name="KeepFocusList"
                     Text="Keep Ayah in Focus List"
                     Clicked="KeepFocusList_Clicked"    
                
                         HorizontalOptions="Center"
                         FontSize="Small"
-                    />
+                    />-->
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="8,10,8,0">

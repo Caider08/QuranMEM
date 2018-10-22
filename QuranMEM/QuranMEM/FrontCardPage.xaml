@@ -8,32 +8,31 @@
               
                      >
 
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="8,0,8,0">
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="10,0,10,0">
                 <Label Text="{Binding ArabicVerse}"
                    HorizontalOptions="Center"             
                    FontSize="Default"
                 />
             </StackLayout>
            
-            <StackLayout Orientation="Horizontal"  HorizontalOptions="Start" Margin="8,20,8,0">
-                <StackLayout Orientation="Vertical"  HorizontalOptions="Center" >
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" Margin="10,20,10,0">
+                <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand" >
                     <Button 
                     x:Name="AccountScreen"
                     Text="Select Surahs"
                     FontSize="Small"
-                    Clicked="AccountScreen_Clicked" 
-               
-                        HorizontalOptions="StartAndExpand"
+                    Clicked="AccountScreen_Clicked"             
+                        HorizontalOptions="CenterAndExpand"
                     />
                 </StackLayout>
-                <StackLayout Orientation="Vertical"  HorizontalOptions="Center" >
+                <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand" >
                     <Button 
                     x:Name="BackFlashCard"
                     Text="Flip Card"
                     FontSize="Small"
                     Clicked="BackFlashCard_Clicked" 
                 
-                    HorizontalOptions="StartAndExpand"
+                    HorizontalOptions="CenterAndExpand"
                     />
                 </StackLayout>
             </StackLayout>

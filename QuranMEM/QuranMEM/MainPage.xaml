@@ -35,7 +35,7 @@
 
     </StackLayout>-->
 
-    <Grid RowSpacing="0" ColumnSpacing="0">
+   <!-- <Grid RowSpacing="0" ColumnSpacing="0">
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -43,30 +43,39 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Image x:Name="appFront"
-               Aspect="AspectFill" />
+        </Grid.RowDefinitions> </Grid>-->
+     <StackLayout Orientation="Vertical" Margin="0,0,0,10">
 
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,80">
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+        <StackLayout VerticalOptions="Start">
+            <Image x:Name="appFront"
+               Aspect="AspectFit" />
+        </StackLayout>
+      
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="10,-10,10,10">
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                 <Button x:Name="Start"
                 Clicked="Start_Clicked" 
                 Text="Begin"
+                        FontSize="Default"
                
                />
             </StackLayout>
 
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                 <Button x:Name="About"
                 Clicked="About_Clicked"     
                 Text="About"
+                FontSize="Default"
+                
+                        
                
                />
             </StackLayout>
         </StackLayout>
 
+    </StackLayout>
 
-    </Grid>
     <!-- Place new controls here --><!--
         <Label Text="Quran Memorization Game" 
                 Grid.ColumnSpan="2"

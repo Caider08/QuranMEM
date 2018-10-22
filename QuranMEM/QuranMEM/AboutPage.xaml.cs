@@ -16,7 +16,11 @@ namespace QuranMEM
 		public AboutPage ()
 		{
 			InitializeComponent ();
-		}
+
+            var assembly = typeof(AboutPage);
+
+            aboutFront.Source = ImageSource.FromResource("QuranMEM.Assets.Images.aboutApp.jpg", assembly);
+        }
 
         protected override async void OnAppearing()
         {

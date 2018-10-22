@@ -26,7 +26,7 @@ namespace QuranMEM
             //this.BackgroundImage = backgroundImage.ToString();
 
 
-            appFront.Source = ImageSource.FromResource("QuranMEM.Assets.Images.quranapp2.jpg", assembly);
+            appFront.Source = ImageSource.FromResource("QuranMEM.Assets.Images.quranapp3.jpg", assembly);
 
         }
 

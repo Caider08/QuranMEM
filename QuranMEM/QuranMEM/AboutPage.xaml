@@ -4,44 +4,67 @@
              x:Class="QuranMEM.AboutPage">
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Margin="10">
+            <!--<Grid RowSpacing="0" ColumnSpacing="0">
 
-            <ListView x:Name="leadersListView"                 
-                  >
-                <ListView.Header>
-                    <Label Text="Top Studiers"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"
+                </Grid.RowDefinitions>-->
+                        
+                       
+                <StackLayout Margin="20" Orientation="Vertical">
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+
+                        <Image x:Name="aboutFront"
+                        Aspect="AspectFit" />
+                     </StackLayout>
+                <StackLayout VerticalOptions="Start" Margin="0,15,0,0">
+                    <ListView x:Name="leadersListView"                 
+                            >
+                        <ListView.Header>
+                            <Label Text="Top Huffaz"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-                </ListView.Header>
+                        </ListView.Header>
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
 
-                            <StackLayout
+                                    <StackLayout
                         Orientation="Vertical">
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding UserName}"
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding UserName}"
                                 TextColor="#423682" />
-                                    <Label Text="{Binding VersesStudied}"
+                                            <Label Text="{Binding VersesStudied}"
                                
                                 TextColor="#423682" />
-                                </StackLayout>
-                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
 
-                        </ViewCell>
-
-
-                    </DataTemplate>
+                                </ViewCell>
 
 
-                </ListView.ItemTemplate>
+                            </DataTemplate>
 
-                    <ListView.Footer>
-                    </ListView.Footer>
 
-            </ListView>
-        </StackLayout>
+                        </ListView.ItemTemplate>
+
+                        <ListView.Footer>
+                        </ListView.Footer>
+
+                    </ListView>
+                    
+                </StackLayout>
+                
+                </StackLayout>
+
+
+                      
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

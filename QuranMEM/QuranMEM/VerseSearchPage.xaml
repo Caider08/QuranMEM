@@ -4,59 +4,62 @@
              x:Class="QuranMEM.VerseSearchPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="0,20,0,0">
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,20,0,0">
 
-                <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                     <Entry 
                 x:Name="CloudSearchVerse"
-                HorizontalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
                 Placeholder="Enter Verse Number"
                 Keyboard="Numeric"
          
                 />
 
                     <Button 
-                HorizontalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
                     x:Name="QuranCloudSearch"
                     Clicked="QuranCloudSearch_Clicked"    
                     Text="Get Ayah"
                   />
                 </StackLayout>
 
-                <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                     <Entry 
                 x:Name="CloudSearchJuz"
-                HorizontalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
                 Placeholder="Enter a Juz(1-30)"
                 Keyboard="Numeric"
            
                 />
 
                     <Button 
-                HorizontalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
                     x:Name="QuranCloudSearchJuz"
                     Clicked="QuranCloudSearchJuz_Clicked"       
                     Text="Study Juz"
                 
                   />
                 </StackLayout>
-
-                <Button
+                
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                    <Button
                 x:Name="SurahSelection"
                 Margin="0,10,0,0"
-                HorizontalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
                 FontSize="Default"
                 Text="Select Surahs"
                 Clicked="SurahSelection_Clicked"    />
 
-                <Button
+                    <Button
                 Margin="0,10,0,0"
-                HorizontalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
                 x:Name="EntireQuran"
                 Clicked="EntireQuran_Clicked"
                 Text="Entire Quran"
                 FontSize="Default"
                 />
+                </StackLayout>
+              
 
             </StackLayout>
         </ScrollView>

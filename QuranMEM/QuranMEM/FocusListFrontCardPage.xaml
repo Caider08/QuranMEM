@@ -7,8 +7,15 @@
         <StackLayout x:Name="FrontCardStackLayout" Margin="0,20,0,0"
               
                      >
+            <StackLayout HorizontalOptions="Center" Margin="0,0,0,0">
+                <Label Text="Focus List Study"
+                                   FontSize="Medium"
+                                   HorizontalTextAlignment="Center"
+                                   />
 
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="8,0,8,0">
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="8,10,8,0">
                 <Label Text="{Binding ArabicVerse}"
                    HorizontalOptions="Center"             
                    FontSize="Default"
