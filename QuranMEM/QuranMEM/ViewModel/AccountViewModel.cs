@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace QuranMEM.ViewModel
 {
@@ -38,7 +39,7 @@ namespace QuranMEM.ViewModel
             {
                 try
                 {
-                    conn.CreateTable<User>();
+                     conn.CreateTable<User>();
                     var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
 
                     user = localUser;
@@ -49,7 +50,6 @@ namespace QuranMEM.ViewModel
                 }
                              
             }
-
         }
 
         public string Email
@@ -140,7 +140,7 @@ namespace QuranMEM.ViewModel
                     {
                         //sRateD = (WrongAnswer / VersesStudied) * 100;
                         //sRate = Math.Round(sRateD, 2).ToString();
-                        sRate = Math.Round(((wrongAnswer/versesStudied) * 100), 2).ToString();
+                        sRate = Math.Round(100-((wrongAnswer/versesStudied) * 100), 2).ToString();
                         sRate += "%";
                         return sRate;
                     }
@@ -179,13 +179,18 @@ namespace QuranMEM.ViewModel
 
                     await App.Current.MainPage.DisplayAlert("Stats Reset", "Stats reset successfully", "OK");
 
-                    await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+                    App.Current.MainPage.Navigation.PopAsync();
+
+                    await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new HomePage()));
+               
                 }
                     
             }
             catch(Exception resetE)
             {
                 await App.Current.MainPage.DisplayAlert("Stat Error", "Error Resetting your STATS...try again soon", "OK");
+
+                await App.Current.MainPage.Navigation.PopAsync();
             }
         }
 
@@ -202,13 +207,16 @@ namespace QuranMEM.ViewModel
 
                     await App.Current.MainPage.DisplayAlert("Lists Reset", "Lists reset successfully", "OK");
 
-                    await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+                    App.Current.MainPage.Navigation.PopAsync();
+
+                    await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new HomePage()));
                 }
 
             }
             catch (Exception resetE)
             {
                 await App.Current.MainPage.DisplayAlert("List Error", "Error Resetting your LISTS...try again soon", "OK");
+                await App.Current.MainPage.Navigation.PopAsync();
             }
         }
 
@@ -224,13 +232,15 @@ namespace QuranMEM.ViewModel
                 {
                     App.user.CurrentCard = App.user.IncorrectCards.Take(1).FirstOrDefault();
 
-                    await App.Current.MainPage.Navigation.PushAsync(new FocusListFrontCardPage());
+                    App.Current.MainPage.Navigation.PopAsync();
+
+                    await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new FocusListFrontCardPage()));
 
                 }
             }
             catch(Exception focusListE)
             {
-                await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+                await App.Current.MainPage.Navigation.PopAsync();
             }
            
 
@@ -241,7 +251,7 @@ namespace QuranMEM.ViewModel
         {
             if (string.IsNullOrEmpty(usa.Email) || string.IsNullOrEmpty(usa.Password))
             {
-                await App.Current.MainPage.Navigation.PushAsync(new MainPage());
+                await App.Current.MainPage.Navigation.PushModalAsync(new MainPage());
             }
             else
             {
@@ -253,13 +263,19 @@ namespace QuranMEM.ViewModel
                     {
                         App.user = new User();
 
-                        await App.Current.MainPage.Navigation.PushAsync(new MainPage());
+                        await App.Current.MainPage.Navigation.PopAsync();
+
+                        Application.Current.MainPage = new NavigationPage(new MainPage());
+                        //await App.Current.MainPage.Navigation.PushAsync(new NavigationPage(new MainPage()));
+
+
                     }
                 }
                 catch(Exception SignOutE)
                 {
                     await App.Current.MainPage.DisplayAlert("Error Signing Out", "Sorry, Error Signing User Out", "OK");
-                    await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+                    App.Current.MainPage.Navigation.PopAsync();
+                    await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new HomePage()));
                 }
             }
         }
@@ -270,7 +286,7 @@ namespace QuranMEM.ViewModel
             if (string.IsNullOrEmpty(ChangePasswordNew) || string.IsNullOrEmpty(ChangeConfirmPassword))
             {
                 await App.Current.MainPage.DisplayAlert("Missing PW", "Please fill in New PW and Confirm New PW", "OK");
-                await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+                //await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
             }
             else
             {
@@ -291,12 +307,13 @@ namespace QuranMEM.ViewModel
                             if (changed)
                             {
                                 await App.Current.MainPage.DisplayAlert("Successful Password Change", "Password Changed Successfully", "OK");
-                                await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+                                App.Current.MainPage.Navigation.PopAsync();
+                                await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new HomePage()));
                             }
                             else
                             {
                                 await App.Current.MainPage.DisplayAlert("UnSuccessful Password Change", "Unable to Change Password...Try again later", "OK");
-                                await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+                                await App.Current.MainPage.Navigation.PopAsync();
                             }
 
                         }
@@ -306,7 +323,7 @@ namespace QuranMEM.ViewModel
                 catch(Exception ChangePWExceptionE)
                 {
                     await App.Current.MainPage.DisplayAlert("Error Changing PW", "Sorry, Error Changing your password", "OK");
-                    await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+                    await App.Current.MainPage.Navigation.PopAsync();
                 }
             }
         }

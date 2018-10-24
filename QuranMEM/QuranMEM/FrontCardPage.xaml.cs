@@ -33,8 +33,7 @@ namespace QuranMEM
 
             if(App.user.CurrentCard < 1 || App.user.CurrentCard > 6236)
             {
-
-                Navigation.PushAsync(new HomePage());
+                Navigation.PushModalAsync(new NavigationPage(new HomePage()));
 
             }
 
@@ -58,34 +57,39 @@ namespace QuranMEM
             
         }
 
-        private void BackFlashCard_Clicked(object sender, EventArgs e)
+        private async void BackFlashCard_Clicked(object sender, EventArgs e)
         {
 
             try
             {
-                Navigation.PushAsync(new BackCardPage(fcVM));
+                await Navigation.PushAsync(new BackCardPage(fcVM));
             }
             catch(Exception englishTranslationE)
             {
                 //Do Something
-                System.Threading.Thread.Sleep(150);
+                await DisplayAlert("Error Back Card", "Error Navigating to Back of Card", "Try Again");
             }
 
         }
 
-        private void AccountScreen_Clicked(object sender, EventArgs e)
+        private async void AccountScreen_Clicked(object sender, EventArgs e)
         {
             try
             {
+                var answer = await DisplayAlert("Ayah Selection?", "Navigating back to selection screens will clear your currently selected Verses.", "Select new Ayahs", "Stay Here");
+                if(answer)
+                {
+                    App.user.SelectedCards = new List<int>();
 
-                Navigation.PushAsync(new HomePage());
+                    await Navigation.PushModalAsync(new NavigationPage(new HomePage()));
+                }
+                             
             }
             catch(Exception verseSelectionNavigation)
             {
                 //Do Something
-                System.Threading.Thread.Sleep(150);
+                await DisplayAlert("Error Navigating", "Error navigating back to Home Screen", "Try Again");
             }
-
 
         }
     }

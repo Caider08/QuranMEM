@@ -19,7 +19,7 @@
                 <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand" >
                     <Button 
                     x:Name="AccountScreen"
-                    Text="Select Surahs"
+                    Text="Select Ayahs"
                     FontSize="Small"
                     Clicked="AccountScreen_Clicked"             
                         HorizontalOptions="CenterAndExpand"

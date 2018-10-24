@@ -8,7 +8,8 @@
             
        
         <ListView x:Name="verseListView"                 
-                  ItemSelected="verseListView_ItemSelected">
+                  ItemSelected="verseListView_ItemSelected"
+                  Margin="20,0,20,0">
             <ListView.Header>
                 <Label Text="Pick Your Surahs to Study"
                 VerticalOptions="CenterAndExpand" 

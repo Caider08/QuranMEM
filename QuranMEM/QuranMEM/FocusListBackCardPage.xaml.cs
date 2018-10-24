@@ -51,7 +51,7 @@ namespace QuranMEM
             if (App.user.CurrentCard < 1 || App.user.CurrentCard > 6236)
             {
 
-                await Navigation.PushAsync(new HomePage());
+                await Navigation.PushModalAsync(new NavigationPage(new HomePage()));
 
             }
 
@@ -66,6 +66,7 @@ namespace QuranMEM
             catch (Exception backToFrontCardE)
             {
                 System.Threading.Thread.Sleep(150);
+                await DisplayAlert("Front Card Error", "Error Navigating back to Front Card", "OK");
             }
         }
 
@@ -106,7 +107,7 @@ namespace QuranMEM
                             System.Threading.Thread.Sleep(250);
                         }
 
-                        await Navigation.PushAsync(new HomePage());
+                        await Navigation.PushModalAsync(new NavigationPage(new HomePage()));
                     }
                 }
                 else if (App.user.IncorrectCards.Count() == 1)
@@ -132,7 +133,6 @@ namespace QuranMEM
 
                         }
                  
-
                         //Change Cloud Database
                         //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
 
@@ -143,9 +143,11 @@ namespace QuranMEM
                     }
                     catch (Exception incrementDatabaseE)
                     {
+                        Navigation.PopAsync();
                         await Navigation.PushAsync(new FocusListFrontCardPage());
                     }
 
+                    Navigation.PopAsync();
                     await Navigation.PushAsync(new FocusListFrontCardPage());
                 }
                 else
@@ -180,9 +182,11 @@ namespace QuranMEM
                     }
                     catch (Exception incrementDatabaseE)
                     {
+                        Navigation.PopAsync();
                         await Navigation.PushAsync(new FocusListFrontCardPage());
                     }
 
+                    Navigation.PopAsync();
                     await Navigation.PushAsync(new FocusListFrontCardPage());
 
                 }
@@ -266,7 +270,7 @@ namespace QuranMEM
             catch (Exception focusListE)
             {
                 //Do something
-                System.Threading.Thread.Sleep(250);
+                await DisplayAlert("Focus List Error", "Error when trying to add Ayah to your Focus Study List", "OK");
             }
         }
     }

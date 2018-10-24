@@ -37,28 +37,22 @@
 
                 </StackLayout>
 
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="25,10,25,0">
-                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0">
                         <Button x:Name="focusListButton"
                             Text="Focus List"
                             Command="{Binding FocusListCommand}"  
-                                HorizontalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand"
+                                                           
                         />
-
-
-
 
 
                         <Button x:Name="ResetListsButton"
                             Text="Reset Lists"
                             Command="{Binding ResetLISTSCommand}" 
                                 HorizontalOptions="CenterAndExpand"
-                                Margin="0,10,0,10"
+                                Margin="0,20,0,20"
                         />
-
-
-
-
 
                         <Button x:Name="ResetStatsButton"
                             Text="Reset STATS"
@@ -71,7 +65,7 @@
                 </StackLayout>
 
 
-                <StackLayout Margin="6,20,6,0">
+                <StackLayout Margin="20,20,20,0">
                     <Entry x:Name="changePasswordEntry"
               Text="{Binding ChangePasswordNew, Mode=TwoWay}"
                    
@@ -93,7 +87,7 @@
                 </StackLayout>
            
             
-                <StackLayout Margin="6,20,6,0">
+                <StackLayout Margin="20,20,20,0">
                     <Button Text="Sign Out"
                     Command="{Binding SignOutCommand}"
                     CommandParameter="{Binding User}"

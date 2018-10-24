@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace QuranMEM.ViewModel
 {
@@ -134,28 +135,25 @@ namespace QuranMEM.ViewModel
         }
 
         public async void RegisterUser(User usa)
-        {
-           
+        {          
                 bool registerSucess = await User.RegisterUserU(usa);
 
                 if (registerSucess)
                 {
                     try
                     {
-                        await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                        await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new HomePage()));
                     }
                     catch(Exception successRegistrationE)
                     {
-                    System.Threading.Thread.Sleep(250);
+                        await App.Current.MainPage.DisplayAlert("Navigation Error", "Error Loading Home Page", "Ok");
                     }
-
                 }
                 else
                 {
                     await App.Current.MainPage.DisplayAlert("Registration Error", "Registration Failed...Please Try Again", "OK");
                 }
-
-         
+        
         }
     }
 

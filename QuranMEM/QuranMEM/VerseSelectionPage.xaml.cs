@@ -23,7 +23,6 @@ namespace QuranMEM
         private void QuranCloudTest_Clicked(object sender, EventArgs e)
         {
 
-
             //string url = "http://api.alquran.cloud/ayah/262/en.asad";
 
             string url2 = "http://api.alquran.cloud/ayah/262";
@@ -39,9 +38,7 @@ namespace QuranMEM
                 verse += quranObject.data.text;
 
                 System.Threading.Thread.Sleep(150);
-
-               
-                
+                             
             }
 
         }
@@ -96,9 +93,44 @@ namespace QuranMEM
             }
             catch(Exception onAppearingE)
             {
-                //Do something
-                System.Threading.Thread.Sleep(150);
-                Navigation.PushAsync(new VerseSearchPage());
+                //Do something                                      
+                //string chapterName = "";
+                try
+                {
+                    chapters = new List<SurahDatum>();
+
+                    surahURL = "http://api.alquran.cloud/surah";
+
+                    response = "";
+
+
+                    using (var wb = new WebClient())
+                    {
+
+                        response = await wb.DownloadStringTaskAsync(surahURL);
+
+
+                        if (string.IsNullOrEmpty(response))
+                        {
+                            //try the call again
+                            System.Threading.Thread.Sleep(1500);
+
+                            response = await wb.DownloadStringTaskAsync(surahURL);
+
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<SurahRootObject>();
+
+                        chapters = quranObject.data;
+
+                    }
+
+                    verseListView.ItemsSource = chapters;
+                }
+                catch(Exception onAppearingEE)
+                {
+                    await Navigation.PushAsync(new HomePage());
+                }
             }
         }
 
@@ -112,11 +144,7 @@ namespace QuranMEM
 
             var chapterName = easy.englishNameTranslation;
 
-            var url = "http://api.alquran.cloud/surah/" + chapterNumba + "/en.sahih";
-
-            var ayahs = new List<Ayah>();
-
-            string response = "";
+           
 
             if(App.user.SelectedCards == null)
             {
@@ -135,6 +163,11 @@ namespace QuranMEM
             //string chapterName = "";
             try
             {
+                var url = "http://api.alquran.cloud/surah/" + chapterNumba + "/en.sahih";
+
+                var ayahs = new List<Ayah>();
+
+                string response = "";
 
                 using (var wb = new WebClient())
                 {
@@ -145,7 +178,7 @@ namespace QuranMEM
                         //Try it again
                         System.Threading.Thread.Sleep(1000);
                         response = await wb.DownloadStringTaskAsync(url);
-                       
+
                     }
 
                     var quranObject = JToken.Parse(response).ToObject<RootObject>();
@@ -153,7 +186,7 @@ namespace QuranMEM
                     ayahs = quranObject.data.ayahs;
 
                 }
-       
+
 
                 foreach (Ayah aya in ayahs)
                 {
@@ -175,19 +208,73 @@ namespace QuranMEM
                 }
                 else
                 {
-                    await Navigation.PushAsync(new FrontCardPage());
+                    await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
                 }
 
 
             }
-            catch(Exception verseSelectionE)
+            catch (Exception verseSelectionE)
             {
-                //Do Something
-                //System.Threading.Thread.Sleep(250);
-                await DisplayAlert("Verse Error", "Problems adding Selected Surahs...please Re-Start the process", "Try Again");
-                App.user.SelectedCards = new List<int>();
-                await Navigation.PushAsync(new HomePage());
-                
+                //try Again
+
+                try
+                {
+                    var url = "http://api.alquran.cloud/surah/" + chapterNumba + "/en.sahih";
+
+                    var ayahs = new List<Ayah>();
+
+                    string response = "";
+
+                    using (var wb = new WebClient())
+                    {
+                        response = await wb.DownloadStringTaskAsync(url);
+
+                        if (string.IsNullOrEmpty(response))
+                        {
+                            //Try it again
+                            System.Threading.Thread.Sleep(1000);
+                            response = await wb.DownloadStringTaskAsync(url);
+
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<RootObject>();
+
+                        ayahs = quranObject.data.ayahs;
+
+                    }
+
+
+                    foreach (Ayah aya in ayahs)
+                    {
+                        App.user.SelectedCards.Add(aya.number);
+                    }
+
+                    App.user.CurrentCard = App.user.SelectedCards.FirstOrDefault();
+
+                    App.user.SelectedCards.Remove(App.user.CurrentCard);
+
+                    var afterSelection = App.user.SelectedCards;
+
+                    var answer = await DisplayAlert("Surah Added", "Would you like to Add another Surah to your Study Session?", "Yes", "Start Studying");
+
+                    if (answer == true)
+                    {
+                        //Stay on Surah Selection
+                        System.Threading.Thread.Sleep(150);
+                    }
+                    else
+                    {
+                        await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+                    }
+
+                }
+                catch (Exception verseSelectionEE)
+                {
+                    //Do Something                    
+                    await DisplayAlert("Verse Error", "Problems adding Selected Surahs...please Re-Start the process", "Try Again");
+                    App.user.SelectedCards = new List<int>();
+                    await Navigation.PushAsync(new HomePage());
+                }
             }
 
         }

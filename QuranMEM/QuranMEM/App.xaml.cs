@@ -32,6 +32,7 @@ namespace QuranMEM
             InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage());
+
         }
 
         public App(string databaseLocation)

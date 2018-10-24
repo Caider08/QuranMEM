@@ -31,7 +31,7 @@ namespace QuranMEM
             if (App.user.CurrentCard < 1 || App.user.CurrentCard > 6236)
             {
 
-                await Navigation.PushAsync(new HomePage());
+                await Navigation.PushModalAsync(new NavigationPage(new  HomePage()));
 
             }
         }
@@ -40,11 +40,11 @@ namespace QuranMEM
         {
             try
             {
-                var answer = await DisplayAlert("Account Screen", "Back to Account Screen?", "Yes", "No");
+                var answer = await DisplayAlert("Home Screen", "Back to Home Screen?", "Yes", "No");
 
                 if (answer)
                 {
-                    await Navigation.PushAsync(new AccountPage());
+                    await Navigation.PushModalAsync(new NavigationPage(new HomePage()));
                 }
             }
             catch(Exception accountScreenNavE)

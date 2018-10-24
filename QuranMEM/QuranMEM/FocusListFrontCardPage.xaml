@@ -22,18 +22,18 @@
                 />
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal"  HorizontalOptions="Start" Margin="8,20,8,0">
-                <StackLayout Orientation="Vertical"  HorizontalOptions="Center" >
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" Margin="10,20,10,0">
+                <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand" >
                     <Button 
                     x:Name="AccountScreen"
-                    Text="Account Screen"
+                    Text="Home/Ayahs"
                     FontSize="Small"
                     Clicked="AccountScreen_Clicked"  
                
                         HorizontalOptions="StartAndExpand"
                     />
                 </StackLayout>
-                <StackLayout Orientation="Vertical"  HorizontalOptions="Center" >
+                <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand" >
                     <Button 
                     x:Name="FocusListBackFlashCard"
                     Text="Flip Card"

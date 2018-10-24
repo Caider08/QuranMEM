@@ -97,7 +97,7 @@ namespace QuranMEM
                             System.Threading.Thread.Sleep(250);
                         }
 
-                        await Navigation.PushAsync(new HomePage());
+                        await Navigation.PushModalAsync(new NavigationPage(new HomePage()));
                     }
                 }
                 else if (App.user.SelectedCards.Count() == 1)
@@ -133,10 +133,12 @@ namespace QuranMEM
                     }
                     catch(Exception incrementDatabaseE)
                     {
+                        await Navigation.PopAsync();
                         await Navigation.PushAsync(new FrontCardPage());
                     }
 
-              
+                    //await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+                    await Navigation.PopAsync();
                     await Navigation.PushAsync(new FrontCardPage());
                 }
                 else
@@ -174,10 +176,14 @@ namespace QuranMEM
                     }
                     catch (Exception incrementDatabaseE)
                     {
+                        //await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+                        await Navigation.PopAsync();
                         await Navigation.PushAsync(new FrontCardPage());
                     }
 
 
+                    //await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+                    await Navigation.PopAsync();
                     await Navigation.PushAsync(new FrontCardPage());
 
                 }

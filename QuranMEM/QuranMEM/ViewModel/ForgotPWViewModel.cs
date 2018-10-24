@@ -38,15 +38,15 @@ namespace QuranMEM.ViewModel
             public async void LogIn()
             {
 
-            await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
+                //await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
+                await App.Current.MainPage.Navigation.PopAsync();
 
             }
 
-            public async void ResetUserPW()
-            {
+           public async void ResetUserPW()
+           {
             if (!string.IsNullOrEmpty(PWEmail))
             {
-
 
                 try
                 {
@@ -81,11 +81,14 @@ namespace QuranMEM.ViewModel
 
                             await App.Current.MainPage.DisplayAlert("New PW = QuranTest", "Be sure to visit your Account page and change PW from 'QuranTest' to your desired PW", "OK");
 
-                            await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
+                            //await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
+                            await App.Current.MainPage.Navigation.PopAsync();
                         }
                         else
                         {
-                            await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
+                            //await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
+                            await App.Current.MainPage.Navigation.PopAsync();
+
                         }
 
                     }
@@ -107,7 +110,7 @@ namespace QuranMEM.ViewModel
                 await App.Current.MainPage.DisplayAlert("Enter Email", "Please enter a valid Email", "OK");
             }
                
-            }
+           }
 
 
     }

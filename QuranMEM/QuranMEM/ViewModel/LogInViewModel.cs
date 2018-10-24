@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace QuranMEM.ViewModel
 {
@@ -129,25 +130,33 @@ namespace QuranMEM.ViewModel
             {
                 if (App.user.SelectedCards != null)
                 {
+                    try
+                    {
 
-                    if (App.user.SelectedCards.Count() > 0)
-                    {
-                        await App.Current.MainPage.Navigation.PushAsync(new FrontCardPage());
+                        if (App.user.SelectedCards.Count() > 0)
+                        {
+                            await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+                        }
+                        else
+                        {
+                            await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new HomePage()));
+                        }
                     }
-                    else
+                    catch(Exception simpleNavE)
                     {
-                        await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                        await App.Current.MainPage.DisplayAlert("Error Navigating", "Error Loading Home Screen", "Try again");
                     }
                 }
                 else
                 {
                     try
                     {
-                        await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                        await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new HomePage()));
                     }
                     catch(Exception whatE)
                     {
-                        System.Threading.Thread.Sleep(150);
+                       
+                        await App.Current.MainPage.DisplayAlert("Error Navigating", "Error Loading Home Screen", "Try again");
                     }
                 }
             }

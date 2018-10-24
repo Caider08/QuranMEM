@@ -28,14 +28,14 @@ namespace QuranMEM.Model
     }*/
 
     public class Edition
-{
+    {
     public string identifier { get; set; }
     public string language { get; set; }
     public string name { get; set; }
     public string englishName { get; set; }
     public string format { get; set; }
     public string type { get; set; }
-}
+    }
 
 public class Surah
 {
@@ -149,5 +149,27 @@ public class RootObject
         public JuzData data { get; set; }
     }
 
+   
+    public class SearchMatch
+    {
+        public int number { get; set; }
+        public string text { get; set; }
+        public Edition edition { get; set; }
+        public Surah surah { get; set; }
+        public int numberInSurah { get; set; }
+    }
+
+    public class SearchData
+    {
+        public int count { get; set; }
+        public List<SearchMatch> matches { get; set; }
+    }
+
+    public class SearchRootObject
+    {
+        public int code { get; set; }
+        public string status { get; set; }
+        public SearchData data { get; set; }
+    }
 
 }
