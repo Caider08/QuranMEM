@@ -7,7 +7,7 @@
             Margin="20">
             <Entry x:Name="emailEntry"
                    Text="{Binding Email, Mode=TwoWay}"
-                   Placeholder="Email Address"
+                   Placeholder="Email Address (Email stored only on your Device)"
                    
                    Keyboard="Email"/>
             <Entry x:Name="userNameEntry"
@@ -18,7 +18,7 @@
             <Entry x:Name="passwordEntry"
                    Text="{Binding Password, Mode=TwoWay}"
                  
-                   Placeholder="Password"
+                   Placeholder="Password (only stored on your local device)"
                    IsPassword="True"/>
             <Entry x:Name="confirmPasswordEntry"
                    Text="{Binding ConfirmPassword, Mode=TwoWay}"
@@ -32,8 +32,7 @@
                     Text="Register"
                     Command="{Binding RegisterUserCommand}"
                     CommandParameter="{Binding User}"
-                    
-                  
+                                   
                   />
         </StackLayout>
     </ContentPage.Content>

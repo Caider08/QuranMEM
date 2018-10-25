@@ -14,11 +14,12 @@ namespace QuranMEM
 
         public static string DatabaseLocation = string.Empty;
 
-        public static MobileServiceClient MobileService =
-    new MobileServiceClient(
+        //If Client decides to re-implement cloud storage
+        //public static MobileServiceClient MobileService =
+    //new MobileServiceClient(
     
-    "https://memorizethequran.azurewebsites.net"
-);
+    //""
+        //);
 
 
         public App()

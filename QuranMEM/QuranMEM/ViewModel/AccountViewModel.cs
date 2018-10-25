@@ -268,7 +268,6 @@ namespace QuranMEM.ViewModel
                         Application.Current.MainPage = new NavigationPage(new MainPage());
                         //await App.Current.MainPage.Navigation.PushAsync(new NavigationPage(new MainPage()));
 
-
                     }
                 }
                 catch(Exception SignOutE)

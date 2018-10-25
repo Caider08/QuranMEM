@@ -89,13 +89,12 @@ namespace QuranMEM
                                 conn.CreateTable<User>();
                                 var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
 
+                                //Update cloud 
                                 //Change Cloud Database since User has completed their FocusList
-                                var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
-
-                                cloudUser.id = cloudUser.id;
-                                cloudUser.VersesStudied = localUser.VersesStudied;
-
-                                await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
+                                //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
+                                //cloudUser.id = cloudUser.id;
+                                //cloudUser.VersesStudied = localUser.VersesStudied;
+                                //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
 
                                 System.Threading.Thread.Sleep(150);
 
@@ -113,8 +112,7 @@ namespace QuranMEM
                 else if (App.user.IncorrectCards.Count() == 1)
                 {
                     try
-                    { 
-                    
+                    {                    
                         App.user.CurrentCard = App.user.IncorrectCards.FirstOrDefault();
 
                         App.user.IncorrectCards.Remove(App.user.CurrentCard);

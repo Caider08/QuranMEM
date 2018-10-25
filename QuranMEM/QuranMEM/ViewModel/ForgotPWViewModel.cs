@@ -51,51 +51,58 @@ namespace QuranMEM.ViewModel
                 try
                 {
                     //Change Cloud Database
-                    var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == PWEmail).ToListAsync()).FirstOrDefault();
+                    //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == PWEmail).ToListAsync()).FirstOrDefault();
+                    var localUser1 = new User();
 
-                    if (cloudUser != null && !string.IsNullOrEmpty(cloudUser.Email))
+                    using (SQLiteConnection connec = new SQLiteConnection(App.DatabaseLocation))
                     {
-                        var answer = await App.Current.MainPage.DisplayAlert("Reset PW?", "Are you sure you want to reset PW?", "Yes", "No");
 
-                        if (answer)
+                        connec.CreateTable<User>();
+                        localUser1 = connec.Table<User>().Where(u => u.Email == email).ToList<User>().FirstOrDefault();
+
+                    }
+
+                        if (localUser1 != null && !string.IsNullOrEmpty(localUser1.Email))
                         {
-                            cloudUser.id = cloudUser.id;
-                            cloudUser.Password = "QuranTest";
-                            cloudUser.ConfirmPassword = "QuranTest";
+                            var answer = await App.Current.MainPage.DisplayAlert("Reset PW?", "Are you sure you want to reset PW?", "Yes", "No");
 
-                            await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
-
-                            System.Threading.Thread.Sleep(250);
-
-                            //Change LocalDB
-                            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                            if (answer)
                             {
-                                conn.CreateTable<User>();
-                                var localUser = conn.Table<User>().Where(u => u.Email == email).ToList<User>().FirstOrDefault();
+                                //cloudUser.id = cloudUser.id;
+                                //cloudUser.Password = "QuranTest";
+                                //cloudUser.ConfirmPassword = "QuranTest";
 
-                                localUser.Password = "QuranTest";
-                                localUser.ConfirmPassword = "QuranTest";
-                                conn.Update(localUser);
+                                //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
 
+                                System.Threading.Thread.Sleep(250);
+
+                                //Change LocalDB
+                                using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                                {
+                                    conn.CreateTable<User>();
+                                    var localUser = conn.Table<User>().Where(u => u.Email == email).ToList<User>().FirstOrDefault();
+                                    localUser.Password = "QuranTest";
+                                    localUser.ConfirmPassword = "QuranTest";
+                                    conn.Update(localUser);
+
+                                }
+
+                                await App.Current.MainPage.DisplayAlert("New PW = QuranTest", "Be sure to visit your Account page and change PW from 'QuranTest' to your desired PW", "OK");
+
+                                //await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
+                                await App.Current.MainPage.Navigation.PopAsync();
+                            }
+                            else
+                            {
+                                //await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
+                                await App.Current.MainPage.Navigation.PopAsync();
                             }
 
-                            await App.Current.MainPage.DisplayAlert("New PW = QuranTest", "Be sure to visit your Account page and change PW from 'QuranTest' to your desired PW", "OK");
-
-                            //await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
-                            await App.Current.MainPage.Navigation.PopAsync();
                         }
                         else
                         {
-                            //await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
-                            await App.Current.MainPage.Navigation.PopAsync();
-
+                            await App.Current.MainPage.DisplayAlert("No Account Exists", "No registered account exists for the given email", "OK");
                         }
-
-                    }
-                    else
-                    {
-                        await App.Current.MainPage.DisplayAlert("No Account Exists", "No registered account exists for the given email", "OK");
-                    }
 
                 }
                 catch (Exception resetPWE)

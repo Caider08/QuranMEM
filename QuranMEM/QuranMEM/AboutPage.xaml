@@ -14,15 +14,17 @@
                     <RowDefinition Height="3*"/>
                     <RowDefinition Height="*"
                 </Grid.RowDefinitions>-->
-                        
-                       
-                <StackLayout Margin="20" Orientation="Vertical">
-                    <StackLayout HorizontalOptions="CenterAndExpand">
 
-                        <Image x:Name="aboutFront"
-                        Aspect="AspectFit" />
-                     </StackLayout>
-                <StackLayout VerticalOptions="Start" Margin="0,15,0,0">
+            <StackLayout Margin="20" Orientation="Vertical">
+                <StackLayout HorizontalOptions="CenterAndExpand">
+
+                    <Image x:Name="aboutFront"
+                        Aspect="AspectFill" />
+                </StackLayout>
+            </StackLayout>
+            <!--<StackLayout VerticalOptions="Start" Margin="0,15,0,0">
+                    
+                     If Client Decides to Turn back on leaderboard
                     <ListView x:Name="leadersListView"                 
                             >
                         <ListView.Header>
@@ -61,9 +63,7 @@
                     
                 </StackLayout>
                 
-                </StackLayout>
-
-
+                </StackLayout>-->
                       
         </ScrollView>
     </ContentPage.Content>

@@ -200,7 +200,6 @@ namespace QuranMEM.Model
                     //await DisplayAlert("Blank Password", "Please enter a Valid Password", "Ok");
                     return false;
                 }
-
             }
             else
             {
@@ -227,39 +226,43 @@ namespace QuranMEM.Model
                             }
                             else
                             {
+                                
+                                await App.Current.MainPage.DisplayAlert("Incorrect Password", "Incorrect Password for this Email", "Try Again");
                                 return false;
-                                //await DisplayAlert("Incorrect Password", "Incorrect Password for this Email", "OK");
                             }
 
                         }                     
                         else
                         {
-                            //await DisplayAlert("No User Exists with that Email", "No User Exists with that Email", "OK");
+                            
+                            await App.Current.MainPage.DisplayAlert("No User Exists with that Email", "No User Exists with that Email..Try registering a new free Account", "OK");
+                            return false;
+
+                            //For Cloud Functionality
                             //await Navigation.PushAsync(new NavigationPage(new RegisterPage()));
 
                             //See if user exists on Cloud Database
-                            var user2 = (await App.MobileService.GetTable<User>().Where(u => u.Email == email).ToListAsync()).FirstOrDefault();
+                            //var user2 = (await App.MobileService.GetTable<User>().Where(u => u.Email == email).ToListAsync()).FirstOrDefault();
 
-                            if (user2 != null)
-                            {
-                                App.user = user2;
+                            //if (user2 != null)
+                            //{
+                            //App.user = user2;
 
-                                if (user2.Password == pw)
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    return false;
-                                }
-                            }
-                            else
-                            {
-                                return false;
-                            }
+                            //if (user2.Password == pw)
+                            //{
+                            //return true;
+                            //}
+                            //else
+                            //{
+                            // false;
+                            //}
+                            //}
+                            //else
+                            //{
+                            //return false;
+                            //}
 
                         }
-
 
                     }
                 }
@@ -278,17 +281,17 @@ namespace QuranMEM.Model
         {
             try
             {
-               
+                //Cloud functionality if Customer decides wants it
                 //Change Cloud Database
-                var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == usa.Email).ToListAsync()).FirstOrDefault();
+                //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == usa.Email).ToListAsync()).FirstOrDefault();
 
-                cloudUser.id = cloudUser.id;
-                cloudUser.Password = newPW;
-                cloudUser.ConfirmPassword = newPW;
+                //cloudUser.id = cloudUser.id;
+                //cloudUser.Password = newPW;
+                //cloudUser.ConfirmPassword = newPW;
                 
-                await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
+                //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
 
-                System.Threading.Thread.Sleep(250);
+                //System.Threading.Thread.Sleep(250);
 
                 //Change LocalDB
                 using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
@@ -318,44 +321,47 @@ namespace QuranMEM.Model
         {
             try
             {
+                //Cloud Functionality (if Customer decicdes to reimplement this)
                 //See if User already exists
-                var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == usa.Email).ToListAsync()).FirstOrDefault();
+                //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == usa.Email).ToListAsync()).FirstOrDefault();
 
-                if (cloudUser == null || string.IsNullOrEmpty(cloudUser.Email))
+                //if (cloudUser == null || string.IsNullOrEmpty(cloudUser.Email))
+                //{
+
+                //Insert into Cloud Database
+                //await App.MobileService.GetTable<User>().InsertAsync(usa);
+
+                //Insert into Localdb
+
+                //}
+                // else
+                //{
+                // await App.Current.MainPage.DisplayAlert("Registered Email", "This Email has already been used to Register with us", "OK");
+                // return false;
+
+                //}
+
+                using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
                 {
-
-                    //Insert into Cloud Database
-                    await App.MobileService.GetTable<User>().InsertAsync(usa);
-
-                    //Insert into Localdb
-                    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-                    {
-                        conn.CreateTable<User>();
-                        conn.Insert(usa);
-                        conn.Close();
-
-                    }
-
-                    System.Threading.Thread.Sleep(250);
-
-                    App.user = usa;
-
-                    System.Threading.Thread.Sleep(250);
-
-                    return true;
-                }
-                else
-                {
-                    await App.Current.MainPage.DisplayAlert("Registered Email", "This Email has already been used to Register with us", "OK");
-                    return false;
+                    conn.CreateTable<User>();
+                    conn.Insert(usa);
+                    conn.Close();
 
                 }
+
+                System.Threading.Thread.Sleep(250);
+
+                App.user = usa;
+
+                System.Threading.Thread.Sleep(250);
+
+                return true;
 
             }
             catch (Exception ez)
             {
                 //Console.WriteLine(ez);
-                //Maybe store this in the cloud Database?
+             
 
                 return false;
             }
