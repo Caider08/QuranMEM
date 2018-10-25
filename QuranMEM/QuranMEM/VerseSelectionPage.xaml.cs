@@ -145,7 +145,6 @@ namespace QuranMEM
             var chapterName = easy.englishNameTranslation;
 
            
-
             if(App.user.SelectedCards == null)
             {
                 App.user.SelectedCards = new List<int>();

@@ -8,7 +8,7 @@
          
         <StackLayout x:Name="BackCardStackLayout" >
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="8,20,0,0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="10,20,0,0">
                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" >
 
                     <Label Text="{Binding ChapterName}"
@@ -26,7 +26,7 @@
 
             </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="8,0,8,0">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="10,0,10,0">
                     <Label Text="{Binding NextArabicVerse}"
                            FontSize="Default"   
                        HorizontalTextAlignment="Center"
@@ -35,25 +35,22 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand"
-                         VerticalOptions="Start" Margin="8,10,8,0">
-                    <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                         VerticalOptions="Start" Margin="25,10,25,0">
+                    <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand" Margin="0,0,25,0">
                         <Button 
                         x:Name="ArabicVerse"
                         Text="Front Card"
-                        Clicked="ArabicVerse_Clicked" 
-                        HorizontalOptions="CenterAndExpand"
-                        FontSize="Small"                     
+                        Clicked="ArabicVerse_Clicked"                       
+                        FontSize="Default"                     
                                         />
                     </StackLayout>
                    
-                    <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand" Margin="6,0,0,0" >
+                    <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand" >
                         <Button 
                         x:Name="NextFlashCard"
                         Text="Next Ayah"
-                        Clicked="NextFlashCard_Clicked" 
-               
-                        HorizontalOptions="CenterAndExpand"
-                        FontSize="Small"
+                        Clicked="NextFlashCard_Clicked"                                  
+                        FontSize="Default"
                             />
                     </StackLayout>
                 </StackLayout>
@@ -74,7 +71,7 @@
                     </Image>
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="8,10,8,0">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="10,10,10,0">
                     <Label Text="{Binding EnglishTranslation}"
                            FontSize="Default"
                            HorizontalOptions="Fill"

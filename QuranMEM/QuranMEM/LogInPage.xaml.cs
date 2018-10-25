@@ -34,14 +34,14 @@ namespace QuranMEM
 
             if (!String.IsNullOrEmpty(App.user.Email))
             {
-                if(App.user.SelectedCards.Count() > 0)
+                if(App.user.SelectedCards != null && App.user.SelectedCards.Count() > 0)
                 {
 
-                    Navigation.PushAsync(new FrontCardPage());
+                    Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
                 }
                 else
                 {
-                    Navigation.PushAsync(new HomePage());
+                    Navigation.PushModalAsync(new NavigationPage(new HomePage()));
                 }             
             }
 

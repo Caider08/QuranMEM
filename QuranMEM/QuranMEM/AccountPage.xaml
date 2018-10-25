@@ -5,13 +5,13 @@
     <ContentPage.Content>
         <ScrollView>
         <StackLayout x:Name="UserDisplayStackLayout" Margin="0,10,0,0" Orientation="Vertical" HorizontalOptions="FillAndExpand">
-            <Label Text="{Binding Email, Mode=TwoWay}" Margin="6,0,0,0"
+            <Label Text="{Binding Email, Mode=TwoWay}" Margin="25,0,0,0"
                />
 
-            <Label Text="{Binding UserName, Mode=TwoWay}" Margin="6,0,0,0"
+            <Label Text="{Binding UserName, Mode=TwoWay}" Margin="25,0,0,0"
                />
            
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="10,20,0,0">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="25,20,0,0">
                     <StackLayout Orientation="Vertical" >
 
                         <Label Text="Verses Studied: "
@@ -24,7 +24,7 @@
 
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                <StackLayout Orientation="Horizontal" Margin="25,0,0,0">
                     <StackLayout Orientation="Vertical" >
 
                         <Label Text="Verse Mastery %: "
@@ -37,27 +37,25 @@
 
                 </StackLayout>
 
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
-                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="50,10,50,0">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                         <Button x:Name="focusListButton"
                             Text="Focus List"
                             Command="{Binding FocusListCommand}"  
-                            HorizontalOptions="CenterAndExpand"
-                                                           
+                                                                                     
                         />
-
 
                         <Button x:Name="ResetListsButton"
                             Text="Reset Lists"
                             Command="{Binding ResetLISTSCommand}" 
-                                HorizontalOptions="CenterAndExpand"
+                              
                                 Margin="0,20,0,20"
                         />
 
                         <Button x:Name="ResetStatsButton"
                             Text="Reset STATS"
                             Command="{Binding ResetSTATSCommand}"  
-                                HorizontalOptions="CenterAndExpand"
+                               
                     />
                     </StackLayout>
                    
@@ -65,7 +63,7 @@
                 </StackLayout>
 
 
-                <StackLayout Margin="20,20,20,0">
+                <StackLayout Margin="25,20,25,0">
                     <Entry x:Name="changePasswordEntry"
               Text="{Binding ChangePasswordNew, Mode=TwoWay}"
                    
@@ -87,7 +85,7 @@
                 </StackLayout>
            
             
-                <StackLayout Margin="20,20,20,0">
+                <StackLayout Margin="25,20,25,0">
                     <Button Text="Sign Out"
                     Command="{Binding SignOutCommand}"
                     CommandParameter="{Binding User}"

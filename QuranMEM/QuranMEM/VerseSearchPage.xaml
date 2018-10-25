@@ -4,19 +4,19 @@
              x:Class="QuranMEM.VerseSearchPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,20,0,0">
-
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="40,20,40,0">
+            
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Entry 
                 x:Name="CloudSearchVerse"
-                HorizontalOptions="CenterAndExpand"
+             
                 Placeholder="Enter Verse Number"
                 Keyboard="Numeric"
          
                 />
 
                     <Button 
-                HorizontalOptions="CenterAndExpand"
+             
                     x:Name="QuranCloudSearch"
                     Clicked="QuranCloudSearch_Clicked"    
                     Text="Get Ayah"
@@ -26,7 +26,7 @@
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Entry 
                 x:Name="CloudSearchJuz"
-                HorizontalOptions="CenterAndExpand"
+              
                 Placeholder="Enter a Juz(1-30)"
                 Keyboard="Numeric"
            
@@ -37,7 +37,7 @@
                     x:Name="QuranCloudSearchJuz"
                     Clicked="QuranCloudSearchJuz_Clicked"       
                     Text="Study Juz"
-                        HorizontalOptions="CenterAndExpand"
+                     
                 
                   />
                 </StackLayout>
@@ -45,7 +45,7 @@
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Entry 
                 x:Name="CloudSearchTerm"
-                HorizontalOptions="CenterAndExpand"
+              
                 Placeholder="Enter one KeyWord"
                 Keyboard="Text"
            
@@ -56,7 +56,7 @@
                     x:Name="QuranCloudSearchTerm"
                     Clicked="QuranCloudSearchTerm_Clicked"        
                     Text="Find Ayahs"
-                        HorizontalOptions="CenterAndExpand"
+                 
                 
                   />
                 </StackLayout>
@@ -64,24 +64,24 @@
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Button
                 x:Name="SurahSelection"
-                Margin="0,15,0,0"
-                HorizontalOptions="CenterAndExpand"
+                Margin="0,20,0,0"
+              
                 FontSize="Default"
                 Text="Select Surahs"
                 Clicked="SurahSelection_Clicked"    />
 
                     <Button
-                Margin="0,15,0,0"
-                HorizontalOptions="CenterAndExpand"
+                Margin="0,20,0,0"
+              
                 x:Name="EntireQuran"
                 Clicked="EntireQuran_Clicked"
                 Text="Entire Quran"
                 FontSize="Default"
                 />
                 </StackLayout>
-              
 
-            </StackLayout>
+           
+        </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

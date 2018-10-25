@@ -60,7 +60,7 @@ namespace QuranMEM
             if (!String.IsNullOrEmpty(App.user.Email))
             {
 
-                if (App.user.SelectedCards.Count() > 0)
+                if (App.user.SelectedCards != null && App.user.SelectedCards.Count() > 0)
                 {
                     Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
                 }
