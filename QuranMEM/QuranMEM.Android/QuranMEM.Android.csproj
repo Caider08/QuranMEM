@@ -199,7 +199,9 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\purple_star.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\appColorIcon.jpg" />
+    <Content Include="Resources\drawable\appColorIcon.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\appColorIcon.jpg" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\appColorIcon.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
