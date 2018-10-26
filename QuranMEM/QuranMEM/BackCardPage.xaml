@@ -9,7 +9,13 @@
         <StackLayout x:Name="BackCardStackLayout" >
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="10,20,0,0">
-                <StackLayout Orientation="Vertical" HorizontalOptions="Start" >
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Start" >
+
+                        <Label Text="{Binding ChapterArabicName}"
+                             />
+                    </StackLayout>
+                
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Start" >
 
                     <Label Text="{Binding ChapterName}"
                              />
@@ -26,9 +32,9 @@
 
             </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="10,0,10,0">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="10,10,10,0">
                     <Label Text="{Binding NextArabicVerse}"
-                           FontSize="Default"   
+                           FontSize="Medium"   
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="Fill"
                                 />

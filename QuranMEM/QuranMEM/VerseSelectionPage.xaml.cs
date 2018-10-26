@@ -196,9 +196,9 @@ namespace QuranMEM
 
                 App.user.SelectedCards.Remove(App.user.CurrentCard);
 
-                var afterSelection = App.user.SelectedCards;
+                //var afterSelection = App.user.SelectedCards;
 
-                var answer = await DisplayAlert("Surah Added", "Would you like to Add another Surah to your Study Session?", "Yes", "Start Studying");
+                var answer = await DisplayAlert("Surah Added", "Would you like to Add another Surah to your Study Session?(for best performance limit amount of Surahs you select)", "Yes", "Start Studying");
 
                 if (answer == true)
                 {

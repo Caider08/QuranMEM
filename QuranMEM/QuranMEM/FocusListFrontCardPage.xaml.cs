@@ -34,6 +34,8 @@ namespace QuranMEM
                 await Navigation.PushModalAsync(new NavigationPage(new  HomePage()));
 
             }
+
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private async void AccountScreen_Clicked(object sender, EventArgs e)

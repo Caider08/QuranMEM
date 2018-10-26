@@ -131,12 +131,12 @@ namespace QuranMEM
                     }
                     catch(Exception incrementDatabaseE)
                     {
-                        await Navigation.PopAsync();
+                        //await Navigation.PopAsync();
                         await Navigation.PushAsync(new FrontCardPage());
                     }
 
                     //await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
-                    await Navigation.PopAsync();
+                    //await Navigation.PopAsync();
                     await Navigation.PushAsync(new FrontCardPage());
                 }
                 else
@@ -175,13 +175,13 @@ namespace QuranMEM
                     catch (Exception incrementDatabaseE)
                     {
                         //await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
-                        await Navigation.PopAsync();
+                        //await Navigation.PopAsync();
                         await Navigation.PushAsync(new FrontCardPage());
                     }
 
 
                     //await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
-                    await Navigation.PopAsync();
+                    //await Navigation.PopAsync();
                     await Navigation.PushAsync(new FrontCardPage());
 
                 }
@@ -198,7 +198,6 @@ namespace QuranMEM
         {
             try
             {
-
                 Navigation.PushAsync(new FrontCardPage());
             }
             catch(Exception backToFrontCardE)

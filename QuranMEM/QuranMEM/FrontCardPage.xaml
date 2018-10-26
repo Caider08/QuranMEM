@@ -11,10 +11,10 @@
             <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="10,0,10,0">
                 <Label Text="{Binding ArabicVerse}"
                    HorizontalOptions="Center"             
-                   FontSize="Default"
+                   FontSize="Medium"
                 />
             </StackLayout>
-           
+
             <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" Margin="25,20,25,0">
                 <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand" Margin="0,0,25,0" >
                     <Button 
@@ -30,12 +30,10 @@
                     x:Name="BackFlashCard"
                     Text="Flip Card"
                     FontSize="Default"
-                    Clicked="BackFlashCard_Clicked" 
-                
+                    Clicked="BackFlashCard_Clicked"                
                     />
                 </StackLayout>
             </StackLayout>
-
 
         </StackLayout>
     </ContentPage.Content>

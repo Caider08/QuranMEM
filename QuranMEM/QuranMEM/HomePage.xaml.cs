@@ -25,6 +25,18 @@ namespace QuranMEM
 
 		}
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+
         private void AccountButton_Clicked(object sender, EventArgs e)
         {
 

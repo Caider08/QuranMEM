@@ -21,6 +21,8 @@ namespace QuranMEM.ViewModel
 
         public ResetSTATSCommand ResetSTATSCommand { get; set; }
 
+        public AboutPageCommand AboutPageCommand { get; set; }
+
         private User user;
       
         public AccountViewModel()
@@ -35,6 +37,8 @@ namespace QuranMEM.ViewModel
 
             ResetSTATSCommand = new ResetSTATSCommand(this);
 
+            AboutPageCommand = new AboutPageCommand(this);
+
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
                 try
@@ -47,8 +51,7 @@ namespace QuranMEM.ViewModel
                 catch(Exception localUserE)
                 {
                     user = App.user;
-                }
-                             
+                }                           
             }
         }
 
@@ -220,6 +223,19 @@ namespace QuranMEM.ViewModel
             }
         }
 
+        public async void AboutPage()
+        {
+            try
+            {
+                await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new AboutPage()));
+            }
+            catch(Exception aboutPageE)
+            {
+                //Do something
+                System.Threading.Thread.Sleep(150);
+            }
+        }
+
         public async void FocusList()
         {
             try
@@ -269,7 +285,10 @@ namespace QuranMEM.ViewModel
         {
             if (string.IsNullOrEmpty(usa.Email) || string.IsNullOrEmpty(usa.Password))
             {
-                await App.Current.MainPage.Navigation.PushModalAsync(new MainPage());
+                await App.Current.MainPage.Navigation.PopAsync();
+
+                Application.Current.MainPage = new NavigationPage(new MainPage());
+
             }
             else
             {
@@ -330,7 +349,7 @@ namespace QuranMEM.ViewModel
                             else
                             {
                                 await App.Current.MainPage.DisplayAlert("UnSuccessful Password Change", "Unable to Change Password...Try again later", "OK");
-                                await App.Current.MainPage.Navigation.PopAsync();
+                               // await App.Current.MainPage.Navigation.PopAsync();
                             }
 
                         }
@@ -340,7 +359,7 @@ namespace QuranMEM.ViewModel
                 catch(Exception ChangePWExceptionE)
                 {
                     await App.Current.MainPage.DisplayAlert("Error Changing PW", "Sorry, Error Changing your password", "OK");
-                    await App.Current.MainPage.Navigation.PopAsync();
+                   // await App.Current.MainPage.Navigation.PopAsync();
                 }
             }
         }

@@ -37,27 +37,35 @@ namespace QuranMEM
 
             }
 
-           /* var verseNumba = App.user.CurrentCard;
+            NavigationPage.SetHasNavigationBar(this, false);
 
-            string urlArabic = "http://api.alquran.cloud/ayah/" + App.user.CurrentCard;
-        
-            string verse = "";
+            /* var verseNumba = App.user.CurrentCard;
 
-            using (var wb = new WebClient())
-            {
-                var response = wb.DownloadString(urlArabic);
+             string urlArabic = "http://api.alquran.cloud/ayah/" + App.user.CurrentCard;
 
-                var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+             string verse = "";
 
-                verse += quranObject.data.text;
+             using (var wb = new WebClient())
+             {
+                 var response = wb.DownloadString(urlArabic);
 
-                System.Threading.Thread.Sleep(150);
+                 var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
 
-            }*/
-            
+                 verse += quranObject.data.text;
+
+                 System.Threading.Thread.Sleep(150);
+
+             }*/
+
         }
 
-        private async void BackFlashCard_Clicked(object sender, EventArgs e)
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+
+
+            private async void BackFlashCard_Clicked(object sender, EventArgs e)
         {
 
             try

@@ -385,6 +385,93 @@ namespace QuranMEM.ViewModel
             }
         }
 
+        private string chapterArabicName;
+
+        public string ChapterArabicName
+        {
+            get
+            {
+                try
+                {
+                    string currentCard = user.CurrentCard.ToString();
+
+                    string url = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
+
+                    string response = "";
+
+                    chapterArabicName = "";
+
+                    using (var wb = new WebClient())
+                    {
+                        response = wb.DownloadString(url);
+
+                        System.Threading.Thread.Sleep(150);
+
+                        if (string.IsNullOrEmpty(response))
+                        {
+                            //Try Again
+                            response = wb.DownloadString(url);
+
+                            System.Threading.Thread.Sleep(150);
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                        chapterArabicName += quranObject.data.surah.name + " ";
+                        
+
+                    }
+
+                    return chapterArabicName;
+                }
+                catch (Exception chapterNameE)
+                {
+                    //Try Again
+                    //chapterName += "Error getting Surah Name";
+                    //return chapterName;
+
+                    try
+                    {
+                        string currentCard = user.CurrentCard.ToString();
+
+                        string url = "http://api.alquran.cloud/ayah/" + currentCard + "/en.sahih";
+
+                        string response = "";
+
+                        chapterArabicName = "";
+
+                        using (var wb = new WebClient())
+                        {
+                            response = wb.DownloadString(url);
+
+                            System.Threading.Thread.Sleep(150);
+
+                            if (string.IsNullOrEmpty(response))
+                            {
+                                //Try Again
+                                response = wb.DownloadString(url);
+
+                                System.Threading.Thread.Sleep(150);
+                            }
+
+                            var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                            chapterArabicName += quranObject.data.surah.name;
+                          
+                        }
+
+                        return chapterName;
+                    }
+                    catch (Exception chapterNameEE)
+                    {
+                        //Do Something
+                        chapterName += "Error getting Arabic Surah Name";
+                        return chapterArabicName;
+                    }
+                }
+            }
+        }
+
         private string chapterNumba;
 
         public string ChapterNumba

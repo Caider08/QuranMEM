@@ -54,7 +54,12 @@
 
                         <Button x:Name="ResetStatsButton"
                             Text="Reset STATS"
-                            Command="{Binding ResetSTATSCommand}"  
+                            Command="{Binding ResetSTATSCommand}" />
+
+                        <Button x:Name="AboutPageButton"
+                            Text="About Page"
+                            Command="{Binding AboutPageCommand}"
+                            Margin="0,20,0,20"  
                                
                     />
                     </StackLayout>

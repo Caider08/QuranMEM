@@ -18,28 +18,28 @@
             <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="8,10,8,0">
                 <Label Text="{Binding ArabicVerse}"
                    HorizontalOptions="Center"             
-                   FontSize="Default"
+                   FontSize="Medium"
                 />
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" Margin="10,20,10,0">
-                <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand" >
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" Margin="25,20,25,0">
+                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand" Margin="0,0,25,0" >
                     <Button 
                     x:Name="AccountScreen"
                     Text="Home/Ayahs"
-                    FontSize="Small"
+                    FontSize="Default"
                     Clicked="AccountScreen_Clicked"  
                
-                        HorizontalOptions="StartAndExpand"
+                     
                     />
                 </StackLayout>
-                <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand" >
+                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand" >
                     <Button 
                     x:Name="FocusListBackFlashCard"
                     Text="Flip Card"
-                    FontSize="Small"
+                    FontSize="Default"
                     Clicked="FocusListBackFlashCard_Clicked"                   
-                    HorizontalOptions="StartAndExpand"
+                 
                     />
                 </StackLayout>
             </StackLayout>
