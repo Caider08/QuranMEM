@@ -94,7 +94,7 @@ namespace QuranMEM
 
                     var juzNumba = int.Parse(CloudSearchJuz.Text.ToString().Trim());
 
-                    if (juzNumba < 30 && juzNumba > 0)
+                    if (juzNumba < 31 && juzNumba > 0)
                     {
 
                         var url = "http://api.alquran.cloud/juz/" + juzNumba.ToString() + "/en.sahih";

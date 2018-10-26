@@ -11,7 +11,7 @@ using Microsoft.WindowsAzure.MobileServices;
 
 namespace QuranMEM.Droid
 {
-    [Activity(Label = "QuranMEM", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "QuranMEM", Icon = "@drawable/app_color_question", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

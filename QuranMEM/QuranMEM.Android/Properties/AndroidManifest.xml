@@ -2,5 +2,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.QuranMEM" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="25" />
 	<uses-permission android:name="android.permission.INTERNET" />
-	<application android:label="QuranMEM.Android"></application>
+	<application android:label="QuranMEM.Android" android:icon="@mipmap/app_color_question"></application>
 </manifest>

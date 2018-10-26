@@ -231,10 +231,12 @@ namespace QuranMEM.ViewModel
                 else
                 {
                     App.user.CurrentCard = App.user.IncorrectCards.Take(1).FirstOrDefault();
-                   
+
+                    //App.Current.MainPage.Navigation.PopAsync();
+
                     await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new FocusListFrontCardPage()));
 
-                    App.Current.MainPage.Navigation.PopAsync();
+                   
 
                 }
             }
