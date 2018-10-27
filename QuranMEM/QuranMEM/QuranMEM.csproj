@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Remove="Assets\Images\aboutApp.jpg" />
+    <None Remove="Assets\Images\aboutApp1.jpg" />
     <None Remove="Assets\Images\APPFRONT.JPG" />
     <None Remove="Assets\Images\quranapp1.JPG" />
     <None Remove="Assets\Images\quranapp3.jpg" />
@@ -19,6 +20,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\Images\aboutApp.jpg" />
+    <EmbeddedResource Include="Assets\Images\aboutApp1.jpg" />
     <EmbeddedResource Include="Assets\Images\APPFRONT.JPG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
