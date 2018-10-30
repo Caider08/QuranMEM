@@ -144,7 +144,9 @@ namespace QuranMEM
 
             var chapterName = easy.englishNameTranslation;
 
-           
+            Random rand = new Random();
+
+        
             if(App.user.SelectedCards == null)
             {
                 App.user.SelectedCards = new List<int>();
@@ -162,6 +164,7 @@ namespace QuranMEM
             //string chapterName = "";
             try
             {
+                
                 var url = "http://api.alquran.cloud/surah/" + chapterNumba + "/en.sahih";
 
                 var ayahs = new List<Ayah>();
@@ -183,16 +186,14 @@ namespace QuranMEM
                     var quranObject = JToken.Parse(response).ToObject<RootObject>();
 
                     ayahs = quranObject.data.ayahs;
-
                 }
-
 
                 foreach (Ayah aya in ayahs)
                 {
                     App.user.SelectedCards.Add(aya.number);
                 }
 
-                App.user.CurrentCard = App.user.SelectedCards.FirstOrDefault();
+                App.user.CurrentCard = App.user.SelectedCards.Skip(rand.Next(App.user.SelectedCards.Count())).FirstOrDefault();
 
                 App.user.SelectedCards.Remove(App.user.CurrentCard);
 
@@ -248,11 +249,11 @@ namespace QuranMEM
                         App.user.SelectedCards.Add(aya.number);
                     }
 
-                    App.user.CurrentCard = App.user.SelectedCards.FirstOrDefault();
+                    App.user.CurrentCard = App.user.SelectedCards.Skip(rand.Next(App.user.SelectedCards.Count())).FirstOrDefault();
 
                     App.user.SelectedCards.Remove(App.user.CurrentCard);
 
-                    var afterSelection = App.user.SelectedCards;
+                    //var afterSelection = App.user.SelectedCards;
 
                     var answer = await DisplayAlert("Surah Added", "Would you like to Add another Surah to your Study Session?", "Yes", "Start Studying");
 

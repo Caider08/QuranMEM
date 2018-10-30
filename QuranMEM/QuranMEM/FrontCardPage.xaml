@@ -4,11 +4,9 @@
              x:Class="QuranMEM.FrontCardPage"
            >
     <ContentPage.Content>
-        <StackLayout x:Name="FrontCardStackLayout" Margin="0,20,0,0"
-              
+        <StackLayout x:Name="FrontCardStackLayout" Margin="0,20,0,0"             
                      >
-
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="10,0,10,0">
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="10,20,10,0">
                 <Label Text="{Binding ArabicVerse}"
                    HorizontalOptions="Center"             
                    FontSize="Medium"

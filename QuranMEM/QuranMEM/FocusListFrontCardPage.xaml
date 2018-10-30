@@ -11,6 +11,7 @@
                 <Label Text="Focus List Study"
                                    FontSize="Medium"
                                    HorizontalTextAlignment="Center"
+                                   TextColor="#423682"
                                    />
 
             </StackLayout>

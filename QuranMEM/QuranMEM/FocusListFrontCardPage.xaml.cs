@@ -35,7 +35,12 @@ namespace QuranMEM
 
             }
 
-            NavigationPage.SetHasNavigationBar(this, false);
+           // NavigationPage.SetHasNavigationBar(this, false);
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
 
         private async void AccountScreen_Clicked(object sender, EventArgs e)

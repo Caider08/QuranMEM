@@ -39,5 +39,22 @@ namespace QuranMEM
               //  leadersListView.ItemsSource = leaders;
            // }
         }
+
+  
+        private async void OutAboutPage_Clicked_1(object sender, EventArgs e)
+        {
+            if(App.user == null || String.IsNullOrEmpty(App.user.Email))
+            {
+                Application.Current.MainPage = new NavigationPage(new MainPage());
+
+                App.Current.MainPage.Navigation.PopAsync();
+
+                //await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
+            }
+            else
+            {
+                await Navigation.PushModalAsync(new NavigationPage(new HomePage()));
+            }
+        }
     }
 }

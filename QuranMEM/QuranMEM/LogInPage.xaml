@@ -37,7 +37,7 @@
             
             <Button x:Name="RegisterButton"
                     Text="Register"
-                               
+                    
                     HorizontalOptions="End"
                     Command="{Binding RegisterCommand}"/>
 

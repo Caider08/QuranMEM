@@ -37,7 +37,7 @@ namespace QuranMEM
 
             }
 
-            NavigationPage.SetHasNavigationBar(this, false);
+           // NavigationPage.SetHasNavigationBar(this, false);
 
             /* var verseNumba = App.user.CurrentCard;
 

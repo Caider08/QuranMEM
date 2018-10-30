@@ -21,6 +21,18 @@
                     <Image x:Name="aboutFront"
                         Aspect="AspectFill" />
                 </StackLayout>
+
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand" Margin="50,25,50,0">
+                    <Button 
+                        x:Name="OutAboutPage"
+                        Text="Main Page"
+                            Clicked="OutAboutPage_Clicked_1"  
+                        FontSize="Default"
+                        HorizontalOptions="FillAndExpand"
+                            />
+                    
+                </StackLayout>
             </StackLayout>
             <!--<StackLayout VerticalOptions="Start" Margin="0,15,0,0">
                     

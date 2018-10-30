@@ -226,7 +226,8 @@ namespace QuranMEM.ViewModel
         public async void AboutPage()
         {
             try
-            {
+            {               
+                //App.Current.MainPage.Navigation.PopAsync();
                 await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new AboutPage()));
             }
             catch(Exception aboutPageE)
@@ -251,9 +252,7 @@ namespace QuranMEM.ViewModel
                     //App.Current.MainPage.Navigation.PopAsync();
 
                     await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new FocusListFrontCardPage()));
-
-                   
-
+                 
                 }
             }
             catch(Exception focusListE)
@@ -277,10 +276,8 @@ namespace QuranMEM.ViewModel
 
             }
            
-
         }
  
-
         public async void SignOut(User usa)
         {
             if (string.IsNullOrEmpty(usa.Email) || string.IsNullOrEmpty(usa.Password))
@@ -300,10 +297,11 @@ namespace QuranMEM.ViewModel
                     {
                         App.user = new User();
 
-                        await App.Current.MainPage.Navigation.PopAsync();
-
                         Application.Current.MainPage = new NavigationPage(new MainPage());
-                        //await App.Current.MainPage.Navigation.PushAsync(new NavigationPage(new MainPage()));
+
+                        App.Current.MainPage.Navigation.PopAsync();
+                     
+                        //await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new MainPage()));
 
                     }
                 }

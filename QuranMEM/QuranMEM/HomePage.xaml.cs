@@ -29,7 +29,7 @@ namespace QuranMEM
         {
             base.OnAppearing();
 
-            NavigationPage.SetHasNavigationBar(this, false);
+            //NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override bool OnBackButtonPressed()

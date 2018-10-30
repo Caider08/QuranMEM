@@ -68,7 +68,6 @@ namespace QuranMEM
                 {
                     await DisplayAlert("Entry Error", "Only numbers (1-6236) are allowed for Ayah search", "OK");
                   
-
                 }
             }
             catch(Exception ayaSearchE)
@@ -86,8 +85,10 @@ namespace QuranMEM
         {
            try
             {
-           
-            var regexItem = new Regex("^[0 - 9] *$");
+
+                Random rand = new Random();
+
+                var regexItem = new Regex("^[0 - 9] *$");
 
                 if (!regexItem.IsMatch(CloudSearchJuz.Text))
                 {
@@ -137,13 +138,12 @@ namespace QuranMEM
 
                             }
 
-
                             foreach (JuzAyah aya in ayahs)
                             {
                                 App.user.SelectedCards.Add(aya.number);
                             }
 
-                            App.user.CurrentCard = App.user.SelectedCards.FirstOrDefault();
+                            App.user.CurrentCard = App.user.SelectedCards.Skip(rand.Next(App.user.SelectedCards.Count())).FirstOrDefault();
 
                             App.user.SelectedCards.Remove(App.user.CurrentCard);
 
@@ -153,7 +153,6 @@ namespace QuranMEM
                         catch (Exception verseSelectionE)
                         {
                             //Try Again                   
-
 
                             url = "http://api.alquran.cloud/juz/" + juzNumba.ToString() + "/en.sahih";
 
@@ -188,7 +187,7 @@ namespace QuranMEM
                                     App.user.SelectedCards.Add(aya.number);
                                 }
 
-                                App.user.CurrentCard = App.user.SelectedCards.FirstOrDefault();
+                                App.user.CurrentCard = App.user.SelectedCards.Skip(rand.Next(App.user.SelectedCards.Count())).FirstOrDefault();
 
                                 App.user.SelectedCards.Remove(App.user.CurrentCard);
 
@@ -276,6 +275,8 @@ namespace QuranMEM
         {
             try
             {
+                Random rand = new Random();
+
                 var regexItem = new Regex("^[a-zA-Z]+$");
 
                 if (regexItem.IsMatch(CloudSearchTerm.Text))
@@ -298,7 +299,6 @@ namespace QuranMEM
                         //Have to add CurrentCard back to Selected Cards
 
                         App.user.SelectedCards.Add(App.user.CurrentCard);
-
                     }
 
                     //string chapterName = "";
@@ -328,7 +328,7 @@ namespace QuranMEM
                                 App.user.SelectedCards.Add(aya.number);
                             }
 
-                            App.user.CurrentCard = App.user.SelectedCards.FirstOrDefault();
+                            App.user.CurrentCard = App.user.SelectedCards.Skip(rand.Next(App.user.SelectedCards.Count())).FirstOrDefault();
 
                             App.user.SelectedCards.Remove(App.user.CurrentCard);
 

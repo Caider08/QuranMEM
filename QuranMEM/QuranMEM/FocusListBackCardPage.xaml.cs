@@ -141,12 +141,14 @@ namespace QuranMEM
                     }
                     catch (Exception incrementDatabaseE)
                     {
-                        Navigation.PopAsync();
-                        await Navigation.PushAsync(new FocusListFrontCardPage());
+                        
+                        await Navigation.PushModalAsync(new NavigationPage(new FocusListFrontCardPage()));
+                        
                     }
 
-                    Navigation.PopAsync();
-                    await Navigation.PushAsync(new FocusListFrontCardPage());
+                    
+                    await Navigation.PushModalAsync(new NavigationPage (new FocusListFrontCardPage()));
+                    
                 }
                 else
                 {
@@ -180,13 +182,14 @@ namespace QuranMEM
                     }
                     catch (Exception incrementDatabaseE)
                     {
-                        Navigation.PopAsync();
-                        await Navigation.PushAsync(new FocusListFrontCardPage());
+                        await Navigation.PushModalAsync(new NavigationPage(new FocusListFrontCardPage()));
+                       
+                        
                     }
 
-                    Navigation.PopAsync();
-                    await Navigation.PushAsync(new FocusListFrontCardPage());
-
+                    await Navigation.PushModalAsync(new NavigationPage(new FocusListFrontCardPage()));
+                 
+ 
                 }
             }
             catch (Exception nextAyahE)

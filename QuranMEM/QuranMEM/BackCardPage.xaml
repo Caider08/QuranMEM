@@ -77,7 +77,17 @@
                     </Image>
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="10,10,10,0">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,15,0,0">
+                    <Label Text="Front Card Aya Translation:"
+                           FontSize="Default"
+                           HorizontalTextAlignment="Center"
+                           TextColor="#423682">
+                        
+                        
+                    </Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="10,15,10,0">
                     <Label Text="{Binding EnglishTranslation}"
                            FontSize="Default"
                            HorizontalOptions="Fill"
