@@ -19,7 +19,7 @@ namespace QuranMEM
 
             var assembly = typeof(AboutPage);
 
-            aboutFront.Source = ImageSource.FromResource("QuranMEM.Assets.Images.aboutApp.jpg", assembly);
+            aboutFront.Source = ImageSource.FromResource("QuranMEM.Assets.Images.newAbout.jpg", assembly);
         }
 
         protected override async void OnAppearing()

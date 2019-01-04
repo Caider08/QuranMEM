@@ -16,6 +16,7 @@
     <None Remove="Assets\Images\quranapp1.JPG" />
     <None Remove="Assets\Images\quranapp3.jpg" />
     <None Remove="Assets\Images\QuranLogo.PNG" />
+    <None Remove="Assets\Images\newAbout.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +30,7 @@
     <EmbeddedResource Include="Assets\Images\QuranLogo.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Images\newAbout.jpg" />
   </ItemGroup>
 
   <ItemGroup>
