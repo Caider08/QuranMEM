@@ -5,27 +5,27 @@ using System.Windows.Input;
 
 namespace QuranMEM.ViewModel.Commands
 {
-    public class RegisterCommand : ICommand
-    {
-        LogInViewModel LogInViewModel { get; set; }
+    //public class RegisterCommand : ICommand
+    //{
+    //    LogInViewModel LogInViewModel { get; set; }
 
-        public RegisterCommand(LogInViewModel lvm)
-        {
-            LogInViewModel = lvm;
-        }
+    //    public RegisterCommand(LogInViewModel lvm)
+    //    {
+    //        LogInViewModel = lvm;
+    //    }
 
-        public event EventHandler CanExecuteChanged;
+    //    public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute(object parameter)
-        {
-            return true;
+    //    public bool CanExecute(object parameter)
+    //    {
+    //        return true;
 
-        }
+    //    }
 
-        public void Execute(object parameter)
-        {
-            LogInViewModel.Register();
-        }
-    }
+    //    public void Execute(object parameter)
+    //    {
+    //        LogInViewModel.Register();
+    //    }
+    //}
 
 }

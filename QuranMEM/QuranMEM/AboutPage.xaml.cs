@@ -43,7 +43,7 @@ namespace QuranMEM
   
         private async void OutAboutPage_Clicked_1(object sender, EventArgs e)
         {
-            if(App.user == null || String.IsNullOrEmpty(App.user.Email))
+            if(App.user == null)
             {
                 Application.Current.MainPage = new NavigationPage(new MainPage());
 

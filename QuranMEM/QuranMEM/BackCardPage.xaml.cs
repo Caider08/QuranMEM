@@ -70,30 +70,30 @@ namespace QuranMEM
 
                     if (answer == true)
                     {
-                        try
-                        {
+                        //try
+                        //{
                           
-                            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-                            {
+                        //    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                        //    {
 
-                                conn.CreateTable<User>();
-                                var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+                        //        conn.CreateTable<User>();
+                        //        var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
 
-                                //Change Cloud Database
-                                //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
-                                //cloudUser.id = cloudUser.id;
-                                //cloudUser.VersesStudied = localUser.VersesStudied;
-                                //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
+                        //        //Change Cloud Database
+                        //        //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
+                        //        //cloudUser.id = cloudUser.id;
+                        //        //cloudUser.VersesStudied = localUser.VersesStudied;
+                        //        //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
 
-                                System.Threading.Thread.Sleep(150);
+                        //        System.Threading.Thread.Sleep(150);
 
-                            }
+                        //    }
                           
-                        }
-                        catch (Exception cloudUpdateE)
-                        {
-                            System.Threading.Thread.Sleep(250);
-                        }
+                        //}
+                        //catch (Exception cloudUpdateE)
+                        //{
+                        //    System.Threading.Thread.Sleep(250);
+                        //}
 
                         await Navigation.PushModalAsync(new NavigationPage(new HomePage()));
                     }
@@ -106,34 +106,36 @@ namespace QuranMEM
 
                     //Update Card Tally
                     App.user.VersesStudied++;
+
+                    //Don't think client no longer wants to track users / require log-in etc....
                     //Update Database
-                    try
-                    {
-                        using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-                        {
+                    //try
+                    //{
+                    //    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                    //    {
 
-                            conn.CreateTable<User>();
-                            var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
-                            localUser.VersesStudied++;
-                            conn.Update(localUser);
+                    //        conn.CreateTable<User>();
+                    //        var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+                    //        localUser.VersesStudied++;
+                    //        conn.Update(localUser);
 
-                        }
+                    //    }
 
-                        System.Threading.Thread.Sleep(250);
+                    //    System.Threading.Thread.Sleep(250);
 
-                        //Change Cloud Database
-                        //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
+                    //    //Change Cloud Database
+                    //    //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
 
-                        //cloudUser.VersesStudied++;
+                    //    //cloudUser.VersesStudied++;
 
-                        //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
+                    //    //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
 
-                    }
-                    catch(Exception incrementDatabaseE)
-                    {
-                        //await Navigation.PopAsync();
-                        await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
-                    }
+                    //}
+                    //catch(Exception incrementDatabaseE)
+                    //{
+                    //    //await Navigation.PopAsync();
+                    //    await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+                    //}
 
                     //await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
                     //await Navigation.PopAsync();
@@ -149,35 +151,37 @@ namespace QuranMEM
 
                     //Update Card Tally
                     App.user.VersesStudied++;
+
+                    //No longer need to on this app release
                     //Update Database
-                    try
-                    {
-                        using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-                        {
+                    //try
+                    //{
+                    //    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                    //    {
 
-                            conn.CreateTable<User>();
-                            var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
-                            localUser.VersesStudied++;
-                            conn.Update(localUser);
+                    //        conn.CreateTable<User>();
+                    //        var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+                    //        localUser.VersesStudied++;
+                    //        conn.Update(localUser);
 
-                        }
+                    //    }
 
-                        System.Threading.Thread.Sleep(250);
+                    //    System.Threading.Thread.Sleep(250);
 
-                        //Change Cloud Database
-                        //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
+                    //    //Change Cloud Database
+                    //    //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == App.user.Email).ToListAsync()).FirstOrDefault();
 
-                        //cloudUser.VersesStudied++;
+                    //    //cloudUser.VersesStudied++;
 
-                        //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
+                    //    //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
 
-                    }
-                    catch (Exception incrementDatabaseE)
-                    {
-                        //await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
-                        //await Navigation.PopAsync();
-                        await Navigation.PushModalAsync(new NavigationPage (new FrontCardPage()));
-                    }
+                    //}
+                    //catch (Exception incrementDatabaseE)
+                    //{
+                    //    //await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+                    //    //await Navigation.PopAsync();
+                    //    await Navigation.PushModalAsync(new NavigationPage (new FrontCardPage()));
+                    //}
 
 
                     //await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
@@ -222,15 +226,15 @@ namespace QuranMEM
                     App.user.WrongAnswer++;
 
 
-                    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-                    {
+                    //using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                    //{
 
-                        conn.CreateTable<User>();
-                        var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
-                        localUser.WrongAnswer++;
-                        conn.Update(localUser);
+                    //    conn.CreateTable<User>();
+                    //    var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+                    //    localUser.WrongAnswer++;
+                    //    conn.Update(localUser);
 
-                    }
+                    //}
 
                     await DisplayAlert("Verse Added", "Verse added to your Focus Study List", "OK");
 
@@ -260,15 +264,15 @@ namespace QuranMEM
                     App.user.WrongAnswer++;
 
 
-                    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-                    {
+                    //using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                    //{
 
-                        conn.CreateTable<User>();
-                        var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
-                        localUser.WrongAnswer++;
-                        conn.Update(localUser);
+                    //    conn.CreateTable<User>();
+                    //    var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+                    //    localUser.WrongAnswer++;
+                    //    conn.Update(localUser);
 
-                    }
+                    //}
 
                     await DisplayAlert("Verse Added", "Verse added to your Focus Study List", "OK");
 

@@ -15,15 +15,17 @@
                               Icon="purple_list.png"
        
                               />
-   
+
+    <local:JuzSelectionPage 
+                              Icon="purple_list.png"
+       
+                              />
+
 
     <local:AccountPage 
                        Icon="purple_account.png"
                        
                        />
-
-   
-
 
 
 </TabbedPage>

@@ -11,9 +11,9 @@ namespace QuranMEM.ViewModel
 {
     public class AccountViewModel
     {
-        public SignOutCommand SignOutCommand { get; set; }
+        //public SignOutCommand SignOutCommand { get; set; }
 
-        public ChangePasswordCommand ChangePasswordCommand { get; set; }
+        //public ChangePasswordCommand ChangePasswordCommand { get; set; }
 
         public FocusListCommand FocusListCommand { get; set; }
 
@@ -27,9 +27,9 @@ namespace QuranMEM.ViewModel
       
         public AccountViewModel()
         {
-            SignOutCommand = new SignOutCommand(this);
+            //SignOutCommand = new SignOutCommand(this);
 
-            ChangePasswordCommand = new ChangePasswordCommand(this);
+            //ChangePasswordCommand = new ChangePasswordCommand(this);
 
             FocusListCommand = new FocusListCommand(this);
 
@@ -39,27 +39,29 @@ namespace QuranMEM.ViewModel
 
             AboutPageCommand = new AboutPageCommand(this);
 
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            {
-                try
-                {
-                     conn.CreateTable<User>();
-                    var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+            user = App.user;
 
-                    user = localUser;
-                }
-                catch(Exception localUserE)
-                {
-                    user = App.user;
-                }                           
-            }
+            //using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            //{
+            //    try
+            //    {
+            //         conn.CreateTable<User>();
+            //        var localUser = conn.Table<User>().Where(u => u.Email == App.user.Email).ToList<User>().FirstOrDefault();
+
+            //        user = localUser;
+            //    }
+            //    catch(Exception localUserE)
+            //    {
+            //        user = App.user;
+            //    }                           
+            //}
         }
 
-        public string Email
-        {
-            get { return user.Email; }
+        //public string Email
+        //{
+        //    get { return user.Email; }
 
-        }
+        //}
 
         public int CurrentCard
         {
@@ -94,10 +96,10 @@ namespace QuranMEM.ViewModel
             }
         }
 
-        public string UserName
-        {
-            get { return user.UserName; }
-        }
+        //public string UserName
+        //{
+        //    get { return user.UserName; }
+        //}
 
         public int VersesStudied
         {
@@ -156,9 +158,9 @@ namespace QuranMEM.ViewModel
             }
         }
 
-        public string ChangePasswordNew { get; set; }
+        //public string ChangePasswordNew { get; set; }
 
-        public string ChangeConfirmPassword { get; set; }
+        //public string ChangeConfirmPassword { get; set; }
 
         public async void ResetSTATS()
         {
@@ -171,14 +173,14 @@ namespace QuranMEM.ViewModel
                     App.user.WrongAnswer = 0;
 
                     //Update Local Database             
-                    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-                    {
-                        conn.CreateTable<User>();
-                        var localUser = conn.Table<User>().Where(u => u.Email == user.Email).ToList<User>().FirstOrDefault();
-                        localUser.WrongAnswer = 0;
-                        conn.Update(localUser);
+                    //using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+                    //{
+                    //    conn.CreateTable<User>();
+                    //    var localUser = conn.Table<User>().Where(u => u.Email == user.Email).ToList<User>().FirstOrDefault();
+                    //    localUser.WrongAnswer = 0;
+                    //    conn.Update(localUser);
 
-                    }
+                    //}
 
                     await App.Current.MainPage.DisplayAlert("Stats Reset", "Stats reset successfully", "OK");
 
@@ -278,89 +280,89 @@ namespace QuranMEM.ViewModel
            
         }
  
-        public async void SignOut(User usa)
-        {
-            if (string.IsNullOrEmpty(usa.Email) || string.IsNullOrEmpty(usa.Password))
-            {
-                await App.Current.MainPage.Navigation.PopAsync();
+        //public async void SignOut(User usa)
+        //{
+        //    if (string.IsNullOrEmpty(usa.Email) || string.IsNullOrEmpty(usa.Password))
+        //    {
+        //        await App.Current.MainPage.Navigation.PopAsync();
 
-                Application.Current.MainPage = new NavigationPage(new MainPage());
+        //        Application.Current.MainPage = new NavigationPage(new MainPage());
 
-            }
-            else
-            {
-                try
-                {
-                    var answer = await App.Current.MainPage.DisplayAlert("Sign Out?", "Sign Out?", "Yes", "No");
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
+        //            var answer = await App.Current.MainPage.DisplayAlert("Sign Out?", "Sign Out?", "Yes", "No");
 
-                    if (answer == true)
-                    {
-                        App.user = new User();
+        //            if (answer == true)
+        //            {
+        //                App.user = new User();
 
-                        Application.Current.MainPage = new NavigationPage(new MainPage());
+        //                Application.Current.MainPage = new NavigationPage(new MainPage());
 
-                        App.Current.MainPage.Navigation.PopAsync();
+        //                App.Current.MainPage.Navigation.PopAsync();
                      
-                        //await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new MainPage()));
+        //                //await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new MainPage()));
 
-                    }
-                }
-                catch(Exception SignOutE)
-                {
-                    await App.Current.MainPage.DisplayAlert("Error Signing Out", "Sorry, Error Signing User Out", "OK");
-                    App.Current.MainPage.Navigation.PopAsync();
-                    await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new HomePage()));
-                }
-            }
-        }
+        //            }
+        //        }
+        //        catch(Exception SignOutE)
+        //        {
+        //            await App.Current.MainPage.DisplayAlert("Error Signing Out", "Sorry, Error Signing User Out", "OK");
+        //            App.Current.MainPage.Navigation.PopAsync();
+        //            await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new HomePage()));
+        //        }
+        //    }
+        //}
 
-        public async void ChangePassword()
-        {
+        //public async void ChangePassword()
+        //{
         
-            if (string.IsNullOrEmpty(ChangePasswordNew) || string.IsNullOrEmpty(ChangeConfirmPassword))
-            {
-                await App.Current.MainPage.DisplayAlert("Missing PW", "Please fill in New PW and Confirm New PW", "OK");
-                //await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
-            }
-            else
-            {
-                try
-                {
-                    if (ChangePasswordNew != ChangeConfirmPassword)
-                    {
-                        await App.Current.MainPage.DisplayAlert("New Password MisMatch", "New Password doesn't Match", "Fix Password");
-                    }
-                    else
-                    {
-                        var answer = await App.Current.MainPage.DisplayAlert("Change Password?", "Change Password?", "Yes", "No");
+        //    if (string.IsNullOrEmpty(ChangePasswordNew) || string.IsNullOrEmpty(ChangeConfirmPassword))
+        //    {
+        //        await App.Current.MainPage.DisplayAlert("Missing PW", "Please fill in New PW and Confirm New PW", "OK");
+        //        //await App.Current.MainPage.Navigation.PushAsync(new AccountPage());
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
+        //            if (ChangePasswordNew != ChangeConfirmPassword)
+        //            {
+        //                await App.Current.MainPage.DisplayAlert("New Password MisMatch", "New Password doesn't Match", "Fix Password");
+        //            }
+        //            else
+        //            {
+        //                var answer = await App.Current.MainPage.DisplayAlert("Change Password?", "Change Password?", "Yes", "No");
 
-                        if (answer == true)
-                        {
-                            var changed = await User.ChangePassword(ChangePasswordNew, user);
+        //                if (answer == true)
+        //                {
+        //                    var changed = await User.ChangePassword(ChangePasswordNew, user);
 
-                            if (changed)
-                            {
-                                await App.Current.MainPage.DisplayAlert("Successful Password Change", "Password Changed Successfully", "OK");
-                                App.Current.MainPage.Navigation.PopAsync();
-                                await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new HomePage()));
-                            }
-                            else
-                            {
-                                await App.Current.MainPage.DisplayAlert("UnSuccessful Password Change", "Unable to Change Password...Try again later", "OK");
-                               // await App.Current.MainPage.Navigation.PopAsync();
-                            }
+        //                    if (changed)
+        //                    {
+        //                        await App.Current.MainPage.DisplayAlert("Successful Password Change", "Password Changed Successfully", "OK");
+        //                        App.Current.MainPage.Navigation.PopAsync();
+        //                        await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new HomePage()));
+        //                    }
+        //                    else
+        //                    {
+        //                        await App.Current.MainPage.DisplayAlert("UnSuccessful Password Change", "Unable to Change Password...Try again later", "OK");
+        //                       // await App.Current.MainPage.Navigation.PopAsync();
+        //                    }
 
-                        }
-                    }
+        //                }
+        //            }
 
-                }
-                catch(Exception ChangePWExceptionE)
-                {
-                    await App.Current.MainPage.DisplayAlert("Error Changing PW", "Sorry, Error Changing your password", "OK");
-                   // await App.Current.MainPage.Navigation.PopAsync();
-                }
-            }
-        }
+        //        }
+        //        catch(Exception ChangePWExceptionE)
+        //        {
+        //            await App.Current.MainPage.DisplayAlert("Error Changing PW", "Sorry, Error Changing your password", "OK");
+        //           // await App.Current.MainPage.Navigation.PopAsync();
+        //        }
+        //    }
+        //}
 
 
     }

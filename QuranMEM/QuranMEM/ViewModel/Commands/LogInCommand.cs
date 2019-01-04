@@ -7,47 +7,47 @@ using System.Windows.Input;
 
 namespace QuranMEM.ViewModel.Commands
 {
-    public class LogInCommand : ICommand
-    {
-        public LogInViewModel LoginViewModel { get; set; }
+    //public class LogInCommand : ICommand
+    //{
+    //    public LogInViewModel LoginViewModel { get; set; }
 
-        public LogInCommand(LogInViewModel lVM)
-        {
-            LoginViewModel = lVM;
+    //    public LogInCommand(LogInViewModel lVM)
+    //    {
+    //        LoginViewModel = lVM;
 
-        }
+    //    }
 
-        public event EventHandler CanExecuteChanged;
+    //    public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute(object parameter)
-        {
-            var user = (User)parameter;
+    //    public bool CanExecute(object parameter)
+    //    {
+    //        var user = (User)parameter;
             
-            if (user == null)
-            {
-                return false;
-            }
+    //        if (user == null)
+    //        {
+    //            return false;
+    //        }
 
-            if(string.IsNullOrEmpty(user.Email))
-            {
+    //        if(string.IsNullOrEmpty(user.Email))
+    //        {
                 
-                return false;
-            }
-            if(string.IsNullOrEmpty(user.Password))
-            {
+    //            return false;
+    //        }
+    //        if(string.IsNullOrEmpty(user.Password))
+    //        {
                 
-                return false;
-            }
+    //            return false;
+    //        }
 
-            return true;
-        }
+    //        return true;
+    //    }
 
-        public void Execute(object parameter)
-        {
+    //    public void Execute(object parameter)
+    //    {
 
-            LoginViewModel.LogIn();
+    //        LoginViewModel.LogIn();
 
-        }
+    //    }
 
-    }
+    //}
 }

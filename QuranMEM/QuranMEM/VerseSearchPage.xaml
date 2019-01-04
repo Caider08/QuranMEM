@@ -6,7 +6,7 @@
         <ScrollView>
             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="40,20,40,0">
             
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+              <!--  <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Entry 
                 x:Name="CloudSearchVerse"
              
@@ -21,26 +21,27 @@
                     Clicked="QuranCloudSearch_Clicked"    
                     Text="Get Ayah"
                   />
-                </StackLayout>
+                </StackLayout>-->
 
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Entry 
+                <!--<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                   <Entry 
                 x:Name="CloudSearchJuz"
               
                 Placeholder="Enter a Juz(1-30)"
                 Keyboard="Numeric"
            
-                />
+                />-->
 
-                    <Button 
+                   <!-- <Button 
                 
                     x:Name="QuranCloudSearchJuz"
                     Clicked="QuranCloudSearchJuz_Clicked"       
-                    Text="Study Juz"
+                    Text="Select Juz"
                      
                 
                   />
-                </StackLayout>
+               
+                </StackLayout>-->
 
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Entry 
@@ -62,6 +63,16 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    
+                    <Button
+                x:Name="JuzSelection"
+                Margin="0,20,0,0"
+              
+                FontSize="Default"
+                Text="Select Ajzaa"
+                Clicked="JuzSelection_Clicked"    
+                        />
+                    
                     <Button
                 x:Name="SurahSelection"
                 Margin="0,20,0,0"

@@ -27,7 +27,7 @@
                 <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand" Margin="0,0,25,0" >
                     <Button 
                     x:Name="AccountScreen"
-                    Text="Home/Ayahs"
+                    Text="Home"
                     FontSize="Default"
                     Clicked="AccountScreen_Clicked"  
                

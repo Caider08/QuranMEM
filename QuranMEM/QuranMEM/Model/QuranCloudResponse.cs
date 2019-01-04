@@ -70,6 +70,21 @@ public class QuranRootObject
     public Data data { get; set; }
 }
 
+    public class Ajza
+    {
+        public int number { get; set; }
+
+        private const string juz = "Juz";
+
+        public string Juz 
+        {
+            get
+            {
+                return juz;
+            }
+        }
+    }
+
     public class SurahDatum
     {
         public int number { get; set; }

@@ -108,6 +108,27 @@
 
                     </StackLayout>
 
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,15,0,0">
+                                               
+                            <Label Text="Aya prior to front-card Aya"
+                             FontSize="Default"
+                              HorizontalTextAlignment="Center"
+                             TextColor="#423682"/>
+                            
+                                     
+                  
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="8,0,8,0">
+
+                        <Label Text="{Binding PriorArabicVerse}"
+                           FontSize="Medium"   
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Fill"
+                                />
+
+                    </StackLayout>
+
                 </StackLayout>
             </ScrollView>
         </StackLayout>

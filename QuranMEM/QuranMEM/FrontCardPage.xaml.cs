@@ -84,13 +84,13 @@ namespace QuranMEM
         {
             try
             {
-                var answer = await DisplayAlert("Ayah Selection?", "Navigating back to selection screens will clear your currently selected Verses.", "Select new Ayahs", "Stay Here");
-                if(answer)
-                {
+                //var answer = await DisplayAlert("Ayah Selection?", "Navigating back to selection screens will clear your currently selected Verses.", "Select new Ayahs", "Stay Here");
+                //if(answer)
+                //{
                     App.user.SelectedCards = new List<int>();
 
                     await Navigation.PushModalAsync(new NavigationPage(new HomePage()));
-                }
+                //}
                              
             }
             catch(Exception verseSelectionNavigation)

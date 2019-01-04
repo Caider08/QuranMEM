@@ -14,16 +14,16 @@ namespace QuranMEM
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RegisterPage : ContentPage
 	{
-        RegisterViewModel RegisterViewModel;
+        //RegisterViewModel RegisterViewModel;
 
 
 		public RegisterPage ()
 		{
 			InitializeComponent ();
 
-            RegisterViewModel = new RegisterViewModel();
+            //RegisterViewModel = new RegisterViewModel();
 
-            BindingContext = RegisterViewModel;
+            //BindingContext = RegisterViewModel;
 		}
 
        // private async void registerButton_Clicked(object sender, EventArgs e)

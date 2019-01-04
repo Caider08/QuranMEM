@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.companyname.QuranMEM" android:installLocation="auto" android:versionName="2.2" android:versionCode="4">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.QuranMemorizationGame.PlayQuran" android:installLocation="auto" android:versionName="1.3" android:versionCode="4">
 	<uses-sdk android:minSdkVersion="10" android:targetSdkVersion="28" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<application android:label="QuranMEM.Android" android:icon="@mipmap/app_color_question"></application>

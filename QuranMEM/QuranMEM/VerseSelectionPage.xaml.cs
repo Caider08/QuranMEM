@@ -40,7 +40,6 @@ namespace QuranMEM
                 System.Threading.Thread.Sleep(150);
                              
             }
-
         }
 
         /*  using (var client = new HttpClient())
@@ -54,8 +53,7 @@ namespace QuranMEM
 
         protected override async void OnAppearing()
         {
-       
-        
+              
             base.OnAppearing();
 
             var chapters = new List<SurahDatum>();
@@ -199,7 +197,7 @@ namespace QuranMEM
 
                 //var afterSelection = App.user.SelectedCards;
 
-                var answer = await DisplayAlert("Surah Added", "Would you like to Add another Surah to your Study Session?(for best performance limit amount of Surahs you select)", "Yes", "Start Studying");
+                var answer = await DisplayAlert("Surah Added", "Would you like to Add another Surah to your Study Session?(for best performance limit amount of Surahs you select)", "Add More", "Start Studying");
 
                 if (answer == true)
                 {
@@ -255,7 +253,7 @@ namespace QuranMEM
 
                     //var afterSelection = App.user.SelectedCards;
 
-                    var answer = await DisplayAlert("Surah Added", "Would you like to Add another Surah to your Study Session?", "Yes", "Start Studying");
+                    var answer = await DisplayAlert("Surah Added", "Would you like to Add another Surah to your Study Session?", "Add More", "Start Studying");
 
                     if (answer == true)
                     {

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuranMEM.JuzSelectionPage">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <ListView x:Name="juzListView"                 
+                  ItemSelected="juzListView_ItemSelected"
+                  Margin="20,0,20,0">
+                <ListView.Header>
+                    <Label Text="Pick Your Ajza to Study"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                        Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Juz}"
+                                TextColor="#423682" />
+                                    <Label Text="{Binding number}"
+                               
+                                TextColor="#423682" />
+                                </StackLayout>
+                            </StackLayout>
+
+                        </ViewCell>
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

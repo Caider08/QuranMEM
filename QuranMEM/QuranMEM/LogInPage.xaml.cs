@@ -11,42 +11,42 @@ using Xamarin.Forms.Xaml;
 
 namespace QuranMEM
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LogInPage : ContentPage
-	{
-        LogInViewModel LogInVM;
+	//[XamlCompilation(XamlCompilationOptions.Compile)]
+	//public partial class LogInPage : ContentPage
+	//{
+ //       LogInViewModel LogInVM;
 
-		public LogInPage ()
-		{
+	//	public LogInPage ()
+	//	{
 
-            InitializeComponent();
+ //           InitializeComponent();
 
-            LogInVM = new LogInViewModel();
-            BindingContext = LogInVM;
+ //           LogInVM = new LogInViewModel();
+ //           BindingContext = LogInVM;
 
             
 
-        }
+ //       }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
+ //       protected override void OnAppearing()
+ //       {
+ //           base.OnAppearing();
 
-            if (!String.IsNullOrEmpty(App.user.Email))
-            {
-                if(App.user.SelectedCards != null && App.user.SelectedCards.Count() > 0)
-                {
+ //           if (!String.IsNullOrEmpty(App.user.Email))
+ //           {
+ //               if(App.user.SelectedCards != null && App.user.SelectedCards.Count() > 0)
+ //               {
 
-                    Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
-                }
-                else
-                {
-                    Navigation.PushModalAsync(new NavigationPage(new HomePage()));
-                }             
-            }
+ //                   Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+ //               }
+ //               else
+ //               {
+ //                   Navigation.PushModalAsync(new NavigationPage(new HomePage()));
+ //               }             
+ //           }
 
-        }
+ //       }
 
 
-    }
+ //   }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuranMEM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,15 +24,15 @@ namespace QuranMEM
 
         private async void Start_Clicked(object sender, EventArgs e)
         {
-            var user = App.user;
+            //App.user = new User();
 
-            if(string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
-            {
-                await Navigation.PushAsync(new LogInPage());
-            }
-            else
-            {
-                if (App.user.SelectedCards.Count() > 0)
+            //if(string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
+            //{
+                //await Navigation.PushAsync(new LogInPage());
+           // }
+            //else
+            //{
+                if (App.user.SelectedCards == null || App.user.SelectedCards.Count() > 0)
                 {
                     await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
                 }
@@ -40,27 +41,26 @@ namespace QuranMEM
                     await Navigation.PushModalAsync(new NavigationPage(new HomePage()));
                 }
 
-            }
-
+            //}
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (!String.IsNullOrEmpty(App.user.Email))
-            {
+            //if (!String.IsNullOrEmpty(App.user.Email))
+            //{
 
-                if (App.user.SelectedCards != null && App.user.SelectedCards.Count() > 0)
-                {
-                    Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
-                }
-                else
-                {
-                    Navigation.PushModalAsync(new NavigationPage(new HomePage()));
-                }
+                //if (App.user.SelectedCards != null && App.user.SelectedCards.Count() > 0)
+                //{
+                //    Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+                //}
+                //else
+                //{
+                //    Navigation.PushModalAsync(new NavigationPage(new HomePage()));
+                //}
                 
-            }
+            //}
 
         }
 

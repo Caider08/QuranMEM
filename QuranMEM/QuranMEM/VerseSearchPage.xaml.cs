@@ -20,210 +20,211 @@ namespace QuranMEM
             InitializeComponent();
         }
 
-        private async void QuranCloudSearch_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                var regexItem = new Regex("^[0 - 9] *$");
+        //Client No longer wants this feature
+        //private async void QuranCloudSearch_Clicked(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        var regexItem = new Regex("^[0 - 9] *$");
 
-                if (!regexItem.IsMatch(CloudSearchVerse.Text))
-                {
+        //        if (!regexItem.IsMatch(CloudSearchVerse.Text))
+        //        {
 
-                    var verseNumba = int.Parse(CloudSearchVerse.Text.ToString().Trim());
+        //            var verseNumba = int.Parse(CloudSearchVerse.Text.ToString().Trim());
 
-                    if (verseNumba > 0 && verseNumba < 6237)
-                    {
+        //            if (verseNumba > 0 && verseNumba < 6237)
+        //            {
 
-                        App.user.CurrentCard = verseNumba;
+        //                App.user.CurrentCard = verseNumba;
 
-                        await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+        //                await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
 
-                        /*string url = "http://api.alquran.cloud/ayah/" + verseNumba + "/en.asad";
+        //                /*string url = "http://api.alquran.cloud/ayah/" + verseNumba + "/en.asad";
 
-                        //string urlArabic = "http://api.alquran.cloud/ayah/262";
+        //                //string urlArabic = "http://api.alquran.cloud/ayah/262";
 
-                        string verse = "";
+        //                string verse = "";
 
-                        using (var wb = new WebClient())
-                        {
-                            var response = wb.DownloadString(url);
+        //                using (var wb = new WebClient())
+        //                {
+        //                    var response = wb.DownloadString(url);
 
-                            var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+        //                    var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
 
-                            verse += quranObject.data.text;
+        //                    verse += quranObject.data.text;
 
-                            System.Threading.Thread.Sleep(150);
+        //                    System.Threading.Thread.Sleep(150);
 
 
-                        }*/
-                    }
-                    else
-                    {
-                        await DisplayAlert("Entry Error", "Only numbers (1-6236) are allowed for Ayah search", "OK");
+        //                }*/
+        //            }
+        //            else
+        //            {
+        //                await DisplayAlert("Entry Error", "Only numbers (1-6236) are allowed for Ayah search", "OK");
                        
-                    }
+        //            }
 
-                }
-                else
-                {
-                    await DisplayAlert("Entry Error", "Only numbers (1-6236) are allowed for Ayah search", "OK");
+        //        }
+        //        else
+        //        {
+        //            await DisplayAlert("Entry Error", "Only numbers (1-6236) are allowed for Ayah search", "OK");
                   
-                }
-            }
-            catch(Exception ayaSearchE)
-            {
-                await DisplayAlert("Ayah Error", "Error Finding Selected Ayah", "Try Again");
-                await Navigation.PopAsync();
-            }
-        }
+        //        }
+        //    }
+        //    catch(Exception ayaSearchE)
+        //    {
+        //        await DisplayAlert("Ayah Error", "Error Finding Selected Ayah", "Try Again");
+        //        await Navigation.PopAsync();
+        //    }
+        //}
 
 
 
 
 
-        private async void QuranCloudSearchJuz_Clicked(object sender, EventArgs e)
-        {
-           try
-            {
+        //private async void QuranCloudSearchJuz_Clicked(object sender, EventArgs e)
+        //{
+        //   try
+        //    {
 
-                Random rand = new Random();
+        //        Random rand = new Random();
 
-                var regexItem = new Regex("^[0 - 9] *$");
+        //        var regexItem = new Regex("^[0 - 9] *$");
 
-                if (!regexItem.IsMatch(CloudSearchJuz.Text))
-                {
+        //        if (!regexItem.IsMatch(CloudSearchJuz.Text))
+        //        {
 
-                    var juzNumba = int.Parse(CloudSearchJuz.Text.ToString().Trim());
+        //            var juzNumba = int.Parse(CloudSearchJuz.Text.ToString().Trim());
 
-                    if (juzNumba < 31 && juzNumba > 0)
-                    {
+        //            if (juzNumba < 31 && juzNumba > 0)
+        //            {
 
-                        var url = "http://api.alquran.cloud/juz/" + juzNumba.ToString() + "/en.sahih";
+        //                var url = "http://api.alquran.cloud/juz/" + juzNumba.ToString() + "/en.sahih";
 
-                        var ayahs = new List<JuzAyah>();
+        //                var ayahs = new List<JuzAyah>();
 
-                        string response = "";
+        //                string response = "";
 
-                        if (App.user.SelectedCards == null)
-                        {
-                            App.user.SelectedCards = new List<int>();
+        //                if (App.user.SelectedCards == null)
+        //                {
+        //                    App.user.SelectedCards = new List<int>();
 
-                        }
-                        if (App.user.SelectedCards.Count() > 0)
-                        {
-                            //Have to add CurrentCard back to Selected Cards
+        //                }
+        //                if (App.user.SelectedCards.Count() > 0)
+        //                {
+        //                    //Have to add CurrentCard back to Selected Cards
 
-                            App.user.SelectedCards.Add(App.user.CurrentCard);
+        //                    App.user.SelectedCards.Add(App.user.CurrentCard);
 
-                        }
+        //                }
 
-                        //string chapterName = "";
-                        try
-                        {
-                            using (var wb = new WebClient())
-                            {
-                                response = await wb.DownloadStringTaskAsync(url);
+        //                //string chapterName = "";
+        //                try
+        //                {
+        //                    using (var wb = new WebClient())
+        //                    {
+        //                        response = await wb.DownloadStringTaskAsync(url);
 
-                                if (string.IsNullOrEmpty(response))
-                                {
-                                    //Try it again
-                                    System.Threading.Thread.Sleep(1000);
-                                    response = await wb.DownloadStringTaskAsync(url);
+        //                        if (string.IsNullOrEmpty(response))
+                        //        {
+                        //            //Try it again
+                        //            System.Threading.Thread.Sleep(1000);
+                        //            response = await wb.DownloadStringTaskAsync(url);
 
-                                }
+                        //        }
 
-                                var quranObject = JToken.Parse(response).ToObject<JuzRootObject>();
+                        //        var quranObject = JToken.Parse(response).ToObject<JuzRootObject>();
 
-                                ayahs = quranObject.data.ayahs;
+                        //        ayahs = quranObject.data.ayahs;
 
-                            }
+                        //    }
 
-                            foreach (JuzAyah aya in ayahs)
-                            {
-                                App.user.SelectedCards.Add(aya.number);
-                            }
+                        //    foreach (JuzAyah aya in ayahs)
+                        //    {
+                        //        App.user.SelectedCards.Add(aya.number);
+                        //    }
 
-                            App.user.CurrentCard = App.user.SelectedCards.Skip(rand.Next(App.user.SelectedCards.Count())).FirstOrDefault();
+                        //    App.user.CurrentCard = App.user.SelectedCards.Skip(rand.Next(App.user.SelectedCards.Count())).FirstOrDefault();
 
-                            App.user.SelectedCards.Remove(App.user.CurrentCard);
+                        //    App.user.SelectedCards.Remove(App.user.CurrentCard);
 
-                            await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+                        //    await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
 
-                        }
-                        catch (Exception verseSelectionE)
-                        {
-                            //Try Again                   
+                        //}
+                        //catch (Exception verseSelectionE)
+                        //{
+                        //    //Try Again                   
 
-                            url = "http://api.alquran.cloud/juz/" + juzNumba.ToString() + "/en.sahih";
+                        //    url = "http://api.alquran.cloud/juz/" + juzNumba.ToString() + "/en.sahih";
 
-                            ayahs = new List<JuzAyah>();
+                        //    ayahs = new List<JuzAyah>();
 
-                            response = "";
+                        //    response = "";
 
-                            //string chapterName = "";
-                            try
-                            {
-                                using (var wb = new WebClient())
-                                {
-                                    response = await wb.DownloadStringTaskAsync(url);
+                        //    //string chapterName = "";
+                        //    try
+                    //        {
+                    //            using (var wb = new WebClient())
+                    //            {
+                    //                response = await wb.DownloadStringTaskAsync(url);
 
-                                    if (string.IsNullOrEmpty(response))
-                                    {
-                                        //Try it again
-                                        System.Threading.Thread.Sleep(1000);
-                                        response = await wb.DownloadStringTaskAsync(url);
+                    //                if (string.IsNullOrEmpty(response))
+                    //                {
+                    //                    //Try it again
+                    //                    System.Threading.Thread.Sleep(1000);
+                    //                    response = await wb.DownloadStringTaskAsync(url);
 
-                                    }
+                    //                }
 
-                                    var quranObject = JToken.Parse(response).ToObject<JuzRootObject>();
+                    //                var quranObject = JToken.Parse(response).ToObject<JuzRootObject>();
 
-                                    ayahs = quranObject.data.ayahs;
+                    //                ayahs = quranObject.data.ayahs;
 
-                                }
+                    //            }
 
 
-                                foreach (JuzAyah aya in ayahs)
-                                {
-                                    App.user.SelectedCards.Add(aya.number);
-                                }
+                    //            foreach (JuzAyah aya in ayahs)
+                    //            {
+                    //                App.user.SelectedCards.Add(aya.number);
+                    //            }
 
-                                App.user.CurrentCard = App.user.SelectedCards.Skip(rand.Next(App.user.SelectedCards.Count())).FirstOrDefault();
+                    //            App.user.CurrentCard = App.user.SelectedCards.Skip(rand.Next(App.user.SelectedCards.Count())).FirstOrDefault();
 
-                                App.user.SelectedCards.Remove(App.user.CurrentCard);
+                    //            App.user.SelectedCards.Remove(App.user.CurrentCard);
 
-                                await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
+                    //            await Navigation.PushModalAsync(new NavigationPage(new FrontCardPage()));
 
-                            }
-                            catch (Exception juz2E)
-                            {
-                                await DisplayAlert("Juz Error", "Problems getting the verses for the selected Juz", "Try Again");
-                                App.user.SelectedCards = new List<int>();
-                                //await Navigation.PushAsync(new VerseSearchPage());
-                                await Navigation.PopAsync();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        await DisplayAlert("Entry Error", "Only numbers (1-30) are allowed for Juz search", "OK");
+                    //        }
+                    //        catch (Exception juz2E)
+                    //        {
+                    //            await DisplayAlert("Juz Error", "Problems getting the verses for the selected Juz", "Try Again");
+                    //            App.user.SelectedCards = new List<int>();
+                    //            //await Navigation.PushAsync(new VerseSearchPage());
+                    //            await Navigation.PopAsync();
+                    //        }
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    await DisplayAlert("Entry Error", "Only numbers (1-30) are allowed for Juz search", "OK");
                  
-                    }
+                    //}
              
-                }
-                else
-                {
-                    await DisplayAlert("Entry Error", "Only numbers 1-30 are allowed for Juz search", "OK");
+        //        }
+        //        else
+        //        {
+        //            await DisplayAlert("Entry Error", "Only numbers 1-30 are allowed for Juz search", "OK");
                   
 
-                }
-            }
-            catch (Exception juzSearchError)
-            {
-                await DisplayAlert("Juz Search Error", "Error finding Ayahs for selected Juz", "Try Again");
-                await Navigation.PopAsync();
-            }
+        //        }
+        //    }
+        //    catch (Exception juzSearchError)
+        //    {
+        //        await DisplayAlert("Juz Search Error", "Error finding Ayahs for selected Juz", "Try Again");
+        //        await Navigation.PopAsync();
+        //    }
 
-        }
+        //}
 
         private async void EntireQuran_Clicked(object sender, EventArgs e)
         {
@@ -268,6 +269,18 @@ namespace QuranMEM
             catch(Exception verseSelectE)
             {
                 await DisplayAlert("Surahs Error", "Error loading Surahs...try again shortly", "OK");
+            }
+        }
+
+        private async void JuzSelection_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                await Navigation.PushAsync(new JuzSelectionPage());
+            }
+            catch (Exception juzSelectE)
+            {
+                await DisplayAlert("Juz Error", "Error loading Ajza...try again shortly", "OK");
             }
         }
 

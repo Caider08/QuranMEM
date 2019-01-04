@@ -6,33 +6,33 @@ using System.Windows.Input;
 
 namespace QuranMEM.ViewModel.Commands
 {
-    public class SignOutCommand : ICommand
-    {
-        public AccountViewModel AccountViewModel { get; set; }
+    //public class SignOutCommand : ICommand
+    //{
+    //    public AccountViewModel AccountViewModel { get; set; }
 
-        public SignOutCommand(AccountViewModel avm)
-        {
-            AccountViewModel = avm;
-        }
+    //    public SignOutCommand(AccountViewModel avm)
+    //    {
+    //        AccountViewModel = avm;
+    //    }
 
-        public event EventHandler CanExecuteChanged;
+    //    public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute(object parameter)
-        {
+    //    public bool CanExecute(object parameter)
+    //    {
 
-            return true;
+    //        return true;
 
-        }
+    //    }
 
-        public void Execute(object parameter)
-        {
-            var user = (User)parameter;
+    //    public void Execute(object parameter)
+    //    {
+    //        var user = (User)parameter;
 
-            user = App.user;
+    //        user = App.user;
 
-            AccountViewModel.SignOut(user);
-        }
+    //        AccountViewModel.SignOut(user);
+    //    }
 
 
-    }
+    //}
 }

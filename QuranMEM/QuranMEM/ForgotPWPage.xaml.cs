@@ -13,15 +13,15 @@ namespace QuranMEM
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ForgotPWPage : ContentPage
 	{
-        ForgotPWViewModel ForgotPWViewModel;
+        //ForgotPWViewModel ForgotPWViewModel;
 
 		public ForgotPWPage ()
 		{
 			InitializeComponent ();
 
-            ForgotPWViewModel = new ForgotPWViewModel();
+            //ForgotPWViewModel = new ForgotPWViewModel();
 
-            BindingContext = ForgotPWViewModel;
+            //BindingContext = ForgotPWViewModel;
 
 		}
 

@@ -13,71 +13,71 @@ namespace QuranMEM.Model
     public class User : INotifyPropertyChanged
     {
 
-        [PrimaryKey]
+        //[PrimaryKey]
         [Newtonsoft.Json.JsonProperty("id")]
         public string id { get; set; }
 
         //[Newtonsoft.Json.JsonIgnore]
-        private string email;
+        //private string email;
 
-        [Newtonsoft.Json.JsonProperty("Email")]
-        public string Email
-        {
-            get { return email; }
+        //[Newtonsoft.Json.JsonProperty("Email")]
+        //public string Email
+        //{
+        //    get { return email; }
 
-            set
-            {
-                email = value;
-                OnPropertyChanged("Email");
-            }
-        }
+        //    set
+        //    {
+        //        email = value;
+        //        OnPropertyChanged("Email");
+        //    }
+        //}
 
-        private string userName;
+        //private string userName;
 
-        [Newtonsoft.Json.JsonProperty("UserName")]
-        public string UserName
-        {
-            get { return userName; }
+        //[Newtonsoft.Json.JsonProperty("UserName")]
+        //public string UserName
+        //{
+        //    get { return userName; }
 
-            set
-            {
-                userName = value;
-                OnPropertyChanged("UserName");
-            }
-        }
+        //    set
+        //    {
+        //        userName = value;
+        //        OnPropertyChanged("UserName");
+        //    }
+        //}
 
-        [Newtonsoft.Json.JsonProperty(PropertyName = "Version")]
+        //[Newtonsoft.Json.JsonProperty(PropertyName = "Version")]
 
-        public string Version { get; set; }
+        //public string Version { get; set; }
 
 
-        private string password;
+        //private string password;
 
-        [Newtonsoft.Json.JsonProperty("Password")]
-        public string Password
-        {
-            get { return password; }
+        //[Newtonsoft.Json.JsonProperty("Password")]
+        //public string Password
+        //{
+        //    get { return password; }
 
-            set
-            {
-                password = value;
-                OnPropertyChanged("Password");
-            }
-        }
+        //    set
+        //    {
+        //        password = value;
+        //        OnPropertyChanged("Password");
+        //    }
+        //}
 
-        private string confirmPassword;
+        //private string confirmPassword;
 
-        [Newtonsoft.Json.JsonProperty("ConfirmPassword")]
-        public string ConfirmPassword
-        {
-            get { return confirmPassword; }
+        //[Newtonsoft.Json.JsonProperty("ConfirmPassword")]
+        //public string ConfirmPassword
+        //{
+        //    get { return confirmPassword; }
 
-            set
-            {
-                confirmPassword = value;
-                OnPropertyChanged("ConfirmPassword");
-            }
-        }
+        //    set
+        //    {
+        //        confirmPassword = value;
+        //        OnPropertyChanged("ConfirmPassword");
+        //    }
+        //}
 
         private int currentCard;
 
@@ -182,61 +182,61 @@ namespace QuranMEM.Model
             //IList<int> SelectedCards = new List<int>();
         }
 
-        public async static Task<bool> Login(string email, string pw)
-        {
+        //public async static Task<bool> Login(string email, string pw)
+        //{
 
-            bool isEmailEntry = string.IsNullOrEmpty(email);
-            bool isPasswordEntry = string.IsNullOrEmpty(pw);
+        //    bool isEmailEntry = string.IsNullOrEmpty(email);
+        //    bool isPasswordEntry = string.IsNullOrEmpty(pw);
 
-            if (isEmailEntry || isPasswordEntry)
-            {
-                if (isEmailEntry)
-                {
-                    //await DisplayAlert("Blank Email", "Please enter a Valid Email", "Ok");
-                    return false;
-                }
-                else
-                {
-                    //await DisplayAlert("Blank Password", "Please enter a Valid Password", "Ok");
-                    return false;
-                }
-            }
-            else
-            {
-                try
-                {
+        //    if (isEmailEntry || isPasswordEntry)
+        //    {
+        //        if (isEmailEntry)
+        //        {
+        //            //await DisplayAlert("Blank Email", "Please enter a Valid Email", "Ok");
+        //            return false;
+        //        }
+        //        else
+        //        {
+        //            //await DisplayAlert("Blank Password", "Please enter a Valid Password", "Ok");
+        //            return false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
 
-                    //User user = new User();
-                    //see if User Exists on LocalDb
-                    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-                    {
+        //            //User user = new User();
+        //            //see if User Exists on LocalDb
+        //            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+        //            {
 
-                        conn.CreateTable<User>();
-                        var user = conn.Table<User>().Where(u => u.Email == email).ToList<User>().FirstOrDefault();
+        //                conn.CreateTable<User>();
+        //                var user = conn.Table<User>().Where(u => u.Email == email).ToList<User>().FirstOrDefault();
 
-                        if (user != null && !String.IsNullOrEmpty(user.Email))
-                        {
-                            App.user = user;
+        //                if (user != null && !String.IsNullOrEmpty(user.Email))
+        //                {
+        //                    App.user = user;
 
-                            if (user.Password == pw)
-                            {
+        //                    if (user.Password == pw)
+        //                    {
 
-                                return true;
-                                //await Navigation.PushAsync(new NavigationPage(new HomePage()));
-                            }
-                            else
-                            {
+        //                        return true;
+        //                        //await Navigation.PushAsync(new NavigationPage(new HomePage()));
+        //                    }
+        //                    else
+        //                    {
                                 
-                                await App.Current.MainPage.DisplayAlert("Incorrect Password", "Incorrect Password for this Email", "Try Again");
-                                return false;
-                            }
+        //                        await App.Current.MainPage.DisplayAlert("Incorrect Password", "Incorrect Password for this Email", "Try Again");
+        //                        return false;
+        //                    }
 
-                        }                     
-                        else
-                        {
+        //                }                     
+                        //else
+                        //{
                             
-                            await App.Current.MainPage.DisplayAlert("No User Exists with that Email", "No User Exists with that Email..Try registering a new free Account", "OK");
-                            return false;
+                            //await App.Current.MainPage.DisplayAlert("No User Exists with that Email", "No User Exists with that Email..Try registering a new free Account", "OK");
+                            //return false;
 
                             //For Cloud Functionality
                             //await Navigation.PushAsync(new NavigationPage(new RegisterPage()));
@@ -262,110 +262,110 @@ namespace QuranMEM.Model
                             //return false;
                             //}
 
-                        }
+                        //}
 
-                    }
-                }
-                catch (Exception eze)
-                {
-                    Console.WriteLine(eze);
-                    return false;
-                }
+                    //}
+                //}
+                //catch (Exception eze)
+                //{
+                    //Console.WriteLine(eze);
+                    //return false;
+                //}
 
-            }
+            //}
 
 
-        }
+        //}
 
-        public async static Task<bool> ChangePassword(string newPW, User usa)       
-        {
-            try
-            {
-                //Cloud functionality if Customer decides wants it
-                //Change Cloud Database
-                //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == usa.Email).ToListAsync()).FirstOrDefault();
+        //public async static Task<bool> ChangePassword(string newPW, User usa)       
+        //{
+        //    try
+        //    {
+        //        //Cloud functionality if Customer decides wants it
+        //        //Change Cloud Database
+        //        //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == usa.Email).ToListAsync()).FirstOrDefault();
 
-                //cloudUser.id = cloudUser.id;
-                //cloudUser.Password = newPW;
-                //cloudUser.ConfirmPassword = newPW;
+        //        //cloudUser.id = cloudUser.id;
+        //        //cloudUser.Password = newPW;
+        //        //cloudUser.ConfirmPassword = newPW;
                 
-                //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
+        //        //await App.MobileService.GetTable<User>().UpdateAsync(cloudUser);
 
-                //System.Threading.Thread.Sleep(250);
+        //        //System.Threading.Thread.Sleep(250);
 
-                //Change LocalDB
-                using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-                {
-                    conn.CreateTable<User>();
-                    var localUser = conn.Table<User>().Where(u => u.Email == usa.email).ToList<User>().FirstOrDefault();
-                    localUser.Password = newPW;
-                    localUser.ConfirmPassword = newPW;
-                    conn.Update(localUser);
+        //        //Change LocalDB
+        //        using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+        //        {
+        //            conn.CreateTable<User>();
+        //            var localUser = conn.Table<User>().Where(u => u.Email == usa.email).ToList<User>().FirstOrDefault();
+        //            localUser.Password = newPW;
+        //            localUser.ConfirmPassword = newPW;
+        //            conn.Update(localUser);
 
-                }
+        //        }
 
-                return true;
+        //        return true;
 
-            }
-            catch (Exception ez)
-            {
-                //Console.WriteLine(ez);
-                //Maybe store this in the cloud Database?
+        //    }
+        //    catch (Exception ez)
+        //    {
+        //        //Console.WriteLine(ez);
+        //        //Maybe store this in the cloud Database?
 
-                return false;
-            }
+        //        return false;
+        //    }
 
-        }
+        //}
 
-        public async static Task<bool> RegisterUserU(User usa)
-        {
-            try
-            {
-                //Cloud Functionality (if Customer decicdes to reimplement this)
-                //See if User already exists
-                //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == usa.Email).ToListAsync()).FirstOrDefault();
+        //public async static Task<bool> RegisterUserU(User usa)
+        //{
+        //    try
+        //    {
+        //        //Cloud Functionality (if Customer decicdes to reimplement this)
+        //        //See if User already exists
+        //        //var cloudUser = (await App.MobileService.GetTable<User>().Where(u => u.Email == usa.Email).ToListAsync()).FirstOrDefault();
 
-                //if (cloudUser == null || string.IsNullOrEmpty(cloudUser.Email))
-                //{
+        //        //if (cloudUser == null || string.IsNullOrEmpty(cloudUser.Email))
+        //        //{
 
-                //Insert into Cloud Database
-                //await App.MobileService.GetTable<User>().InsertAsync(usa);
+        //        //Insert into Cloud Database
+        //        //await App.MobileService.GetTable<User>().InsertAsync(usa);
 
-                //Insert into Localdb
+        //        //Insert into Localdb
 
-                //}
-                // else
-                //{
-                // await App.Current.MainPage.DisplayAlert("Registered Email", "This Email has already been used to Register with us", "OK");
-                // return false;
+        //        //}
+        //        // else
+        //        //{
+        //        // await App.Current.MainPage.DisplayAlert("Registered Email", "This Email has already been used to Register with us", "OK");
+        //        // return false;
 
-                //}
+        //        //}
 
-                using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-                {
-                    conn.CreateTable<User>();
-                    conn.Insert(usa);
-                    conn.Close();
+        //        using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+        //        {
+        //            conn.CreateTable<User>();
+        //            conn.Insert(usa);
+        //            conn.Close();
 
-                }
+        //        }
 
-                System.Threading.Thread.Sleep(250);
+        //        System.Threading.Thread.Sleep(250);
 
-                App.user = usa;
+        //        App.user = usa;
 
-                System.Threading.Thread.Sleep(250);
+        //        System.Threading.Thread.Sleep(250);
 
-                return true;
+        //        return true;
 
-            }
-            catch (Exception ez)
-            {
-                //Console.WriteLine(ez);
+        //    }
+        //    catch (Exception ez)
+        //    {
+        //        //Console.WriteLine(ez);
              
 
-                return false;
-            }
-        }
+        //        return false;
+        //    }
+        //}
 
 
 

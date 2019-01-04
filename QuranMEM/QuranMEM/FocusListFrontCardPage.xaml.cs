@@ -47,12 +47,12 @@ namespace QuranMEM
         {
             try
             {
-                var answer = await DisplayAlert("Home Screen", "Back to Home Screen?", "Yes", "No");
+                //var answer = await DisplayAlert("Home Screen", "Back to Home Screen?", "Yes", "No");
 
-                if (answer)
-                {
+                //if (answer)
+                //{
                     await Navigation.PushModalAsync(new NavigationPage(new HomePage()));
-                }
+                //}
             }
             catch(Exception accountScreenNavE)
             {

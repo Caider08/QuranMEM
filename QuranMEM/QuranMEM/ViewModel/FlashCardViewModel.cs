@@ -11,12 +11,12 @@ namespace QuranMEM.ViewModel
     {
         private User user;
 
-        public string Email
-        {
-            get { return user.Email; }
+        //public string Email
+        //{
+        //    get { return user.Email; }
 
 
-        }
+        //}
 
         public int CurrentCard
         {
@@ -202,6 +202,98 @@ namespace QuranMEM.ViewModel
                         //Do Something
                         nextArabicVerse += "Error Getting next Arabic Ayah";
                         return nextArabicVerse;
+                    }
+                }
+            }
+        }
+
+        private string priorArabicVerse;
+
+        public string PriorArabicVerse
+        {
+            get
+            {
+                try
+                {
+                    var priorVerse = (user.CurrentCard - 1);
+
+                    string priorVerseString = priorVerse.ToString();
+
+                    string urlArabic = "http://api.alquran.cloud/ayah/" + priorVerseString;
+
+                    string response = "";
+
+                    priorArabicVerse = "";
+
+                    using (var wb = new WebClient())
+                    {
+                        response = wb.DownloadString(urlArabic);
+
+                        System.Threading.Thread.Sleep(150);
+
+                        if (string.IsNullOrEmpty(response))
+                        {
+                            //Try again
+                            response = wb.DownloadString(urlArabic);
+
+                            System.Threading.Thread.Sleep(150);
+
+                        }
+
+                        var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                        priorArabicVerse += quranObject.data.text;
+
+                    }
+
+                    return priorArabicVerse;
+                }
+                catch (Exception priorArabicVerseE)
+                {
+                    //Try Again
+                    //nextArabicVerse += "Error Getting next Arabic Ayah";
+                    //return nextArabicVerse;
+
+                    try
+                    {
+                        var priorVerse = (user.CurrentCard + 1);
+
+                        string priorVerseString = priorVerse.ToString();
+
+                        string urlArabic = "http://api.alquran.cloud/ayah/" + priorVerseString;
+
+                        string response = "";
+
+                        priorArabicVerse = "";
+
+                        using (var wb = new WebClient())
+                        {
+                            response = wb.DownloadString(urlArabic);
+
+                            System.Threading.Thread.Sleep(150);
+
+                            if (string.IsNullOrEmpty(response))
+                            {
+                                //Try again
+                                response = wb.DownloadString(urlArabic);
+
+                                System.Threading.Thread.Sleep(150);
+
+                            }
+
+                            var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
+
+                            priorArabicVerse += quranObject.data.text;
+
+                        }
+
+                        return priorArabicVerse;
+                    }
+                    catch (Exception priorArabicVerseEE)
+                    {
+                        //Do Something
+                        priorArabicVerse += "Error Getting next Arabic Ayah";
+                        return priorArabicVerse;
                     }
                 }
             }
