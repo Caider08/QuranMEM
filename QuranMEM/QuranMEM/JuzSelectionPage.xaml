@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QuranMEM.JuzSelectionPage">
@@ -8,7 +8,7 @@
                   ItemSelected="juzListView_ItemSelected"
                   Margin="20,0,20,0">
                 <ListView.Header>
-                    <Label Text="Pick Your Ajza to Study"
+                    <Label Text="Pick Your Ajzaa to Study"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
                 </ListView.Header>
