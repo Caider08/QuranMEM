@@ -36,6 +36,7 @@ namespace QuranMEM
 
             base.OnAppearing();
 
+            //If User tracking/storing re-Enabled
             //try
             //{
             //    using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))

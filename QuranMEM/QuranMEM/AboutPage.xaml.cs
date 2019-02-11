@@ -25,6 +25,7 @@ namespace QuranMEM
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            //If Leaderboard going to be used
             //try
             //{
                 //var leaders = new List<User>();
@@ -49,7 +50,7 @@ namespace QuranMEM
 
                 App.Current.MainPage.Navigation.PopAsync();
 
-                //await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
+
             }
             else
             {

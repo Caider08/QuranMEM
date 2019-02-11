@@ -37,26 +37,6 @@ namespace QuranMEM
 
             }
 
-           // NavigationPage.SetHasNavigationBar(this, false);
-
-            /* var verseNumba = App.user.CurrentCard;
-
-             string urlArabic = "http://api.alquran.cloud/ayah/" + App.user.CurrentCard;
-
-             string verse = "";
-
-             using (var wb = new WebClient())
-             {
-                 var response = wb.DownloadString(urlArabic);
-
-                 var quranObject = JToken.Parse(response).ToObject<QuranRootObject>();
-
-                 verse += quranObject.data.text;
-
-                 System.Threading.Thread.Sleep(150);
-
-             }*/
-
         }
 
         protected override bool OnBackButtonPressed()

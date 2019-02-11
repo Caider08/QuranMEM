@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QuranMEM.VerseSearchPage">
@@ -6,43 +6,7 @@
         <ScrollView>
             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="40,20,40,0">
             
-              <!--  <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Entry 
-                x:Name="CloudSearchVerse"
-             
-                Placeholder="Enter Verse Number"
-                Keyboard="Numeric"
-         
-                />
-
-                    <Button 
-             
-                    x:Name="QuranCloudSearch"
-                    Clicked="QuranCloudSearch_Clicked"    
-                    Text="Get Ayah"
-                  />
-                </StackLayout>-->
-
-                <!--<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                   <Entry 
-                x:Name="CloudSearchJuz"
-              
-                Placeholder="Enter a Juz(1-30)"
-                Keyboard="Numeric"
-           
-                />-->
-
-                   <!-- <Button 
-                
-                    x:Name="QuranCloudSearchJuz"
-                    Clicked="QuranCloudSearchJuz_Clicked"       
-                    Text="Select Juz"
-                     
-                
-                  />
-               
-                </StackLayout>-->
-
+            
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <Entry 
                 x:Name="CloudSearchTerm"
